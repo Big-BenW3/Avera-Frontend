@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&amp;family=DM+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "on-tertiary-fixed-variant": "#005236",
+          "on-primary-fixed-variant": "#7a3000",
+          "on-tertiary-fixed": "#002113",
+          "inverse-surface": "#213145",
+          "surface-bright": "#f8f9ff",
+          "secondary-fixed": "#dae2fd",
+          "inverse-on-surface": "#eaf1ff",
+          "surface-container-highest": "#d3e4fe",
+          "secondary": "#565e74",
+          "tertiary": "#006c49",
+          "on-tertiary": "#ffffff",
+          "on-error": "#ffffff",
+          "primary-container": "#ff6b00",
+          "on-secondary-fixed-variant": "#3f465c",
+          "error-container": "#ffdad6",
+          "outline-variant": "#e2bfb0",
+          "on-secondary": "#ffffff",
+          "surface": "#f8f9ff",
+          "surface-container-low": "#eff4ff",
+          "outline": "#8e7164",
+          "surface-container": "#e5eeff",
+          "on-secondary-fixed": "#131b2e",
+          "tertiary-container": "#00ae78",
+          "on-error-container": "#93000a",
+          "surface-tint": "#a04100",
+          "primary-fixed-dim": "#ffb693",
+          "on-background": "#0b1c30",
+          "tertiary-fixed": "#6ffbbe",
+          "on-primary-container": "#572000",
+          "on-tertiary-container": "#003925",
+          "on-surface-variant": "#5a4136",
+          "primary": "#a04100",
+          "inverse-primary": "#ffb693",
+          "surface-container-high": "#dce9ff",
+          "surface-variant": "#d3e4fe",
+          "secondary-container": "#dae2fd",
+          "surface-container-lowest": "#ffffff",
+          "on-secondary-container": "#5c647a",
+          "on-primary": "#ffffff",
+          "on-surface": "#0b1c30",
+          "background": "#f8f9ff",
+          "surface-dim": "#cbdbf5",
+          "tertiary-fixed-dim": "#4edea3",
+          "error": "#ba1a1a",
+          "primary-fixed": "#ffdbcc",
+          "secondary-fixed-dim": "#bec6e0",
+          "on-primary-fixed": "#351000"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "space-md": "1rem",
+          "sidebar-width": "260px",
+          "space-3xl": "4rem",
+          "max-content-width": "1440px",
+          "gutter": "1.5rem",
+          "space-lg": "1.5rem",
+          "space-xl": "2rem",
+          "space-2xs": "0.25rem",
+          "space-xs": "0.5rem",
+          "space-2xl": "3rem",
+          "space-sm": "0.75rem"
+        },
+        "fontFamily": {
+          "headline-lg": [
+            "Manrope"
+          ],
+          "headline-sm": [
+            "Manrope"
+          ],
+          "headline-lg-mobile": [
+            "Manrope"
+          ],
+          "headline-md": [
+            "Manrope"
+          ],
+          "body-md": [
+            "DM Sans"
+          ],
+          "display-xl-mobile": [
+            "Manrope"
+          ],
+          "display-xl": [
+            "Manrope"
+          ],
+          "label-sm": [
+            "DM Sans"
+          ],
+          "body-sm": [
+            "DM Sans"
+          ],
+          "label-md": [
+            "DM Sans"
+          ],
+          "body-lg": [
+            "DM Sans"
+          ]
+        },
+        "fontSize": {
+          "headline-lg": [
+            "36px",
+            {
+              "lineHeight": "44px",
+              "letterSpacing": "-0.025em",
+              "fontWeight": "700"
+            }
+          ],
+          "headline-sm": [
+            "18px",
+            {
+              "lineHeight": "26px",
+              "letterSpacing": "-0.01em",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-lg-mobile": [
+            "28px",
+            {
+              "lineHeight": "36px",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "700"
+            }
+          ],
+          "headline-md": [
+            "24px",
+            {
+              "lineHeight": "32px",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "700"
+            }
+          ],
+          "body-md": [
+            "14px",
+            {
+              "lineHeight": "22px",
+              "fontWeight": "400"
+            }
+          ],
+          "display-xl-mobile": [
+            "36px",
+            {
+              "lineHeight": "44px",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "800"
+            }
+          ],
+          "display-xl": [
+            "56px",
+            {
+              "lineHeight": "64px",
+              "letterSpacing": "-0.03em",
+              "fontWeight": "800"
+            }
+          ],
+          "label-sm": [
+            "11px",
+            {
+              "lineHeight": "16px",
+              "letterSpacing": "0.02em",
+              "fontWeight": "600"
+            }
+          ],
+          "body-sm": [
+            "12px",
+            {
+              "lineHeight": "18px",
+              "fontWeight": "400"
+            }
+          ],
+          "label-md": [
+            "13px",
+            {
+              "lineHeight": "18px",
+              "letterSpacing": "0.01em",
+              "fontWeight": "600"
+            }
+          ],
+          "body-lg": [
+            "16px",
+            {
+              "lineHeight": "26px",
+              "letterSpacing": "-0.005em",
+              "fontWeight": "400"
+            }
+          ]
+        }
+      },
+    },
+  }</script></head><body class="bg-background font-body-md text-on-surface relative min-h-screen"><div class="pointer-events-none fixed top-0 right-1/4 w-[800px] h-[300px] bg-[radial-gradient(circle_at_center,_rgba(255,107,0,0.08)_0%,_rgba(255,107,0,0)_70%)] z-0"></div><header class="fixed top-0 left-0 right-0 h-16 z-50 bg-surface-container-lowest/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 w-full px-gutter flex items-center justify-between"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-xs"><img alt="Avera Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WV9jk_1x8lxO4k6ovyKiG6G87VviGvOCXF4v_VUmjcwSZFcOpdfPkdGePGOFvPUOcCUd97gRbZk7K_C6xUwQlTtQ4ik5V9kF_WFsVFmNeU9UBNTEQryV0RHVO0tKORugp6w3VRqn3Y3ZB31i0fS86XqcyP1OyyXGr1pSSCVPhMQut_T643z8ML3AoAtGbU89z0K_J2FiwNQHFMmVj-OXAgXHDn6EyEv-iGhiDk3Qhy42rEH7HqoUu2wVn5"/><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight">Avera</span></div><nav class="hidden xl:flex items-center gap-space-xs" data-active-classes="bg-primary-container text-on-primary font-label-md text-label-md rounded-full"><a class="px-space-md py-space-xs font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="discover" href="#">Discover</a><a class="px-space-md py-space-xs font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="ideas" href="#">Ideas</a><a aria-current="page" class="px-space-md py-space-xs transition-colors bg-primary-container text-on-primary font-label-md text-label-md rounded-full" data-path="spaces" href="#">Spaces</a><a class="px-space-md py-space-xs font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="roadmap" href="#">Roadmap</a><a class="px-space-md py-space-xs font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="activity" href="#">Activity</a></nav></div><div class="flex items-center gap-space-md"><div class="hidden md:flex items-center gap-space-xs bg-surface-container-lowest shadow-[0_2px_6px_-1px_rgba(15,23,42,0.04)] rounded-full px-space-md py-space-xs w-64"><span class="material-symbols-outlined text-on-surface-variant text-[18px]">search</span><input class="bg-transparent border-none outline-none font-body-sm text-body-sm text-on-surface placeholder:text-on-surface-variant flex-1" placeholder="Search spaces, ideas..." type="text"/><kbd class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-surface-container text-on-surface-variant">⌘K</kbd></div><button class="flex items-center gap-space-2xs px-space-md py-space-xs rounded-full bg-primary-container text-on-primary font-label-md text-label-md shadow-[0_8px_20px_rgba(255,107,0,0.28)] hover:bg-primary transition-all"><span class="material-symbols-outlined text-[18px]">add</span><span>New Idea</span></button><button class="relative w-9 h-9 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-primary-container"></span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><aside class="fixed left-0 top-16 bottom-0 w-sidebar-width bg-surface-container-lowest z-40 flex flex-col justify-between py-space-lg shadow-[0_1px_8px_rgba(0,0,0,0.02)]"><div class="px-space-md flex flex-col gap-space-sm"><div class="px-space-xs pb-space-xs"><span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">Workspace</span></div><nav class="flex flex-col gap-space-2xs" data-active-classes="bg-primary-container text-on-primary font-label-md text-label-md rounded-xl"><a class="flex items-center gap-space-sm px-space-md py-space-xs rounded-xl font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="discover" href="#"><span class="material-symbols-outlined text-[20px]">explore</span><span>Discover</span></a><a class="flex items-center gap-space-sm px-space-md py-space-xs rounded-xl font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="ideas" href="#"><span class="material-symbols-outlined text-[20px]">lightbulb</span><span>Ideas</span></a><a aria-current="page" class="flex items-center gap-space-sm px-space-md py-space-xs transition-all bg-primary-container text-on-primary font-label-md text-label-md rounded-xl" data-path="spaces" href="#"><span class="material-symbols-outlined text-[20px]">folder</span><span>Spaces</span></a><a class="flex items-center gap-space-sm px-space-md py-space-xs rounded-xl font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="roadmap" href="#"><span class="material-symbols-outlined text-[20px]">view_kanban</span><span>Roadmap</span></a><a class="flex items-center gap-space-sm px-space-md py-space-xs rounded-xl font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="activity" href="#"><span class="material-symbols-outlined text-[20px]">bolt</span><span>Activity</span></a></nav></div><div class="px-space-md flex flex-col gap-space-xs"><div class="p-space-sm rounded-xl bg-surface-container-low flex flex-col gap-space-2xs"><div class="flex items-center justify-between"><span class="font-label-sm text-label-sm text-on-surface font-semibold">Cloud Sync</span><span class="w-2 h-2 rounded-full bg-tertiary-container"></span></div><span class="font-body-sm text-body-sm text-on-surface-variant">Active intelligence engine connected</span></div><a class="flex items-center gap-space-sm px-space-md py-space-xs rounded-xl font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="settings" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span>Settings</span></a></div></aside><div class="pl-sidebar-width"><main class="relative pt-16 w-full px-gutter min-h-screen z-10"><div class="flex flex-col w-full pb-space-3xl gap-space-xl">
+<!-- Top Workspace Header Banner -->
+<div class="relative bg-surface-container-lowest rounded-2xl p-space-xl shadow-sm overflow-hidden flex flex-col gap-space-lg">
+<!-- Ambient Warm Radial Glow -->
+<div class="pointer-events-none absolute -right-24 -top-24 w-96 h-96 bg-[radial-gradient(circle_at_center,_rgba(255,107,0,0.12)_0%,_rgba(255,107,0,0)_70%)] rounded-full"></div>
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-lg relative z-10">
+<!-- Title & Badges -->
+<div class="flex flex-col gap-space-xs max-w-3xl">
+<div class="flex items-center flex-wrap gap-space-xs">
+<span class="inline-flex items-center gap-1.5 px-space-sm py-0.5 rounded-full bg-primary-container/10 text-primary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">bolt</span>
+            Project Aurora
+          </span>
+<span class="inline-flex items-center gap-1.5 px-space-sm py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container animate-pulse"></span>
+            Building (Sprint 3)
+          </span>
+<span class="inline-flex items-center gap-1 px-space-xs py-0.5 rounded-full bg-tertiary-container/15 text-tertiary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">sync</span>
+            Active Sync
+          </span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight mt-1">
+          Project Aurora — NextGen Intelligence Platform
+        </h1>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Building autonomous roadmap planning, predictive telemetry, and multi-agent coordination for distributed teams.
+        </p>
+</div>
+<!-- Quick Action Controls & Member Stacks -->
+<div class="flex flex-wrap lg:flex-col xl:flex-row items-start lg:items-end xl:items-center gap-space-md">
+<!-- Team Stack -->
+<div class="flex items-center -space-x-2">
+<div class="w-9 h-9 rounded-full bg-surface-container-high overflow-hidden shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Portrait of a modern software engineer wearing glasses with warm studio directional lighting against a clean neutral background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBL3ppi3haX0UgMUHWDKHcu63lo52e5hqauIF2QWGo3EslSFyoFFTp3tCyUXY_Mpgb9TsRhGJHwrTDXlSLbymLtZsigme2YbIk26fViBBN0_N5TXw5EkFYi8TqVJmIehzStvSq-UP-LAFGd864w0Ubn_hlDyN87Ge22hp2voDQu9E0iAFGz9K52PVgGTZ7C1sscXcasCrSKfTOXtR469GJGIASG_yqirz4W8oxErg_8KkVPk8KaL3RH-w"/>
+</div>
+<div class="w-9 h-9 rounded-full bg-surface-container-high overflow-hidden shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Portrait of a female product architect with warm confident expression against soft orange accent studio lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsUjA-OjHsL3aVBEhy-qylb414cmLq6k01tpMmOQ7Cr14TXoahfPJsICu1w3_ow-c15Qnm_zLpiZUosYdxJb9li5w0itPtYuJ7lX6s2v1Q3J36TPrDGw7l86dp3sZFZpqYjmhyVboaHuMZPT6n33hTjZJsLONEmxAa8dQ80hug8CzryK_-cBYH8crL3mN7OzPBAd1siD9ViI2TMAfTeTHxer3YEst1EYkBKlIzDcADpYLShcoaqM3paA"/>
+</div>
+<div class="w-9 h-9 rounded-full bg-surface-container-high overflow-hidden shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Young tech lead developer smiling in modern office setting with warm ambient glow background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_PsH_VaSVsWGYnIJ2FHw8Y8i9oMTkucuq0fTxmaoC3-7vzQ_PV_a8aBWG_ymhEuqpv4t2DoFLqU3wWVx2KjENRXWSJeB6LBeisg76c5Jo8NJiv5tY16IWqkGNYUlVi0rJTZTuUCgrzjJJDcsDcMcSvv_3OX7NGq3Fhbg14xM_PYfkI0IgkumNI1lBj7o11smBUhhc38FoeNv9v1S8XEvjRvAuXUQ7IvgoX9mLs9_Fkqhl8hMt365Wpw"/>
+</div>
+<div class="w-9 h-9 rounded-full bg-surface-container-high overflow-hidden shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Senior distributed systems engineer in minimalist modern workspace." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmgwVsmklPA2yfw8tiS21Ghx-ZSqOe3keqIVcHmyiHwyhYrePS40yJ9iaNOLJecHghlbAFk68e5sgIzX6GIi6uYg8gR_PzyrQ0r733itNg9L_wJIC0AM4lFQfH-Y4urDAEQ39DTP3a2pYU6rNQUWzH-L7z9n7HVefQqdTxeMajYIc54kO3bwcYtpNilDkAXsyScZ8J5nTY_0_JbBiAWtXP5HbyE9iQAKi7RorZO1BPYdkcs-gpzXF6Ew"/>
+</div>
+<div class="w-9 h-9 rounded-full bg-surface-container-high overflow-hidden shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Digital product designer wearing black shirt against modern studio gradient backdrop." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDG87nenrVu4C_wdFnNB4YiLmEG1BoJr5OdnqQmd6uJPtl9rxmF5lphbRFcg98Tn9B6k2JOfB9htdtvWhlg_SL7-42GtoAn-WEGry0pain9R3QyIuSTabWAnrqI4ZqOKE5-aY0fk31DnYbn_1jdhKCsVCfdNKSS-6_Yvi5dIE6Epm4VC1FDejf8dmM8UwBHFSg-P_3dP0_0C6hnXKGv0ceqkvqjDQ_n6crUcfxQMz8dEg_Ox36UzFmjeQ"/>
+</div>
+<div class="w-9 h-9 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm flex items-center justify-center font-bold shadow-sm">
+            +3
+          </div>
+</div>
+<!-- Action Buttons -->
+<div class="flex items-center gap-space-xs">
+<!-- Integrations indicator -->
+<div class="hidden sm:flex items-center gap-1.5 px-space-sm py-space-xs bg-surface-container-low rounded-xl">
+<span class="inline-flex items-center gap-1 text-on-surface font-label-sm text-label-sm">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+              GitHub
+            </span>
+<span class="text-on-surface-variant opacity-40">/</span>
+<span class="inline-flex items-center gap-1 text-on-surface font-label-sm text-label-sm">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+              Figma
+            </span>
+</div>
+<button class="flex items-center gap-1 px-space-md py-space-xs rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md transition-all shadow-sm">
+<span class="material-symbols-outlined text-[18px]">share</span>
+<span>Share</span>
+</button>
+<button class="flex items-center gap-1.5 px-space-md py-space-xs rounded-xl bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md shadow-[0_8px_20px_rgba(255,107,0,0.28)] hover:-translate-y-0.5 transition-all">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">headset_mic</span>
+<span>Open Voice Huddle</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Workspace Horizontal Navigation Tabs -->
+<div class="flex items-center gap-space-xs overflow-x-auto pt-space-xs no-scrollbar">
+<button class="px-space-md py-space-xs rounded-full bg-primary-container text-on-primary font-label-md text-label-md shadow-sm transition-colors whitespace-nowrap">
+        Overview
+      </button>
+<button class="px-space-md py-space-xs rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors font-label-md text-label-md whitespace-nowrap">
+        Roadmap
+      </button>
+<button class="flex items-center gap-1 px-space-md py-space-xs rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors font-label-md text-label-md whitespace-nowrap">
+<span>Tasks</span>
+<span class="w-4 h-4 rounded-full bg-surface-container-highest text-on-surface-variant font-label-sm text-[10px] flex items-center justify-center">53</span>
+</button>
+<button class="px-space-md py-space-xs rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors font-label-md text-label-md whitespace-nowrap">
+        Build (GitHub)
+      </button>
+<button class="px-space-md py-space-xs rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors font-label-md text-label-md whitespace-nowrap">
+        Design (Figma)
+      </button>
+<button class="px-space-md py-space-xs rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors font-label-md text-label-md whitespace-nowrap">
+        Collaborate (Chat)
+      </button>
+<button class="px-space-md py-space-xs rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors font-label-md text-label-md whitespace-nowrap">
+        Team
+      </button>
+<button class="px-space-md py-space-xs rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors font-label-md text-label-md whitespace-nowrap">
+        Activity
+      </button>
+</div>
+</div>
+<!-- Metric Overview Cards (Axen Visual Pattern) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<!-- Card 1 -->
+<div class="relative bg-surface-container-lowest rounded-2xl p-space-lg shadow-sm flex flex-col justify-between overflow-hidden group hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between">
+<span class="font-body-md text-body-md text-on-surface-variant font-medium">Total Tasks</span>
+<div class="w-9 h-9 rounded-full bg-surface-container-low flex items-center justify-center text-on-surface-variant group-hover:bg-primary-container/10 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">north_east</span>
+</div>
+</div>
+<div class="flex flex-col gap-1 mt-space-md">
+<span class="font-headline-lg text-headline-lg text-on-surface font-extrabold tracking-tight">53</span>
+<div class="flex items-center gap-1 font-body-sm text-body-sm text-tertiary">
+<span class="material-symbols-outlined text-[16px] font-bold">arrow_upward</span>
+<span class="font-semibold font-label-sm text-label-sm">5.7%</span>
+<span class="text-on-surface-variant ml-0.5">Increased from last sprint</span>
+</div>
+</div>
+<div class="h-1 w-full bg-surface-container mt-space-md rounded-full overflow-hidden">
+<div class="h-full bg-primary-container rounded-full w-[72%]"></div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="relative bg-surface-container-lowest rounded-2xl p-space-lg shadow-sm flex flex-col justify-between overflow-hidden group hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between">
+<span class="font-body-md text-body-md text-on-surface-variant font-medium">Closed Tasks</span>
+<div class="w-9 h-9 rounded-full bg-surface-container-low flex items-center justify-center text-on-surface-variant group-hover:bg-tertiary-container/10 group-hover:text-tertiary transition-colors">
+<span class="material-symbols-outlined text-[20px]">north_east</span>
+</div>
+</div>
+<div class="flex flex-col gap-1 mt-space-md">
+<span class="font-headline-lg text-headline-lg text-on-surface font-extrabold tracking-tight">30</span>
+<div class="flex items-center gap-1 font-body-sm text-body-sm text-tertiary">
+<span class="material-symbols-outlined text-[16px] font-bold">arrow_upward</span>
+<span class="font-semibold font-label-sm text-label-sm">8.3%</span>
+<span class="text-on-surface-variant ml-0.5">Increased from last sprint</span>
+</div>
+</div>
+<div class="h-1 w-full bg-surface-container mt-space-md rounded-full overflow-hidden">
+<div class="h-full bg-tertiary-container rounded-full w-[58%]"></div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="relative bg-surface-container-lowest rounded-2xl p-space-lg shadow-sm flex flex-col justify-between overflow-hidden group hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between">
+<span class="font-body-md text-body-md text-on-surface-variant font-medium">Active Roadmaps</span>
+<div class="w-9 h-9 rounded-full bg-surface-container-low flex items-center justify-center text-on-surface-variant group-hover:bg-primary-container/10 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">north_east</span>
+</div>
+</div>
+<div class="flex flex-col gap-1 mt-space-md">
+<span class="font-headline-lg text-headline-lg text-on-surface font-extrabold tracking-tight">23</span>
+<div class="flex items-center gap-1 font-body-sm text-body-sm text-tertiary">
+<span class="material-symbols-outlined text-[16px] font-bold">arrow_upward</span>
+<span class="font-semibold font-label-sm text-label-sm">12.5%</span>
+<span class="text-on-surface-variant ml-0.5">Velocity acceleration</span>
+</div>
+</div>
+<div class="h-1 w-full bg-surface-container mt-space-md rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full w-[44%]"></div>
+</div>
+</div>
+</div>
+<!-- Task Progress Visual Trajectory Line Chart Card -->
+<div class="bg-surface-container-lowest rounded-2xl p-space-xl shadow-sm flex flex-col gap-space-lg">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-md">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface font-bold">Task Progress</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Milestone trajectory &amp; team velocity mapping</p>
+</div>
+<div class="flex items-center gap-space-md">
+<!-- Chart Legend -->
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-full bg-primary-container"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Completed Milestones</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-full bg-secondary-fixed-dim"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Target Trajectory</span>
+</div>
+</div>
+<!-- Period Select Filter -->
+<div class="relative inline-block">
+<button class="flex items-center gap-space-xs px-space-md py-space-xs bg-surface-container-low rounded-xl font-label-md text-label-md text-on-surface hover:bg-surface-container transition-colors" id="periodMenuBtn">
+<span id="periodLabel">Monthly</span>
+<span class="material-symbols-outlined text-[18px]">expand_more</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Scalable High-Fidelity SVG Chart matching reference curves -->
+<div class="w-full h-64 relative flex items-end">
+<!-- Grid Lines Background -->
+<div class="absolute inset-0 flex flex-col justify-between pointer-events-none opacity-40">
+<div class="w-full border-b border-surface-container-highest"></div>
+<div class="w-full border-b border-surface-container-highest"></div>
+<div class="w-full border-b border-surface-container-highest"></div>
+<div class="w-full border-b border-surface-container-highest"></div>
+<div class="w-full border-b border-surface-container-highest"></div>
+</div>
+<!-- Axis Labels (Y) -->
+<div class="absolute -left-1 inset-y-0 flex flex-col justify-between py-1 font-label-sm text-[10px] text-on-surface-variant pointer-events-none">
+<span>25</span>
+<span>20</span>
+<span>15</span>
+<span>10</span>
+<span>5</span>
+</div>
+<!-- Inline SVG Wave Visualizer -->
+<svg class="w-full h-56 overflow-visible pl-6" fill="none" preserveaspectratio="none" viewbox="0 0 1000 240">
+<defs>
+<!-- Gradient fill for Primary Orange Line -->
+<lineargradient id="orangeCurveGrad" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#ff6b00" stop-opacity="0.22"></stop>
+<stop offset="100%" stop-color="#ff6b00" stop-opacity="0.0"></stop>
+</lineargradient>
+<filter height="140%" id="softGlow" width="140%" x="-20%" y="-20%">
+<fedropshadow dx="0" dy="8" flood-color="#ff6b00" flood-opacity="0.28" stddeviation="6"></fedropshadow>
+</filter>
+</defs>
+<!-- Neutral Comparison Line (Target Curve) -->
+<path class="opacity-80" d="M 10 180 C 120 175, 170 195, 260 180 C 350 165, 420 120, 500 135 C 580 150, 660 70, 750 90 C 840 110, 920 60, 990 85" fill="none" stroke="#bec6e0" stroke-dasharray="6 6" stroke-linecap="round" stroke-width="3.5"></path>
+<!-- Active Wave Gradient Area -->
+<path d="M 10 200 C 100 150, 160 170, 240 175 C 320 180, 360 105, 420 115 C 480 125, 520 20, 600 55 C 680 90, 720 30, 810 40 C 900 50, 950 25, 990 35 L 990 240 L 10 240 Z" fill="url(#orangeCurveGrad)"></path>
+<!-- Bold Primary Orange Line with Soft Glow Filter -->
+<path d="M 10 200 C 100 150, 160 170, 240 175 C 320 180, 360 105, 420 115 C 480 125, 520 20, 600 55 C 680 90, 720 30, 810 40 C 900 50, 950 25, 990 35" fill="none" filter="url(#softGlow)" stroke="#ff6b00" stroke-linecap="round" stroke-width="4.5"></path>
+<!-- Interactive Anchor Dots on curve -->
+<circle cx="420" cy="115" fill="#ffffff" r="5" stroke="#ff6b00" stroke-width="3"></circle>
+<circle cx="600" cy="55" fill="#ffffff" r="5" stroke="#ff6b00" stroke-width="3"></circle>
+<circle cx="810" cy="40" fill="#ff6b00" r="6" stroke="#ffffff" stroke-width="2.5"></circle>
+</svg>
+</div>
+<!-- Month Columns Labels (X Axis) -->
+<div class="grid grid-cols-12 text-center pl-6 font-label-sm text-label-sm text-on-surface-variant font-medium">
+<span>JAN</span>
+<span>FEB</span>
+<span>MAR</span>
+<span>APR</span>
+<span>MAY</span>
+<span>JUN</span>
+<span>JUL</span>
+<span>AUG</span>
+<span>SEP</span>
+<span>OCT</span>
+<span class="text-primary font-bold">NOV</span>
+<span>DEC</span>
+</div>
+</div>
+<!-- Split Bottom Section: Task Table & Team Collaboration -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-space-lg">
+<!-- Left Column (Span 2): Tasks Data Grid -->
+<div class="lg:col-span-2 bg-surface-container-lowest rounded-2xl p-space-xl shadow-sm flex flex-col gap-space-lg">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-sm">
+<h2 class="font-headline-md text-headline-md text-on-surface font-bold">Tasks</h2>
+<span class="px-space-xs py-0.5 rounded-full bg-primary-container/10 text-primary font-label-sm text-label-sm font-semibold">12 Open</span>
+</div>
+<!-- Task Search Bar -->
+<div class="flex items-center gap-space-xs bg-surface-container-low rounded-xl px-space-md py-space-xs w-full sm:w-64">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">search</span>
+<input class="bg-transparent border-none outline-none font-body-sm text-body-sm text-on-surface placeholder:text-on-surface-variant w-full" id="taskSearchInput" placeholder="Filter tasks by name..." type="text"/>
+</div>
+</div>
+<!-- Table Container -->
+<div class="w-full overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/50 text-on-surface-variant font-label-sm text-label-sm rounded-xl">
+<th class="py-space-sm px-space-md rounded-l-xl font-semibold">No.</th>
+<th class="py-space-sm px-space-md font-semibold">Task List</th>
+<th class="py-space-sm px-space-md font-semibold">Priority</th>
+<th class="py-space-sm px-space-md font-semibold">Start Date</th>
+<th class="py-space-sm px-space-md font-semibold">Status</th>
+<th class="py-space-sm px-space-md text-right rounded-r-xl font-semibold">Action</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md text-on-surface" id="taskTableBody">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-space-md px-space-md text-on-surface-variant font-label-sm text-label-sm">01</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="font-semibold text-on-surface">Integrate OAuth 2.0 Providers</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">SSO for Google Workspace and GitHub Enterprise</span>
+</td>
+<td class="py-space-md px-space-md">
+<span class="px-space-xs py-0.5 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm font-semibold">High</span>
+</td>
+<td class="py-space-md px-space-md text-on-surface-variant font-body-sm text-body-sm">
+                Nov 14, 2025 · 09:30
+              </td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1.5 px-space-sm py-0.5 rounded-full bg-primary-container text-on-primary font-label-sm text-label-sm shadow-sm font-medium">
+                  In Progress
+                </span>
+</td>
+<td class="py-space-md px-space-md text-right">
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container flex items-center justify-center text-on-surface-variant transition-colors ml-auto">
+<span class="material-symbols-outlined text-[18px]">more_horiz</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-space-md px-space-md text-on-surface-variant font-label-sm text-label-sm">02</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="font-semibold text-on-surface">Design Token Extraction Pipeline</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Figma REST API sync into Tailwind token parser</span>
+</td>
+<td class="py-space-md px-space-md">
+<span class="px-space-xs py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant font-label-sm text-label-sm font-semibold">Medium</span>
+</td>
+<td class="py-space-md px-space-md text-on-surface-variant font-body-sm text-body-sm">
+                Nov 12, 2025 · 14:15
+              </td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1.5 px-space-sm py-0.5 rounded-full bg-tertiary-container text-on-tertiary-container font-label-sm text-label-sm font-semibold">
+                  Completed
+                </span>
+</td>
+<td class="py-space-md px-space-md text-right">
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container flex items-center justify-center text-on-surface-variant transition-colors ml-auto">
+<span class="material-symbols-outlined text-[18px]">more_horiz</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-space-md px-space-md text-on-surface-variant font-label-sm text-label-sm">03</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="font-semibold text-on-surface">Realtime WebSockets Sync Engine</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Multi-cursor live presence and conflict-free data types</span>
+</td>
+<td class="py-space-md px-space-md">
+<span class="px-space-xs py-0.5 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm font-semibold">High</span>
+</td>
+<td class="py-space-md px-space-md text-on-surface-variant font-body-sm text-body-sm">
+                Nov 18, 2025 · 11:00
+              </td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1.5 px-space-sm py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm font-medium">
+                  Pending
+                </span>
+</td>
+<td class="py-space-md px-space-md text-right">
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container flex items-center justify-center text-on-surface-variant transition-colors ml-auto">
+<span class="material-symbols-outlined text-[18px]">more_horiz</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-space-md px-space-md text-on-surface-variant font-label-sm text-label-sm">04</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="font-semibold text-on-surface">Voice Channel WebRTC Handshake</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Low-latency mesh network for instant workspace huddles</span>
+</td>
+<td class="py-space-md px-space-md">
+<span class="px-space-xs py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant font-label-sm text-label-sm font-semibold">Medium</span>
+</td>
+<td class="py-space-md px-space-md text-on-surface-variant font-body-sm text-body-sm">
+                Nov 20, 2025 · 16:45
+              </td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1.5 px-space-sm py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm font-medium">
+                  Pending
+                </span>
+</td>
+<td class="py-space-md px-space-md text-right">
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container flex items-center justify-center text-on-surface-variant transition-colors ml-auto">
+<span class="material-symbols-outlined text-[18px]">more_horiz</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Quick Add Task Bar -->
+<div class="flex items-center justify-between pt-space-xs">
+<button class="flex items-center gap-space-xs text-primary font-label-md text-label-md hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+<span>Create New Task</span>
+</button>
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm">
+<span>Showing 4 of 53 tasks</span>
+</div>
+</div>
+</div>
+<!-- Right Column (Span 1): Team Collaboration Card (Axen Style) -->
+<div class="bg-surface-container-lowest rounded-2xl p-space-xl shadow-sm flex flex-col justify-between gap-space-lg">
+<div class="flex flex-col gap-space-lg">
+<div class="flex items-center justify-between">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface font-bold">Team Collaboration</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Active members in this Space</p>
+</div>
+<button class="flex items-center gap-1 px-space-sm py-space-xs rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface font-label-sm text-label-sm transition-colors">
+<span class="material-symbols-outlined text-[16px]">person_add</span>
+<span>+ Add</span>
+</button>
+</div>
+<!-- Member Live Status List -->
+<div class="flex flex-col gap-space-md">
+<!-- Member 1 -->
+<div class="flex items-center gap-space-sm p-space-xs rounded-xl hover:bg-surface-container-low/50 transition-colors">
+<div class="relative w-11 h-11 rounded-full overflow-hidden shrink-0 shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Portrait of Alexandra Deff, product lead with warm ambient studio lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwOb-zSCyWamAkDLcKD9y_DocIoriZqc9tPEfEfnSlT4QM5z2OyTtDdqdStSjD_gwBIA1Ofcy7a7yA0xYp0n0liO5MsM_26B2lslrUBsD8KTmWwI3c6Wpo502F7IUKSB4wOBKgRb_q8H_Ox_HEoKoZyUkIbj9099ghbG3kmDkTWpYo2rhjG3JXqSkrbjaj-02-yOWA-AZVM83rCQ6HqHq492cIP3TfKcyT4__t-WndbS8JRNprIZw8NA"/>
+<span class="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-tertiary-container ring-2 ring-surface-container-lowest"></span>
+</div>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold truncate">Alexandra Deff</span>
+<span class="font-label-sm text-[10px] text-tertiary uppercase font-bold tracking-wide">Live</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">
+                Working on <strong class="text-on-surface font-medium">GitHub Project Repository</strong>
+</span>
+</div>
+</div>
+<!-- Member 2 -->
+<div class="flex items-center gap-space-sm p-space-xs rounded-xl hover:bg-surface-container-low/50 transition-colors">
+<div class="relative w-11 h-11 rounded-full overflow-hidden shrink-0 shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Portrait of Edwin Adenike, lead engineer smiling in clean modern software studio." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKSEuJBaC7sfOPzHvS9cqvJRa2HxZXj_zAEVb2S2Vw4C7TIfFKiQEaPlH6AkfoVH_zgN-LXfLhmkdPiR01lLffAL1nYndJCArt28ZW9haqVD8R-aco07cQVfuQ2gaQvx1vH7HkbgdcrHzeanv8abu8af0WQnr6339v-b7Rk0S_CC6HidSodwkn0ZPpVErb87AOzMRZfYlU6Mv5zvV-sh1OxAsgAweYRD8__N9GZg_LAuL6eOYCcbfDqA"/>
+<span class="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-tertiary-container ring-2 ring-surface-container-lowest"></span>
+</div>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold truncate">Edwin Adenike</span>
+<span class="font-label-sm text-[10px] text-primary uppercase font-bold tracking-wide">Code Review</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">
+                Working on <strong class="text-on-surface font-medium">Integrate User Authentication</strong>
+</span>
+</div>
+</div>
+<!-- Member 3 -->
+<div class="flex items-center gap-space-sm p-space-xs rounded-xl hover:bg-surface-container-low/50 transition-colors">
+<div class="relative w-11 h-11 rounded-full overflow-hidden shrink-0 shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Portrait of Isaac Oluwatemilorun, systems designer wearing headphones in minimal workspace." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrn-KMGoP_P-RMVeFkw-UXqk82_4AqrsWP7N_FUvx9ERVekvbaJ-2DSZF9IXaOonE1ZmZf3VNSONl4YnaC057CT4voIsBp9y8RorOtvnjGCUttmnaE5pMtBPp1SfPBEPLFdXdCxhgwMG9AWYVQHxZBHUV0BQoH9oWujvHDNl-7b5z1FxwwwVWdrjr1ZVcHRtSmGaN6qr0Ij61DbQ3YnfYpIA-DvJq8StOqRHtbNAJUFYHHeiccD-jxqw"/>
+<span class="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-surface-variant ring-2 ring-surface-container-lowest"></span>
+</div>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold truncate">Isaac Oluwatemilorun</span>
+<span class="font-label-sm text-[10px] text-on-surface-variant uppercase font-bold tracking-wide">In Huddle</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">
+                Working on <strong class="text-on-surface font-medium">Develop Search and Filter Function</strong>
+</span>
+</div>
+</div>
+<!-- Member 4 -->
+<div class="flex items-center gap-space-sm p-space-xs rounded-xl hover:bg-surface-container-low/50 transition-colors">
+<div class="relative w-11 h-11 rounded-full overflow-hidden shrink-0 shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Portrait of Sarah Lin, UX researcher in clean studio space." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFRft1MHX6hCRdGjxN9PvNmDt_1bu_teud07mXJKI5gCchbkgaBR0LWxopqVnPzJRCGnGqOqJqKT3rT5M3ufGw1B5XBgGTSveeZk3uFXgTpdpFpqjxcbe0hTXCGlAHXl5FehSBKQJqevCGHqDpWKJWca1iasnFVTZ02d1HGAo-nkLnsQdbnLfVCkb_U5ACD3AIaM4xzLnMPL0j39ASNSpi_PRFYT8e3NpiEYwiiOBuW7u22qwk5g70EA"/>
+<span class="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-tertiary-container ring-2 ring-surface-container-lowest"></span>
+</div>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold truncate">Sarah Lin</span>
+<span class="font-label-sm text-[10px] text-tertiary uppercase font-bold tracking-wide">Active</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">
+                Synthesizing <strong class="text-on-surface font-medium">Sprint 3 Usability Benchmarks</strong>
+</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Huddle Panel Footer -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<div class="w-2.5 h-2.5 rounded-full bg-tertiary animate-ping"></div>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Active Audio Room</span>
+</div>
+<button class="px-space-sm py-1 rounded-full bg-primary-container text-on-primary font-label-sm text-label-sm font-semibold hover:bg-primary transition-colors">
+          Join (2)
+        </button>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Simple search filter interaction for the Tasks table
+  const searchInput = document.getElementById('taskSearchInput');
+  const tableRows = document.querySelectorAll('#taskTableBody tr');
+
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      const query = e.target.value.toLowerCase();
+      tableRows.forEach(row => {
+        const text = row.innerText.toLowerCase();
+        row.style.display = text.includes(query) ? '' : 'none';
+      });
+    });
+  }
+
+  // Simple dropdown toggle mock
+  const periodBtn = document.getElementById('periodMenuBtn');
+  const periodLabel = document.getElementById('periodLabel');
+  if (periodBtn) {
+    const periods = ['Monthly', 'Weekly', 'Quarterly'];
+    let currentIndex = 0;
+    periodBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % periods.length;
+      periodLabel.textContent = periods[currentIndex];
+    });
+  }
+</script></main></div></body></html>

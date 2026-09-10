@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&amp;family=DM+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "on-tertiary-fixed-variant": "#005236",
+          "on-primary-fixed-variant": "#7a3000",
+          "on-tertiary-fixed": "#002113",
+          "inverse-surface": "#213145",
+          "surface-bright": "#f8f9ff",
+          "secondary-fixed": "#dae2fd",
+          "inverse-on-surface": "#eaf1ff",
+          "surface-container-highest": "#d3e4fe",
+          "secondary": "#565e74",
+          "tertiary": "#006c49",
+          "on-tertiary": "#ffffff",
+          "on-error": "#ffffff",
+          "primary-container": "#ff6b00",
+          "on-secondary-fixed-variant": "#3f465c",
+          "error-container": "#ffdad6",
+          "outline-variant": "#e2bfb0",
+          "on-secondary": "#ffffff",
+          "surface": "#f8f9ff",
+          "surface-container-low": "#eff4ff",
+          "outline": "#8e7164",
+          "surface-container": "#e5eeff",
+          "on-secondary-fixed": "#131b2e",
+          "tertiary-container": "#00ae78",
+          "on-error-container": "#93000a",
+          "surface-tint": "#a04100",
+          "primary-fixed-dim": "#ffb693",
+          "on-background": "#0b1c30",
+          "tertiary-fixed": "#6ffbbe",
+          "on-primary-container": "#572000",
+          "on-tertiary-container": "#003925",
+          "on-surface-variant": "#5a4136",
+          "primary": "#a04100",
+          "inverse-primary": "#ffb693",
+          "surface-container-high": "#dce9ff",
+          "surface-variant": "#d3e4fe",
+          "secondary-container": "#dae2fd",
+          "surface-container-lowest": "#ffffff",
+          "on-secondary-container": "#5c647a",
+          "on-primary": "#ffffff",
+          "on-surface": "#0b1c30",
+          "background": "#f8f9ff",
+          "surface-dim": "#cbdbf5",
+          "tertiary-fixed-dim": "#4edea3",
+          "error": "#ba1a1a",
+          "primary-fixed": "#ffdbcc",
+          "secondary-fixed-dim": "#bec6e0",
+          "on-primary-fixed": "#351000"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "space-md": "1rem",
+          "sidebar-width": "260px",
+          "space-3xl": "4rem",
+          "max-content-width": "1440px",
+          "gutter": "1.5rem",
+          "space-lg": "1.5rem",
+          "space-xl": "2rem",
+          "space-2xs": "0.25rem",
+          "space-xs": "0.5rem",
+          "space-2xl": "3rem",
+          "space-sm": "0.75rem"
+        },
+        "fontFamily": {
+          "headline-lg": [
+            "Manrope"
+          ],
+          "headline-sm": [
+            "Manrope"
+          ],
+          "headline-lg-mobile": [
+            "Manrope"
+          ],
+          "headline-md": [
+            "Manrope"
+          ],
+          "body-md": [
+            "DM Sans"
+          ],
+          "display-xl-mobile": [
+            "Manrope"
+          ],
+          "display-xl": [
+            "Manrope"
+          ],
+          "label-sm": [
+            "DM Sans"
+          ],
+          "body-sm": [
+            "DM Sans"
+          ],
+          "label-md": [
+            "DM Sans"
+          ],
+          "body-lg": [
+            "DM Sans"
+          ]
+        },
+        "fontSize": {
+          "headline-lg": [
+            "36px",
+            {
+              "lineHeight": "44px",
+              "letterSpacing": "-0.025em",
+              "fontWeight": "700"
+            }
+          ],
+          "headline-sm": [
+            "18px",
+            {
+              "lineHeight": "26px",
+              "letterSpacing": "-0.01em",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-lg-mobile": [
+            "28px",
+            {
+              "lineHeight": "36px",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "700"
+            }
+          ],
+          "headline-md": [
+            "24px",
+            {
+              "lineHeight": "32px",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "700"
+            }
+          ],
+          "body-md": [
+            "14px",
+            {
+              "lineHeight": "22px",
+              "fontWeight": "400"
+            }
+          ],
+          "display-xl-mobile": [
+            "36px",
+            {
+              "lineHeight": "44px",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "800"
+            }
+          ],
+          "display-xl": [
+            "56px",
+            {
+              "lineHeight": "64px",
+              "letterSpacing": "-0.03em",
+              "fontWeight": "800"
+            }
+          ],
+          "label-sm": [
+            "11px",
+            {
+              "lineHeight": "16px",
+              "letterSpacing": "0.02em",
+              "fontWeight": "600"
+            }
+          ],
+          "body-sm": [
+            "12px",
+            {
+              "lineHeight": "18px",
+              "fontWeight": "400"
+            }
+          ],
+          "label-md": [
+            "13px",
+            {
+              "lineHeight": "18px",
+              "letterSpacing": "0.01em",
+              "fontWeight": "600"
+            }
+          ],
+          "body-lg": [
+            "16px",
+            {
+              "lineHeight": "26px",
+              "letterSpacing": "-0.005em",
+              "fontWeight": "400"
+            }
+          ]
+        }
+      },
+    },
+  }</script></head><body class="bg-background font-body-md text-on-surface relative min-h-screen"><div class="pointer-events-none fixed top-0 right-1/4 w-[800px] h-[300px] bg-[radial-gradient(circle_at_center,_rgba(255,107,0,0.08)_0%,_rgba(255,107,0,0)_70%)] z-0"></div><header class="fixed top-0 left-0 right-0 h-16 z-50 bg-surface-container-lowest/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 w-full px-gutter flex items-center justify-between"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-xs"><img alt="Avera Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WV9jk_1x8lxO4k6ovyKiG6G87VviGvOCXF4v_VUmjcwSZFcOpdfPkdGePGOFvPUOcCUd97gRbZk7K_C6xUwQlTtQ4ik5V9kF_WFsVFmNeU9UBNTEQryV0RHVO0tKORugp6w3VRqn3Y3ZB31i0fS86XqcyP1OyyXGr1pSSCVPhMQut_T643z8ML3AoAtGbU89z0K_J2FiwNQHFMmVj-OXAgXHDn6EyEv-iGhiDk3Qhy42rEH7HqoUu2wVn5"/><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight">Avera</span></div><nav class="hidden xl:flex items-center gap-space-xs" data-active-classes="bg-primary-container text-on-primary font-label-md text-label-md rounded-full"><a aria-current="page" class="px-space-md py-space-xs transition-colors bg-primary-container text-on-primary font-label-md text-label-md rounded-full" data-path="discover" href="#">Discover</a><a class="px-space-md py-space-xs font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="ideas" href="#">Ideas</a><a class="px-space-md py-space-xs font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="spaces" href="#">Spaces</a><a class="px-space-md py-space-xs font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="roadmap" href="#">Roadmap</a><a class="px-space-md py-space-xs font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="activity" href="#">Activity</a></nav></div><div class="flex items-center gap-space-md"><div class="hidden md:flex items-center gap-space-xs bg-surface-container-lowest shadow-[0_2px_6px_-1px_rgba(15,23,42,0.04)] rounded-full px-space-md py-space-xs w-64"><span class="material-symbols-outlined text-on-surface-variant text-[18px]">search</span><input class="bg-transparent border-none outline-none font-body-sm text-body-sm text-on-surface placeholder:text-on-surface-variant flex-1" placeholder="Search spaces, ideas..." type="text"/><kbd class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-surface-container text-on-surface-variant">⌘K</kbd></div><button class="flex items-center gap-space-2xs px-space-md py-space-xs rounded-full bg-primary-container text-on-primary font-label-md text-label-md shadow-[0_8px_20px_rgba(255,107,0,0.28)] hover:bg-primary transition-all"><span class="material-symbols-outlined text-[18px]">add</span><span>New Idea</span></button><button class="relative w-9 h-9 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-primary-container"></span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><aside class="fixed left-0 top-16 bottom-0 w-sidebar-width bg-surface-container-lowest z-40 flex flex-col justify-between py-space-lg shadow-[0_1px_8px_rgba(0,0,0,0.02)]"><div class="px-space-md flex flex-col gap-space-sm"><div class="px-space-xs pb-space-xs"><span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">Workspace</span></div><nav class="flex flex-col gap-space-2xs" data-active-classes="bg-primary-container text-on-primary font-label-md text-label-md rounded-xl"><a aria-current="page" class="flex items-center gap-space-sm px-space-md py-space-xs transition-all bg-primary-container text-on-primary font-label-md text-label-md rounded-xl" data-path="discover" href="#"><span class="material-symbols-outlined text-[20px]">explore</span><span>Discover</span></a><a class="flex items-center gap-space-sm px-space-md py-space-xs rounded-xl font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="ideas" href="#"><span class="material-symbols-outlined text-[20px]">lightbulb</span><span>Ideas</span></a><a class="flex items-center gap-space-sm px-space-md py-space-xs rounded-xl font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="spaces" href="#"><span class="material-symbols-outlined text-[20px]">folder</span><span>Spaces</span></a><a class="flex items-center gap-space-sm px-space-md py-space-xs rounded-xl font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="roadmap" href="#"><span class="material-symbols-outlined text-[20px]">view_kanban</span><span>Roadmap</span></a><a class="flex items-center gap-space-sm px-space-md py-space-xs rounded-xl font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="activity" href="#"><span class="material-symbols-outlined text-[20px]">bolt</span><span>Activity</span></a></nav></div><div class="px-space-md flex flex-col gap-space-xs"><div class="p-space-sm rounded-xl bg-surface-container-low flex flex-col gap-space-2xs"><div class="flex items-center justify-between"><span class="font-label-sm text-label-sm text-on-surface font-semibold">Cloud Sync</span><span class="w-2 h-2 rounded-full bg-tertiary-container"></span></div><span class="font-body-sm text-body-sm text-on-surface-variant">Active intelligence engine connected</span></div><a class="flex items-center gap-space-sm px-space-md py-space-xs rounded-xl font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="settings" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span>Settings</span></a></div></aside><div class="pl-sidebar-width"><main class="relative pt-16 w-full px-gutter min-h-screen z-10"><div class="flex flex-col w-full pb-space-3xl gap-space-2xl">
+<!-- Subtle ambient glow matching design tokens -->
+<div class="pointer-events-none absolute -top-12 left-1/3 w-[560px] h-[240px] bg-[radial-gradient(circle_at_center,_rgba(255,107,0,0.1)_0%,_rgba(255,107,0,0)_70%)] -z-10"></div>
+<!-- Top Hero Bar / Welcome Header (No duplicate page titles, streamlined high-touch greeting) -->
+<section class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-lg pt-space-sm">
+<div class="flex flex-col gap-space-2xs">
+<div class="flex items-center gap-space-xs">
+<span class="inline-flex items-center gap-1.5 px-space-sm py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-container animate-pulse"></span>
+          Workspace Live
+        </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">•</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Sync ID #AV-8921</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight flex items-center gap-2">
+        Welcome back, Alex <span class="inline-block animate-bounce text-[32px]">👋</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+        Explore trending ideas, active spaces, and team momentum across your cross-functional networks today.
+      </p>
+</div>
+<!-- Quick action buttons matching Axen / SaaS style -->
+<div class="flex items-center gap-space-sm self-start lg:self-auto shrink-0">
+<button class="group flex items-center gap-space-xs px-space-lg py-space-sm rounded-full bg-surface-container-lowest text-on-surface font-label-md text-label-md shadow-sm hover:shadow-md hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px] group-hover:rotate-45 transition-transform">add_circle</span>
+<span>Create Space</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-xl py-space-sm rounded-full bg-primary-container text-on-primary font-label-md text-label-md shadow-[0_8px_24px_rgba(255,107,0,0.32)] hover:bg-primary hover:-translate-y-0.5 transition-all">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span>New Idea</span>
+</button>
+</div>
+</section>
+<!-- Metric Overview Row (Axen 4-Stat Inspired Tiles) -->
+<section class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-space-md">
+<!-- Stat 1: Trending Ideas -->
+<div class="group relative bg-surface-container-lowest rounded-xl p-space-lg shadow-sm hover:shadow-md transition-all flex flex-col justify-between min-h-[148px]">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant">Trending Ideas</span>
+<span class="font-headline-lg text-headline-lg text-on-surface tracking-tight mt-1">142</span>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-container-low flex items-center justify-center text-on-surface-variant group-hover:bg-primary-fixed group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">north_east</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs mt-space-md">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-tertiary-fixed/40 text-on-tertiary-fixed-variant font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[14px]">trending_up</span> +18.4%
+        </span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">vs last 7 days</span>
+</div>
+</div>
+<!-- Stat 2: Active Spaces -->
+<div class="group relative bg-surface-container-lowest rounded-xl p-space-lg shadow-sm hover:shadow-md transition-all flex flex-col justify-between min-h-[148px]">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant">Active Spaces</span>
+<span class="font-headline-lg text-headline-lg text-on-surface tracking-tight mt-1">28</span>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-container-low flex items-center justify-center text-on-surface-variant group-hover:bg-primary-fixed group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">north_east</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs mt-space-md">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-tertiary-fixed/40 text-on-tertiary-fixed-variant font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[14px]">trending_up</span> +5.2%
+        </span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">4 newly seeded</span>
+</div>
+</div>
+<!-- Stat 3: Collaborators Online -->
+<div class="group relative bg-surface-container-lowest rounded-xl p-space-lg shadow-sm hover:shadow-md transition-all flex flex-col justify-between min-h-[148px]">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant">Collaborators Online</span>
+<span class="font-headline-lg text-headline-lg text-on-surface tracking-tight mt-1">1,840</span>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-container-low flex items-center justify-center text-on-surface-variant group-hover:bg-primary-fixed group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">group</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs mt-space-md">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-primary-fixed/50 text-on-primary-fixed-variant font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span> 24 hubs
+        </span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">in active sprints</span>
+</div>
+</div>
+<!-- Stat 4: Shipped Milestones -->
+<div class="group relative bg-surface-container-lowest rounded-xl p-space-lg shadow-sm hover:shadow-md transition-all flex flex-col justify-between min-h-[148px]">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant">Shipped Milestones</span>
+<span class="font-headline-lg text-headline-lg text-on-surface tracking-tight mt-1">64</span>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-container-low flex items-center justify-center text-on-surface-variant group-hover:bg-primary-fixed group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs mt-space-md">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-tertiary-fixed/40 text-on-tertiary-fixed-variant font-label-sm text-label-sm font-semibold">
+          98% on-time
+        </span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Cycle avg 4.2d</span>
+</div>
+</div>
+</section>
+<!-- Main Grid Layout: Trending Ideas & Dynamic Visual Velocity -->
+<section class="flex flex-col gap-space-lg">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface tracking-tight">Trending Ideas</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Proposals and architectural RFCs sparking the highest momentum this cycle</p>
+</div>
+<div class="flex items-center gap-space-xs self-start sm:self-auto">
+<button class="px-space-md py-1.5 rounded-full bg-primary-container text-on-primary font-label-sm text-label-sm shadow-sm font-semibold">All Velocity</button>
+<button class="px-space-md py-1.5 rounded-full bg-surface-container-lowest text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm transition-colors">Product</button>
+<button class="px-space-md py-1.5 rounded-full bg-surface-container-lowest text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm transition-colors">Core Infra</button>
+<button class="px-space-md py-1.5 rounded-full bg-surface-container-lowest text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm transition-colors">Design</button>
+</div>
+</div>
+<!-- 3 Idea Cards Responsive Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-lg">
+<!-- Idea 1: PRD Generator -->
+<article class="group bg-surface-container-lowest rounded-xl p-space-lg shadow-sm hover:shadow-md hover:-translate-y-1 transition-all flex flex-col justify-between relative overflow-hidden">
+<div class="absolute top-0 left-0 right-0 h-1 bg-primary-container"></div>
+<div>
+<div class="flex items-center justify-between gap-space-xs mb-space-sm">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full bg-primary-fixed/40 text-on-primary-fixed font-label-sm text-label-sm uppercase tracking-wider font-bold">
+              Product
+            </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span> Stage: Building
+            </span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary transition-colors line-clamp-2">
+            Automated PRD Generator for Figma Tokens
+          </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-space-xs line-clamp-3">
+            Translates real-time Figma variable collections directly into structured product specification markdown files with automated semantic diff tracking.
+          </p>
+</div>
+<div class="pt-space-lg mt-space-lg flex flex-col gap-space-md bg-gradient-to-t from-surface-container-low/40 to-transparent -mx-space-lg -mb-space-lg p-space-lg rounded-b-xl">
+<div class="flex items-center justify-between">
+<!-- Author info -->
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container-highest shrink-0">
+<img class="w-full h-full object-cover" data-alt="Close up portrait photograph of an innovative software engineer with calm lighting in a modern creative studio office" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfAILHZgT_jtbzCtoeVGJ0PmmwyIVvM9AquIFXhuh8v5_Dn4htCiWG27hExFAuK6bEVdNWosEI0XrC_xB0wSFuSzi8gsBi0_pxL8IjhZywlaFJLU6pC_47ouTE7iOQ-861Krw8_sEy-TNakMweS11l3rcn6YDEBUA7N3vLoOnP51g0kXEbp7aYAxr-fsskDA1tH1ErrzHIDKxA5xWq_ojQYlSy46MaA3NYMOBsHeuxlcvCgXBDVljNvQ"/>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface leading-none">James Brown</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Staff Architect</span>
+</div>
+</div>
+<!-- Upvote counter -->
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[16px]">arrow_drop_up</span>
+<span>182</span>
+</div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm pt-1">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">chat_bubble</span>
+              42 comments
+            </span>
+<button class="inline-flex items-center gap-1 font-label-md text-label-md text-primary hover:text-on-primary-fixed-variant transition-colors font-semibold">
+<span>Join Space</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Idea 2: Multi-tenant Canvas Engine -->
+<article class="group bg-surface-container-lowest rounded-xl p-space-lg shadow-sm hover:shadow-md hover:-translate-y-1 transition-all flex flex-col justify-between relative overflow-hidden">
+<div class="absolute top-0 left-0 right-0 h-1 bg-tertiary-container"></div>
+<div>
+<div class="flex items-center justify-between gap-space-xs mb-space-sm">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm uppercase tracking-wider font-bold">
+              Engineering
+            </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-container"></span> Stage: Forming
+            </span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary transition-colors line-clamp-2">
+            Real-time Multi-tenant Canvas Engine
+          </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-space-xs line-clamp-3">
+            WebGPU powered canvas engine with CRDT-based synchronization permitting 1,000 concurrent cursor interactions with under 12ms network latency.
+          </p>
+</div>
+<div class="pt-space-lg mt-space-lg flex flex-col gap-space-md bg-gradient-to-t from-surface-container-low/40 to-transparent -mx-space-lg -mb-space-lg p-space-lg rounded-b-xl">
+<div class="flex items-center justify-between">
+<!-- Author info -->
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container-highest shrink-0">
+<img class="w-full h-full object-cover" data-alt="Portrait photo of a thoughtful lead frontend technologist smiling in ambient warm natural window light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuABxV6c2H_4XFr3R9tD5cnbY0mbihcdw-RdtIGlCP9VuzuOYesI6jtWesbyGSxjy5ere7g1c35A47o_gzGpIZakKWQX7aflr-MxbSUmXSAsZOImZSSHxXekVvuS57Re3np7Q9KvgHo6RNkIg77ng1YfHSZjhdCWvbc_mMH2wUlhISFexarMDO225bP2i9HE5mhelwEJpDdOfuvpdFyKWlS2l7O_ldb6OmnGYtb_vLnzGO_7dTfz88V82w"/>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface leading-none">Sophia Williams</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Systems Lead</span>
+</div>
+</div>
+<!-- Upvote counter -->
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[16px]">arrow_drop_up</span>
+<span>95</span>
+</div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm pt-1">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">chat_bubble</span>
+              28 comments
+            </span>
+<button class="inline-flex items-center gap-1 font-label-md text-label-md text-primary hover:text-on-primary-fixed-variant transition-colors font-semibold">
+<span>Join Space</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Idea 3: Component Auditing Tool -->
+<article class="group bg-surface-container-lowest rounded-xl p-space-lg shadow-sm hover:shadow-md hover:-translate-y-1 transition-all flex flex-col justify-between relative overflow-hidden">
+<div class="absolute top-0 left-0 right-0 h-1 bg-surface-tint"></div>
+<div>
+<div class="flex items-center justify-between gap-space-xs mb-space-sm">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full bg-primary-fixed-dim/30 text-on-primary-fixed-variant font-label-sm text-label-sm uppercase tracking-wider font-bold">
+              Design
+            </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-surface-tint"></span> Stage: Spark
+            </span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary transition-colors line-clamp-2">
+            Open Design System Component Auditing Tool
+          </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-space-xs line-clamp-3">
+            Headless scanner comparing production Webpack bundles against design guidelines, surfacing accessibility regressions and token inconsistencies automatically.
+          </p>
+</div>
+<div class="pt-space-lg mt-space-lg flex flex-col gap-space-md bg-gradient-to-t from-surface-container-low/40 to-transparent -mx-space-lg -mb-space-lg p-space-lg rounded-b-xl">
+<div class="flex items-center justify-between">
+<!-- Author info -->
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container-highest shrink-0">
+<img class="w-full h-full object-cover" data-alt="Portrait photography of a creative design director in modern studio environment with warm ambient reflections" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCk-zIiAcwpPnthpAPMChJzi6YkNeijtxOQzggfd0-VNqorrlD_mSvUBfVUoD4MAOkgtdBuIanhcx6z3W_dfl6UNbjmyDLV9KAlC19LbiceAai5DFrKLBzvIXOP2AVtO__s-724SL5aRghlB9PPIuq0gQVmyer3hZcIp4FQDZyiUuJyNY-fE16p_wIdqh9J7sZnThBD7n9ttQIm2V378bLstnPMy5iLuNplT3-ozake8tkoMujwoutylw"/>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface leading-none">Nick Amaro</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">UX Principal</span>
+</div>
+</div>
+<!-- Upvote counter -->
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[16px]">arrow_drop_up</span>
+<span>71</span>
+</div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm pt-1">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">chat_bubble</span>
+              19 comments
+            </span>
+<button class="inline-flex items-center gap-1 font-label-md text-label-md text-primary hover:text-on-primary-fixed-variant transition-colors font-semibold">
+<span>Join Space</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- Dynamic Section Split: Active Spaces (2/3) + Real-time Activity Feed (1/3) -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-start">
+<!-- Left Column: Active Spaces Grid (8 cols) -->
+<div class="lg:col-span-8 flex flex-col gap-space-lg">
+<div class="flex items-center justify-between">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface tracking-tight">Active Spaces</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Live collaborative environments with active sprint commitments</p>
+</div>
+<a class="font-label-md text-label-md text-primary hover:underline flex items-center gap-1" href="#">
+<span>View all 28</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</a>
+</div>
+<!-- 2-Column Grid for Active Space Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+<!-- Space 1: Aurora Core -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm hover:shadow-md transition-all flex flex-col justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-tertiary-fixed/30 text-on-tertiary-fixed-variant font-label-sm text-label-sm font-semibold">
+<span class="w-2 h-2 rounded-full bg-tertiary-container animate-ping"></span>
+                Active Sprint 04
+              </span>
+<span class="inline-flex items-center gap-1 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-primary-container">sync</span>
+                GitHub Synced
+              </span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mt-1">Aurora Core</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">
+              Next-gen micro-frontend orchestrator with automated edge asset bundling and live hydration telemetry.
+            </p>
+</div>
+<!-- Progress and Milestones -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span>Milestone Progress</span>
+<span class="font-semibold text-on-surface">68%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full rounded-full bg-primary-container transition-all" style="width: 68%;"></div>
+</div>
+</div>
+<!-- Team Avatars & Enter CTA -->
+<div class="pt-space-xs flex items-center justify-between">
+<div class="flex items-center -space-x-2">
+<div class="w-7 h-7 rounded-full bg-surface-container-high ring-2 ring-surface-container-lowest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Avatar portrait of developer with glasses in creative tech setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZUB2cjJizPeZHW0PfJc-2cl3a4rArM34RkDjh338shJnv8lnPhn1Zw7AapK3VofhnengjiEnazodFohLUsBophMjfLra0GhI4i6Ad8OwiuxZK-sDSmkK4KqD9ZwR5dpq3VPk6BgKJQImQy9ravSjV79BAgFHCiQrrCyAjohzzhTWW6OLsbzV6mto55uypanYUJbq8EigpUcfJe_HRCFaw2yDCo7VM2yOmiMY2bIwHNn84147v7Q33ag"/>
+</div>
+<div class="w-7 h-7 rounded-full bg-surface-container-high ring-2 ring-surface-container-lowest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Avatar portrait of engineer coding in modern office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwJOe3UWDUJVJD5kLG-Nm49wChZvmQgOvnv_VQQ96Lf6jtAN6KewzPGnkKinE07WuXwR49G9jd8uCJFThY_r8Hb0nt0thnZUxv2EwnByk7dpK610Vw1SPkcgJTy5YV3OeIo1P6F_fM_asK5qzXW6kx1S3N9sOlm1iensvXd-ulXf85DlLH1OMkezd4WMIL3bvhgXEm6A-4rfEt9F8yua7ppAaH886AcEMdAiiUciwW30DuYvoOR1gNeQ"/>
+</div>
+<div class="w-7 h-7 rounded-full bg-surface-container-high ring-2 ring-surface-container-lowest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Avatar portrait of designer brainstorming in warm minimal workspace" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWE9D4A0TxBygqbvVuj3iG_OgazlBppsMBQICu-6EL7qqCFjKcu_NLguKyvlyxwXFF1V6TWaQynE8aDKdF_tYwfalhI_z7DsbruGhQLwMqQi0ubeT330TcrSQwW4qHwrtyGRH44GvOXzQ-ffQFUU1Vfz0dsoCZ4vrUuwWpP36FM5JJ2TcY-jbIXG8vrsqrqZ_ueP0gvavTmCTf1kdwG5O-mHe-TEUspO6ws-A9F3Gr34DL9xpS1XPKWQ"/>
+</div>
+<span class="w-7 h-7 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm ring-2 ring-surface-container-lowest flex items-center justify-center font-bold">
+                +6
+              </span>
+</div>
+<a class="inline-flex items-center gap-1 font-label-md text-label-md text-primary hover:text-on-primary-fixed-variant font-semibold" href="#">
+<span>Enter Workspace</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Space 2: Pulse Design System -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm hover:shadow-md transition-all flex flex-col justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-semibold">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+                Beta Review
+              </span>
+<span class="inline-flex items-center gap-1 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-tertiary-container">done_all</span>
+                Figma Connected
+              </span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mt-1">Pulse Design System</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">
+              Cross-platform UI components for mobile and web with unified motion tokens and accessible tactile feedback.
+            </p>
+</div>
+<!-- Progress and Milestones -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span>Milestone Progress</span>
+<span class="font-semibold text-on-surface">84%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full rounded-full bg-tertiary-container transition-all" style="width: 84%;"></div>
+</div>
+</div>
+<!-- Team Avatars & Enter CTA -->
+<div class="pt-space-xs flex items-center justify-between">
+<div class="flex items-center -space-x-2">
+<div class="w-7 h-7 rounded-full bg-surface-container-high ring-2 ring-surface-container-lowest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Avatar portrait of creative lead in natural ambient light studio" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYNOAYSfzIQqdwHX_1V4bDrpdMIP0N8MIMs_BdIqh1eOBIh-rpAoiOIyj7Vdv9IiIvU3mwIqKwKSNY0PRYzoxFYeXW-PJlWyBzvqF0t9XnydXFSMyx4-ve0FHIZTr8wvvqrhqj9n5ZZTB9Ud_A1qyXO4M5sFXjYCU4qTuXft7-4ENIxFJdgv9HjQwqk-HbZBaMikZitfR24TPaghdx_8dCprUpPriCPzaEyXS7K8Bf7bE-WxFOHRdznA"/>
+</div>
+<div class="w-7 h-7 rounded-full bg-surface-container-high ring-2 ring-surface-container-lowest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Avatar photo of product designer smiling in bright creative setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGRAQeEWNZYBTYvHkp9xskqczCBMh8uu23aXSmzLfkLk1hgwZDEiGi4_9366Ad8-KYmG8vMbtFJGKTJ-2nQ7Y2K6Cmufg_MdrRypfQhj6uFomGXFPj2JdRxVRGDc7oSb8ApojwHzjOGFrICtb5t4a7hLM9rK1eocW3R_GZacBjp7LuCmlzhrmiMMPls2afnL0BTx7VHTEtEKHe8-VMfgq6by_JEL_veQ7ItMNzgCr3Gn4KaSBhFXQRTw"/>
+</div>
+<span class="w-7 h-7 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm ring-2 ring-surface-container-lowest flex items-center justify-center font-bold">
+                +11
+              </span>
+</div>
+<a class="inline-flex items-center gap-1 font-label-md text-label-md text-primary hover:text-on-primary-fixed-variant font-semibold" href="#">
+<span>Enter Workspace</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Space 3: Hyperion Data Pipeline -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm hover:shadow-md transition-all flex flex-col justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-primary-fixed/40 text-on-primary-fixed font-label-sm text-label-sm font-semibold">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+                Realtime Stream
+              </span>
+<span class="inline-flex items-center gap-1 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-primary-container">cloud_sync</span>
+                AWS Synced
+              </span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mt-1">Hyperion Data Mesh</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">
+              Distributed vector embeddings for instant semantic search across all team document trees and pull requests.
+            </p>
+</div>
+<!-- Progress and Milestones -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span>Milestone Progress</span>
+<span class="font-semibold text-on-surface">42%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full rounded-full bg-primary-container transition-all" style="width: 42%;"></div>
+</div>
+</div>
+<!-- Team Avatars & Enter CTA -->
+<div class="pt-space-xs flex items-center justify-between">
+<div class="flex items-center -space-x-2">
+<div class="w-7 h-7 rounded-full bg-surface-container-high ring-2 ring-surface-container-lowest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Avatar photo of data scientist analyzing telemetry in modern lab" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsCgKE0rtxHBFRvcRqzDeQ9CKOPma-rr7egHsijmcj8V4nY4-jKgdXPX1GZdLzUJ3E4j7cO5lJwLwaFYy-hw8dBeSjSWILAW7sMtv67wL4XlFGMu4LPNc0VIEonuPYB3E6YzUOqotKH3HFWBylTRBcRR23PtX5lQXmHMxjdDl3SO7UVvHTlH6ko6vVYtMbiVVrfsbAG2PxLsIefFCK6HtXcMubQZAWrvhIWS9P3tL3AtuVeEc3khkcGQ"/>
+</div>
+<div class="w-7 h-7 rounded-full bg-surface-container-high ring-2 ring-surface-container-lowest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Avatar photo of backend architect in focus" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVaRymXhZS1oz7JOzTBG5TfCge3qx8FrdQ4ydWNeTt27WqZztN-aOZSZD1_XRwVsfiX0qkNnlMdLsYq6m_oYlpL5z8l4s-smIY5lGaTzcKaN6GPZMJye3wmTMxuPXb4P6cwOmOw-V5_noUc-o34PZvz3-FXcBMSkaJDSkLZWacroQLe72rSKh0ut3-PjNPlEjMocUWV9zOXoT2z34DZunsMRAVvNFUtShdf-6Ktb5O7mkj2EKmw9L2dw"/>
+</div>
+<span class="w-7 h-7 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm ring-2 ring-surface-container-lowest flex items-center justify-center font-bold">
+                +4
+              </span>
+</div>
+<a class="inline-flex items-center gap-1 font-label-md text-label-md text-primary hover:text-on-primary-fixed-variant font-semibold" href="#">
+<span>Enter Workspace</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Space 4: Sentient Automation -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm hover:shadow-md transition-all flex flex-col justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-tertiary-fixed/30 text-on-tertiary-fixed-variant font-label-sm text-label-sm font-semibold">
+<span class="w-2 h-2 rounded-full bg-tertiary-container"></span>
+                In Verification
+              </span>
+<span class="inline-flex items-center gap-1 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-tertiary-container">done_all</span>
+                Linear Synced
+              </span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mt-1">Sentient Copilot</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">
+              Autonomous ticket triaging model that parses natural language crash reports and generates initial unit tests.
+            </p>
+</div>
+<!-- Progress and Milestones -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span>Milestone Progress</span>
+<span class="font-semibold text-on-surface">91%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full rounded-full bg-tertiary-container transition-all" style="width: 91%;"></div>
+</div>
+</div>
+<!-- Team Avatars & Enter CTA -->
+<div class="pt-space-xs flex items-center justify-between">
+<div class="flex items-center -space-x-2">
+<div class="w-7 h-7 rounded-full bg-surface-container-high ring-2 ring-surface-container-lowest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Avatar photo of AI researcher in minimalist office workspace" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpVYL3Qj4lzj4thzx1caN3LMQLGRNlWxG7wb-IR7k0ijmiecjMQ6rriluKeK4-7W9sH0vhsYFeiOCkSZARtCQbqWAAFp5Te0LL94c_6OgYACVFvNCFo_rvt7pO4s0HNnWIrWn9lVhAVbO_mQ4LOJn3LMxxU29cd2FajJAELD0OB8uic1ogaQhkJHYiYMtp10357WoNm7GnAG1gxL3BpnKAKgM0lo5Qsjx5cnR7pEsou0ToLn_mKC1Gbg"/>
+</div>
+<div class="w-7 h-7 rounded-full bg-surface-container-high ring-2 ring-surface-container-lowest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Avatar portrait of quality assurance engineer reviewing pull requests" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCY9FXObvlHEM9IiYLnzB7UdyrWZ03VdRseQiC5FiMr_FZFYwlUuief07xepVpWewW36aSDLeMY2FuAHarwLWaQJNlnE-e6xfzhiKsvSb8jF0F8fFWn-6xBUcCBYXszbs0ft00MRDAU5wkqSyHV99soW2rnxDCzE7scvtiNSTBqLAV7kCz2I6-iYf_-mh8SBwHscOXBJq2ESUi8jXh3OMnPNJIPoOiSPj3dsIMOIrzScum76hDMhu_jDw"/>
+</div>
+<span class="w-7 h-7 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm ring-2 ring-surface-container-lowest flex items-center justify-center font-bold">
+                +8
+              </span>
+</div>
+<a class="inline-flex items-center gap-1 font-label-md text-label-md text-primary hover:text-on-primary-fixed-variant font-semibold" href="#">
+<span>Enter Workspace</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Weekly Progress Sparkline Banner (Axen Visual Wave Aesthetic) -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col md:flex-row items-center justify-between gap-space-md">
+<div class="flex flex-col gap-1 w-full md:w-1/3">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">Velocity Metrics</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Team Output Surge</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">420 commits and 89 PRDs merged across all public hubs this week.</p>
+</div>
+<!-- Inline Smooth Wave SVG Visualization -->
+<div class="w-full md:w-2/3 h-20 flex items-center">
+<svg class="w-full h-full overflow-visible" fill="none" preserveaspectratio="none" viewbox="0 0 500 80" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<lineargradient id="primaryWaveGrad" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#ff6b00" stop-opacity="0.25"></stop>
+<stop offset="100%" stop-color="#ff6b00" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<!-- Secondary Wave Path -->
+<path d="M0,55 C80,50 140,65 220,40 C300,15 370,60 500,25" fill="none" stroke="#bec6e0" stroke-linecap="round" stroke-width="2.5"></path>
+<!-- Gradient Area under Primary Wave -->
+<path d="M0,60 C70,60 130,20 210,35 C290,50 360,10 500,15 L500,80 L0,80 Z" fill="url(#primaryWaveGrad)"></path>
+<!-- Primary Orange Wave Path -->
+<path d="M0,60 C70,60 130,20 210,35 C290,50 360,10 500,15" fill="none" stroke="#ff6b00" stroke-linecap="round" stroke-width="3"></path>
+<!-- Key Highlight Nodes -->
+<circle class="ring-4 ring-white" cx="210" cy="35" fill="#ff6b00" r="4.5"></circle>
+<circle cx="500" cy="15" fill="#ff6b00" r="4.5"></circle>
+</svg>
+</div>
+</div>
+</div>
+<!-- Right Column: Live Community Activity Feed (4 cols) -->
+<aside class="lg:col-span-4 flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<h2 class="font-headline-md text-headline-md text-on-surface tracking-tight">Live Pulse</h2>
+<span class="w-2 h-2 rounded-full bg-tertiary-container animate-ping"></span>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-container-lowest shadow-sm flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors" id="pulseFilterToggle">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+</button>
+</div>
+<!-- Feed Container Card -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<!-- Activity Item 1 -->
+<div class="flex items-start gap-space-sm pb-space-sm border-b-0">
+<div class="w-8 h-8 rounded-full bg-surface-container-high shrink-0 overflow-hidden mt-0.5">
+<img class="w-full h-full object-cover" data-alt="Portrait photography of Marina software engineer with sleek contemporary headset" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiEuaJw8epTQRC2DFCzeD6MHa23ukQFZ0qY8EdlGfhyYzM3IxQNNiXxttkscrcVTeLu_GBg6RgkiDpa8fELIbDXAYH0dNOoHHoJeWm-en1FgvxNvr4U70BRo6Dfop0bx9AmvO9MfnIjMu4wUdLSnZWnpXly_jftN4IB2OkrkUJywP8nVRDcoS86nyWFtzVTpCkeDIWxiuWgNs_-0Rz_Z6XlbpZASgzCm0vZTDkm8LPVi5m1HhagnKpKg"/>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-baseline justify-between gap-1">
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">Marina Lopez</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant shrink-0">4m ago</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+              Pushed 4 commits to <span class="text-on-surface font-medium hover:text-primary cursor-pointer">Space: Aurora Core</span>
+</p>
+<div class="mt-1 px-2.5 py-1 rounded bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px] text-tertiary-container">commit</span>
+<span class="truncate font-mono">feat(router): zero-alloc stream hydration</span>
+</div>
+</div>
+</div>
+<!-- Activity Item 2 -->
+<div class="flex items-start gap-space-sm pb-space-sm">
+<div class="w-8 h-8 rounded-full bg-surface-container-high shrink-0 overflow-hidden mt-0.5">
+<img class="w-full h-full object-cover" data-alt="Portrait shot of James product designer in natural warm sunlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiCvAUM0-QyFBPJ6Db3lT5cXRldAgRdoyef8Y0_m37R5Gk9cXB15FfQ7NymSmwegYMWFqy98aNd9q-Vjjbv21T13rxdVrfH8Q7K910z3E3C1ghcM-uJYlNRfDdXm6O49pxaEuyuxEilvBfa507Msi1LyAcKom5rr0C_6AxFUnTI2l45e0VAw0g1X8i0QWMBc6OhpvYAq1h6rnowShWGFiwlzUJ-JAO6s1M0HgrEp0Zo1Mxff4LojlCeQ"/>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-baseline justify-between gap-1">
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">James Brown</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant shrink-0">18m ago</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+              Closed 3 tasks in <span class="text-on-surface font-medium">Sprint 4: Figma Tokens</span>
+</p>
+<div class="mt-1 flex items-center gap-1 text-on-tertiary-fixed-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-tertiary">check_circle</span>
+<span class="font-semibold">All acceptance criteria resolved</span>
+</div>
+</div>
+</div>
+<!-- Activity Item 3 -->
+<div class="flex items-start gap-space-sm pb-space-sm">
+<div class="w-8 h-8 rounded-full bg-surface-container-high shrink-0 overflow-hidden mt-0.5">
+<img class="w-full h-full object-cover" data-alt="Portrait photography of Sara team lead with warm welcoming expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPrmtwbNKKnZinXJ5pFy7iQZQrkdmfR4qA9el8WchCN8v1uK_caI_AtVgjJ2ockzD_1XueyABhVZd1-YtY93i2t4jp-8k2in93MQaQdp7gmRK-9xTupq-fGy2TFXWYUJGcCcHrT32Jt3A6oxZBujrJBiiTThlfplpfZOpUnPFNhbNO-kXC8NblSy7emZwJ6CS-1pp3MULVJbZCooR3MRsxLdCcsmHDRUVvS459gNbfX4wkFK7v0WeSqQ"/>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-baseline justify-between gap-1">
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">Sara Chen</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant shrink-0">34m ago</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+              Started voice huddle in <span class="text-on-surface font-medium hover:text-primary cursor-pointer">Space: Pulse Design</span>
+</p>
+<div class="mt-2 flex items-center gap-2">
+<button class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm font-semibold hover:bg-primary-container hover:text-on-primary transition-all">
+<span class="material-symbols-outlined text-[14px]">graphic_eq</span>
+<span>Join Audio (4 in room)</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Activity Item 4 -->
+<div class="flex items-start gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-surface-container-high shrink-0 overflow-hidden mt-0.5">
+<img class="w-full h-full object-cover" data-alt="Portrait photography of Edwin front end architect with eyeglasses smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFRaN542HrMQ3fzGi9s9tSbgtHqzTvZ5OGkieiy59uYmVqTpSxaremc1NtAnNWzvHHh52evOjuo5XV52YVmg1KZcrACNXbfxGZqd_uRlZ7gHC-5giJftg4TpXSNU6acNzcdK6NQxGaEQXTJ_onRYMUUlbTlt5dIc6fiJeh_t800HS6ZfEIFwp-kOVP8bXKqEbr29qYchr_U6jIKX2nrqEANmbC0LQahSjEdVh0TlXZrDeXhStMv0GCXQ"/>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-baseline justify-between gap-1">
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">Edwin Adenike</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant shrink-0">1h ago</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+              Published RFC proposal: <span class="text-on-surface font-medium">"Shared State Channels over WebSockets"</span>
+</p>
+</div>
+</div>
+<!-- View Stream CTA -->
+<a class="mt-space-xs text-center py-space-xs rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-label-sm text-label-sm font-semibold transition-colors" href="#">
+          Open Complete Audit Trail
+        </a>
+</div>
+<!-- Quick AI Ideation Prompt Card (Warm SaaS Accent Element) -->
+<div class="relative bg-gradient-to-br from-primary-fixed/40 via-surface-container-lowest to-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-sm overflow-hidden">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-[20px]">auto_awesome</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-primary-container font-bold">Avera Assistant</span>
+</div>
+<p class="font-headline-sm text-headline-sm text-on-surface">Need inspiration for your next sprint?</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Generate a validated space template with ready-to-use backlog user stories.</p>
+<div class="pt-1">
+<button class="px-space-md py-2 rounded-full bg-on-surface text-surface font-label-md text-label-md hover:bg-primary-container hover:text-on-primary transition-all flex items-center gap-1.5">
+<span>Synthesize Space Plan</span>
+<span class="material-symbols-outlined text-[16px]">bolt</span>
+</button>
+</div>
+</div>
+</aside>
+</section>
+</div>
+<script>
+  // Simple micro-interactions for dynamic dashboard feel
+  document.addEventListener('DOMContentLoaded', () => {
+    // Filter click feedback
+    const filterButtons = document.querySelectorAll('button');
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        if (this.id === 'pulseFilterToggle') {
+          this.classList.toggle('bg-primary-fixed');
+          this.classList.toggle('text-primary');
+        }
+      });
+    });
+  });
+</script></main></div></body></html>

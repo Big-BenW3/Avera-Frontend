@@ -1,0 +1,22 @@
+# dependencies
+node_modules/
+
+# next.js build output
+.next/
+out/
+
+# environment files (never commit secrets)
+.env
+.env.*
+!.env.example
+
+# typescript build cache
+*.tsbuildinfo
+
+# logs & OS files
+*.log
+npm-debug.log*
+.DS_Store
+
+# test coverage
+coverage/
