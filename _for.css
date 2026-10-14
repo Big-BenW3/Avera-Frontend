@@ -1,0 +1,130 @@
+﻿/* -- SECTION 2 - "made for" chips -- */
+.made-row {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+
+.made-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: var(--r-input);
+  background: var(--paper);
+  border: 1px solid var(--border);
+  font-size: 14px;
+  color: var(--dust);
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), background 0.25s var(--ease);
+}
+
+.made-chip:hover { transform: translateY(-2px); box-shadow: var(--shadow-sm); background: var(--paper-raised); }
+.made-chip .bullet { background: var(--terracotta); }
+
+/* -- CONVERGING CARDS - "who it is for" -- */
+.for-stage {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  min-height: 230px;
+}
+
+.for-grid { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+
+.for-card {
+  position: relative;
+  width: 100%;
+  max-width: 290px;
+  padding: 24px;
+  background: var(--paper-raised);
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+}
+
+.for-card-name { font-family: var(--font-display); font-size: 20px; margin-bottom: 6px; }
+.for-card-copy { font-size: 14px; color: var(--dust); }
+
+/*
+  Timeline (~4.5s):
+    0.0-0.6s  staggered entrance (0 / 150 / 300ms)
+    2.0-2.4s  outer cards translate inward toward the centre
+    2.4-3.9s  unified card holds with a soft scale
+    3.9-4.5s  cards split out and settle asymmetric (2 left, 1 right)
+  Hover lift is declared after the animation so it wins once the run ends.
+*/
+.for-card--a {
+  animation: forIn 0.6s var(--ease-out) 0ms both,
+             forConvergeA 0.4s var(--ease) 2s both,
+             forReset 0.1s linear 2.4s both;
+}
+.for-card--b {
+  animation: forIn 0.6s var(--ease-out) 150ms both,
+             forConvergeB 0.4s var(--ease) 2.05s both,
+             forScatterB 0.6s var(--ease) 3.9s both;
+}
+.for-card--c {
+  animation: forIn 0.6s var(--ease-out) 300ms both,
+             forConvergeC 0.4s var(--ease) 2.1s both,
+             forReset 0.1s linear 2.5s both;
+}
+
+@keyframes forIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes forConvergeA {
+  from { transform: translateY(0) scale(1); }
+  to { transform: translateX(150px) scale(1.04); }
+}
+@keyframes forConvergeB {
+  from { transform: translateY(0) scale(1); }
+  to { transform: translateY(0) scale(1.04); }
+}
+@keyframes forConvergeC {
+  from { transform: translateY(0) scale(1); }
+  to { transform: translateX(-150px) scale(1.04); }
+}
+
+/* Hold the merged position until the split begins. */
+@keyframes forReset {
+  from { transform: translateY(0) scale(1); }
+  to { transform: translateY(0) scale(1); }
+}
+
+/* Final settle: A and B end up together on the left, C alone on the right. */
+@keyframes forScatterB {
+  from { transform: translateY(0) scale(1.04); }
+  to { transform: translateX(-160px) scale(1); }
+}
+
+.for-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.for-unified {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 5;
+  width: min(420px, 92%);
+  padding: 28px;
+  text-align: center;
+  background: var(--terracotta-light);
+  border: 1px solid var(--terracotta);
+  border-radius: var(--r-card);
+  box-shadow: var(--shadow-lg);
+  pointer-events: none;
+  animation: forUnified 4.5s var(--ease) both;
+}
+
+@keyframes forUnified {
+  0%, 52% { opacity: 0; transform: translate(-50%, -50%) scale(0.96); }
+  56%, 84% { opacity: 1; transform: translate(-50%, -50%) scale(1.04); }
+  88%, 100% { opacity: 0; transform: translate(-50%, -50%) scale(1); }
+}

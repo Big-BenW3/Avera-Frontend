@@ -1,0 +1,9 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Avera — Knot">
+  <!-- Ground arc -->
+  <path d="M12 50 C 20 62, 44 62, 52 50" stroke="#5b7e3f" stroke-width="4.5" stroke-linecap="round"/>
+  <!-- Two people-arcs meeting at a shared node, forming an A -->
+  <path d="M14 48 L32 14 L50 48" stroke="#e4572e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- The connecting node where ideas and people meet -->
+  <circle cx="32" cy="34" r="7" fill="#d9a441"/>
+  <circle cx="32" cy="34" r="2.8" fill="#fffdf9"/>
+</svg>

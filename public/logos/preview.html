@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Avera — Logo Concepts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --canvas:#faf5ee; --paper:#fffdf9; --ink:#2b2118; --dust:#8a7d72;
+    --terra:#e4572e; --clay:#d9a441; --sage:#5b7e3f; --border:#eadfd2;
+    --display:'Instrument Serif',Georgia,serif;
+    --body:'Plus Jakarta Sans',system-ui,sans-serif;
+    --mono:'DM Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:var(--body);background:var(--canvas);color:var(--ink);-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1080px;margin:0 auto;padding:64px 32px 96px}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--terra)}
+  h1{font-family:var(--display);font-size:52px;line-height:1;margin:10px 0 6px;font-weight:400}
+  .sub{color:var(--dust);max-width:52ch;margin:0 0 56px}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  @media(max-width:820px){.grid{grid-template-columns:1fr}}
+  .card{background:var(--paper);border:1px solid var(--border);border-radius:20px;padding:32px 28px 24px;box-shadow:0 12px 40px rgba(43,33,24,.06)}
+  .card .stage{display:flex;align-items:center;justify-content:center;height:180px;border-radius:14px;background:
+     radial-gradient(120px 120px at 50% 42%, #fdebd9, transparent 70%);}
+  .card img{width:96px;height:96px}
+  .name{font-family:var(--display);font-size:26px;margin:20px 0 4px}
+  .tag{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--dust);margin-bottom:14px}
+  .desc{font-size:14px;color:#5a4f45;line-height:1.55;min-height:66px}
+  .row{display:flex;align-items:center;gap:12px;margin-top:20px;padding-top:18px;border-top:1px dashed var(--border)}
+  .row img{width:30px;height:30px}
+  .word{font-family:var(--display);font-size:30px}
+  .word b{color:var(--terra);font-weight:400}
+  .swatches{display:flex;gap:6px;margin-top:14px}
+  .sw{width:20px;height:20px;border-radius:6px;border:1px solid rgba(0,0,0,.06)}
+  .sizes{display:flex;align-items:flex-end;gap:18px;margin-top:18px}
+  .sizes img{width:auto}
+  .note{margin-top:56px;font-size:13px;color:var(--dust);text-align:center}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="eyebrow">Avera · identity</div>
+    <h1>Three directions</h1>
+    <p class="sub">Each mark is built on the warm studio palette and reads as one system with the wordmark. Pick the one that feels most <em>Avera</em>.</p>
+
+    <div class="grid">
+      <div class="card">
+        <div class="stage"><img src="/logos/logo-1-hearth.svg" alt="Hearth" /></div>
+        <div class="name">1 · Hearth</div>
+        <div class="tag">Home for ideas</div>
+        <div class="desc">The letter <b>A</b> drawn as a sheltering roof, its crossbar a warm glowing spark. Says: a safe place where an idea catches fire.</div>
+        <div class="row"><img src="/logos/logo-1-hearth.svg" alt=""/><span class="word">avera<b>.</b></span></div>
+        <div class="sizes"><img src="/logos/logo-1-hearth.svg" width="20" alt=""/><img src="/logos/logo-1-hearth.svg" width="30" alt=""/><img src="/logos/logo-1-hearth.svg" width="44" alt=""/></div>
+      </div>
+
+      <div class="card">
+        <div class="stage"><img src="/logos/logo-2-knot.svg" alt="Knot" /></div>
+        <div class="name">2 · Knot</div>
+        <div class="tag">People around a purpose</div>
+        <div class="desc">Two arcs meeting at a shared node — collaborators connecting around one idea. The most <em>human</em> and community-forward of the three.</div>
+        <div class="row"><img src="/logos/logo-2-knot.svg" alt=""/><span class="word">avera<b>.</b></span></div>
+        <div class="sizes"><img src="/logos/logo-2-knot.svg" width="20" alt=""/><img src="/logos/logo-2-knot.svg" width="30" alt=""/><img src="/logos/logo-2-knot.svg" width="44" alt=""/></div>
+      </div>
+
+      <div class="card">
+        <div class="stage"><img src="/logos/logo-3-ascent.svg" alt="Ascent" /></div>
+        <div class="name">3 · Ascent</div>
+        <div class="tag">Momentum &amp; launch</div>
+        <div class="desc">A grounded <b>A</b> with a spark orbiting up and over — ideas taking flight. The boldest, most distinctive mark of the set.</div>
+        <div class="row"><img src="/logos/logo-3-ascent.svg" alt=""/><span class="word">avera<b>.</b></span></div>
+        <div class="sizes"><img src="/logos/logo-3-ascent.svg" width="20" alt=""/><img src="/logos/logo-3-ascent.svg" width="30" alt=""/><img src="/logos/logo-3-ascent.svg" width="44" alt=""/></div>
+      </div>
+    </div>
+
+    <p class="note">Tell me the number you like and I'll lock it in everywhere (nav, auth, favicon).</p>
+  </div>
+</body>
+</html>
