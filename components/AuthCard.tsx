@@ -52,9 +52,6 @@ export function AuthSplit({
         <div className="auth-scene" aria-hidden="true">
           <div className="hill hill--back" />
           <div className="hill hill--front" />
-          <div className="idea-orbit orbit-1"><span>Forming</span><b>Luma — gentler care</b></div>
-          <div className="idea-orbit orbit-2"><span>Building</span><b>Brightwork rituals</b></div>
-          <div className="idea-orbit orbit-3"><span>Spark</span><b>Field Notes</b></div>
         </div>
         <p className="auth-mural-foot">A home for ideas worth finishing.</p>
         <div className="blend-veil" aria-hidden="true" />

@@ -1,18 +1,22 @@
 ﻿import Image from "next/image";
 
 /**
- * Hero scene — a photographic "house of ideas" collage instead of a
- * CSS-only laptop mockup. Layered real photography (workshop table,
- * studio wall, hands sketching) with a floating Avera Space card and a
- * hand-drawn house-mark SVG woven through. Nothing here looks like SaaS.
+ * Hero scene — a single composed product moment instead of a scattered collage.
+ *
+ * The previous version stacked three rotated photos plus a floating card plus
+ * two strips of tape. Individually each was fine; together they had no focal
+ * point, four competing shadows, and a rotation on every edge so nothing read as
+ * a single object.
+ *
+ * What replaced it: one large photo as the anchor, one real UI card that
+ * overlaps it, and a small caption. Two shadows, one accent, one focal point.
  */
+
 const PHOTOS = {
   table:
-    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1400&q=80",
+    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1600&q=80",
   people:
-    "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1000&q=80",
-  sketch:
-    "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=80",
+    "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80",
 };
 
 export function HouseMark({ className = "" }: { className?: string }) {
@@ -45,40 +49,89 @@ export function HouseMark({ className = "" }: { className?: string }) {
 
 export default function WorkspacePreview() {
   return (
-    <div className="hero-scene" role="img" aria-label="A collage of real workshop photography with a floating Avera Space card showing tasks and people.">
-      <div className="hero-photo hero-photo--main">
-        <Image src={PHOTOS.table} alt="A warm workshop table with sketches and coffee" fill sizes="(max-width: 900px) 100vw, 640px" priority />
-      </div>
-      <div className="hero-photo hero-photo--top">
-        <Image src={PHOTOS.people} alt="Three collaborators leaning over a table, laughing" fill sizes="(max-width: 900px) 40vw, 300px" />
-      </div>
-      <div className="hero-photo hero-photo--low">
-        <Image src={PHOTOS.sketch} alt="Hands sketching a plan on paper" fill sizes="(max-width: 900px) 40vw, 300px" />
+    <div
+      className="hero-scene"
+      role="img"
+      aria-label="An Avera Space called Tidepool, showing progress, collaborators, and the tasks in flight."
+    >
+      {/* Anchor — one photo, no rotation. This is the only large shadow in the scene. */}
+      <div className="hero-photo">
+        <Image
+          src={PHOTOS.table}
+          alt="A warm workshop table with sketches and coffee"
+          fill
+          sizes="(max-width: 900px) 92vw, 560px"
+          priority
+        />
+        <div className="hero-photo-wash" aria-hidden="true" />
       </div>
 
-      <HouseMark className="hero-doodle" />
+      {/* Secondary — smaller, tucks behind the card. Same family of shadow, lighter. */}
+      <div className="hero-photo hero-photo--inset">
+        <Image
+          src={PHOTOS.people}
+          alt="Three collaborators leaning over a table"
+          fill
+          sizes="(max-width: 900px) 40vw, 260px"
+        />
+      </div>
 
-      <div className="hero-space-card">
-        <div className="hero-space-top">
-          <span className="hero-space-eyebrow">Tidepool · Building</span>
-          <span className="hero-space-live"><span className="pulse-dot" /> Live</span>
-        </div>
-        <div className="hero-space-title">Local climate actions that feel possible</div>
-        <div className="hero-space-row">
-          <div className="hero-avatars" aria-hidden="true">
-            <span>MC</span><span>NI</span><span>AS</span><span className="more">+3</span>
+      {/* The product, actually shown. Overlaps the photo so the two read as one composition. */}
+      <div className="hero-card">
+        <div className="hero-card-head">
+          <div>
+            <span className="hero-card-space">Tidepool</span>
+            <h3 className="hero-card-title">
+              Local climate actions that feel possible
+            </h3>
           </div>
-          <div className="hero-space-bar"><span style={{ width: "64%" }} /></div>
+          <span className="hero-card-status">
+            <span className="hero-card-dot" aria-hidden="true" />
+            Live
+          </span>
         </div>
-        <div className="hero-space-tasks">
-          <div><b>Neighbourhood map</b><i>In progress</i></div>
-          <div><b>Weekly digest</b><i>Friday send</i></div>
+
+        <div className="hero-card-progress">
+          <div
+            className="hero-card-track"
+            role="progressbar"
+            aria-valuenow={64}
+            aria-valuemin={0}
+            aria-valuemax={100}
+            aria-label="Tasks complete"
+          >
+            <span className="hero-card-fill" />
+          </div>
+          <span className="hero-card-count">18 of 28</span>
+        </div>
+
+        <ul className="hero-card-tasks">
+          <li>
+            <span>Neighbourhood map</span>
+            <em>In progress</em>
+          </li>
+          <li>
+            <span>Weekly digest</span>
+            <em>Friday send</em>
+          </li>
+        </ul>
+
+        <div className="hero-card-foot">
+          <div className="hero-card-people">
+            <span>MC</span>
+            <span>NI</span>
+            <span>AS</span>
+            <span className="hero-card-more">+3</span>
+          </div>
+          <span className="hero-card-note">Six people, one roadmap</span>
         </div>
       </div>
 
-      <div className="hero-tape hero-tape--a" aria-hidden="true" />
-      <div className="hero-tape hero-tape--b" aria-hidden="true" />
+      {/* Quiet caption instead of decorative tape. */}
+      <p className="hero-caption">
+        <HouseMark className="hero-caption-mark" />
+        One idea, from first note to shipped.
+      </p>
     </div>
   );
 }
-

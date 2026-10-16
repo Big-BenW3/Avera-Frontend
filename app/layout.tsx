@@ -10,24 +10,31 @@ import { Toaster } from "@/components/Toast";
 // loader is flaky under CI/offline and crashes the webpack build. Local fonts are
 // baked in at compile time and preloaded, which is also faster in production.
 
-// Display / headings — a warm, editorial serif. Instrument Serif ships a
-// single weight (400); the "600" look comes from size and colour, not bold.
-const instrumentSerif = localFont({
-  src: "../public/fonts/InstrumentSerif-latin.woff2",
-  weight: "400",
-  style: "normal",
+// Display / headings — Newsreader. A variable serif with a real optical-size
+// axis, so the 72px hero and the 20px card title come from the same family but
+// render differently: large sizes get tighter spacing and finer hairlines, small
+// sizes get sturdier stems. Instrument Serif (previous) shipped weight 400
+// only and had no italic, which is why headings read thin and the hero <em>
+// was faux-italic.
+const newsreader = localFont({
+  src: [
+    { path: "../public/fonts/Newsreader-var.woff2", weight: "300 600", style: "normal" },
+    { path: "../public/fonts/Newsreader-var-italic.woff2", weight: "300 500", style: "italic" },
+  ],
   display: "swap",
-  variable: "--font-instrument",
+  variable: "--font-newsreader",
   preload: true,
 });
 
-// Body / UI — geometric humanist sans. Variable font: one file, weights 200-800.
-const plusJakarta = localFont({
-  src: "../public/fonts/PlusJakartaSans-latin.woff2",
-  weight: "200 800",
+// Body / UI — Inter. Variable 400-700. Replaces Plus Jakarta Sans, whose very
+// geometric bowls and wide apertures read soft and slightly clumsy at the 11-13px
+// sizes this UI uses most.
+const inter = localFont({
+  src: "../public/fonts/Inter-var.woff2",
+  weight: "400 700",
   style: "normal",
   display: "swap",
-  variable: "--font-jakarta",
+  variable: "--font-inter",
   preload: true,
 });
 
@@ -55,7 +62,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${instrumentSerif.variable} ${plusJakarta.variable} ${dmMono.variable}`}
+      className={`${newsreader.variable} ${inter.variable} ${dmMono.variable}`}
     >
       <body>
         <script dangerouslySetInnerHTML={{ __html: themeInit }} />

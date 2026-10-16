@@ -3,6 +3,7 @@ import Image from "next/image";
 import { AnimateIn } from "@/components/Animations";
 import Link from "next/link";
 import WorkspacePreview, { HouseMark } from "@/components/WorkspacePreview";
+import OpenSpaces from "@/components/OpenSpaces";
 import ThemeToggle from "@/components/ThemeToggle";
 
 const PHOTOS = {
@@ -10,11 +11,6 @@ const PHOTOS = {
     "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
   studio:
     "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80",
-  faces: [
-    "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80",
-    "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
-    "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=200&q=80",
-  ],
 };
 
 const FOR_WHO = [
@@ -50,29 +46,12 @@ const CRAFT = [
   { n: "06", title: "A calm record", body: "Planning notes and activity keep the reasoning close, long after the meeting is forgotten." },
 ];
 
-const TESTIMONIALS = [
-  {
-    quote:
-      "I had four half-built side projects scattered across three apps. Tidepool is the first one that survived past the first weekend.",
-    name: "Maya Chen",
-    role: "Product designer, working solo",
-    img: PHOTOS.faces[0],
-  },
-  {
-    quote:
-      "The roadmap is the first thing I've used that people actually read. It says now, next, later, and everyone stops asking what's next.",
-    name: "Tomas Berg",
-    role: "Engineer at a small studio",
-    img: PHOTOS.faces[1],
-  },
-  {
-    quote:
-      "I joined for the task list and stayed for the people. Being in the same room as someone who cares about the same problem changes the work.",
-    name: "Priya Raman",
-    role: "Community organiser",
-    img: PHOTOS.faces[2],
-  },
-];
+/* REMOVED: a hardcoded TESTIMONIALS array of three invented people with invented
+   quotes and stock photos, presented as "From early Spaces". Fabricated reviews
+   are not a copy problem you fix with better wording — they are a lie about who
+   has used the product. The section below renders real public Spaces from the
+   API instead. Once you have genuine quotes from actual members, put those back
+   here with their permission. */
 
 export default function LandingPage() {
   return (
@@ -121,14 +100,11 @@ export default function LandingPage() {
               </div>
             </AnimateIn>
             <AnimateIn delay={0.36}>
-              <div className="hero-proof">
-                <div className="hero-proof-faces">
-                  {PHOTOS.faces.map((src) => (
-                    <Image key={src} src={src} alt="An early Avera member" width={32} height={32} />
-                  ))}
-                </div>
-                <p>Luma, Tidepool and Field Notes already live here.</p>
-              </div>
+              <ul className="hero-points">
+                <li>Free while it&apos;s early</li>
+                <li>No credit card</li>
+                <li>Leave whenever</li>
+              </ul>
             </AnimateIn>
           </div>
           <AnimateIn delay={0.2} className="hero-visual">
@@ -137,11 +113,11 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* TAPE — a hand-tacked strip between hero and story */}
+      {/* QUIET DIVIDER between hero and story */}
       <div className="tape" aria-hidden="true">
         <div className="tape-inner">
-          {Array.from({ length: 12 }).map((_, i) => (
-            <span key={i}>Ideas deserve company <HouseMark className="tape-mark" /></span>
+          {["Ideas deserve company", "Work alongside people", "Ship it carefully"].map((line) => (
+            <span key={line}>{line} <HouseMark className="tape-mark" /></span>
           ))}
         </div>
       </div>
@@ -275,29 +251,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className="section" id="testimonials">
-        <div className="container">
-          <AnimateIn>
-            <div className="section-kicker mb-12">From early Spaces</div>
-          </AnimateIn>
-          <div className="testimonials-grid">
-            {TESTIMONIALS.map((t, i) => (
-              <AnimateIn key={t.name} delay={0.1 * (i + 1)}>
-                <div className="testimonial">
-                  <blockquote>&ldquo;{t.quote}&rdquo;</blockquote>
-                  <div className="testimonial-author">
-                    <Image className="testimonial-photo" src={t.img} alt={t.name} width={40} height={40} />
-                    <div>
-                      <div className="testimonial-name">{t.name}</div>
-                      <div className="testimonial-role">{t.role}</div>
-                    </div>
-                  </div>
-                </div>
-              </AnimateIn>
-            ))}
-          </div>
-        </div>
-      </section>
+      <OpenSpaces />
 
       <section className="cta-section">
         <div className="container">
