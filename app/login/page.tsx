@@ -1,10 +1,25 @@
 "use client";
-import { useState, type FormEvent } from "react";
+import { Suspense, useState, type FormEvent } from "react";
 import Link from "next/link";
 import { Mail } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { api, ApiError } from "@/lib/api";
 import { AuthShell, AuthSplit, AuthSwap, OAuthRow, PasswordField, SubmitButton } from "@/components/AuthCard";
+
+/**
+ * Reads ?reset=1, which the forgot-password flow sets once the new password is
+ * saved. Isolated behind Suspense because useSearchParams opts the page out of
+ * static prerendering.
+ */
+function ResetFlash() {
+  const search = useSearchParams();
+  if (search.get("reset") !== "1") return null;
+  return (
+    <div className="form-notice" role="status">
+      Password updated. Sign in with your new password.
+    </div>
+  );
+}
 
 export default function LoginPage() {
   const router = useRouter();
@@ -107,6 +122,9 @@ export default function LoginPage() {
           </div>
         </div>
         <PasswordField id="password" label="Password" value={password} onChange={setPassword} autoComplete="current-password" />
+        <Suspense fallback={null}>
+          <ResetFlash />
+        </Suspense>
         {error && <div className="form-error">{error}</div>}
         <SubmitButton loading={loading} idle="Sign in" pending="Signing in..." />
         <OAuthRow />

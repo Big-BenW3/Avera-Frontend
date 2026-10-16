@@ -448,6 +448,36 @@ button, input, textarea, select { font: inherit; color: inherit; }
 
 .form-error { color: var(--terracotta-deep); font-size: 13px; }
 
+/* Neutral confirmation — success reads as sage, matching the tag/label palette. */
+.form-notice {
+  padding: 11px 13px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--paper);
+  color: var(--dust);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+/* Inline text button that launches a secondary flow from inside a form. */
+.auth-link-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  align-self: center;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--terracotta-deep);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 160ms ease, border-color 160ms ease;
+}
+.auth-link-button:hover { background: var(--paper-hover); border-color: var(--dust-light); }
+
 .on { background: var(--sage); }
 
 /* Password strength */
