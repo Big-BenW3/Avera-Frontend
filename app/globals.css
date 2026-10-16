@@ -45,6 +45,21 @@
   --font-body: var(--font-inter), Inter, system-ui, sans-serif;
   --font-mono: var(--font-dm), "DM Mono", ui-monospace, monospace;
 
+  /* Auth mural — a printed dawn wash. Tokenised so dark mode re-tints it. */
+  --mural-1: #fdeeda;
+  --mural-2: #f9dcc0;
+  --mural-3: #f3c6a4;
+  --mural-4: #dfa183;
+  --mural-5: #c98a6d;
+  --mural-wash: rgba(255, 255, 255, 0.65);
+  --mural-sun: rgba(228, 87, 46, 0.5);
+  --mural-sage: rgba(91, 126, 63, 0.34);
+  --mural-clay: rgba(217, 164, 65, 0.4);
+  --mural-ink: #2b2118;
+  --mural-ink-soft: #5d4a3a;
+  --mural-ink-faint: rgba(43, 33, 24, 0.66);
+  --mural-ink-accent: #8a3b1c;
+
   /* Motion — one set of curves used everywhere. Ease-out for anything entering
      or responding, ease-in-out for movement that stays on screen. */
   --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
@@ -89,6 +104,22 @@
   --shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.35);
   --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.45);
+
+  /* Auth mural in dark — lamputember rather than daylight cream, and much
+     deeper so the light headline copy reads against it. */
+  --mural-1: #3a2a1e;
+  --mural-2: #4a3020;
+  --mural-3: #5c3a22;
+  --mural-4: #6b4025;
+  --mural-5: #7a4a2a;
+  --mural-wash: rgba(255, 214, 168, 0.14);
+  --mural-sun: rgba(240, 117, 79, 0.34);
+  --mural-sage: rgba(157, 184, 106, 0.26);
+  --mural-clay: rgba(227, 180, 94, 0.26);
+  --mural-ink: #fdf4e8;
+  --mural-ink-soft: #e3d2bf;
+  --mural-ink-faint: rgba(253, 244, 232, 0.72);
+  --mural-ink-accent: #ffb48e;
 }
 
 /* ─── RESET ─── */
@@ -841,9 +872,8 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .footer-links { display: flex; align-items: center; gap: 18px; font-size: 13px; }
 .footer-link-disabled { color: var(--dust-light); cursor: not-allowed; }
 
-/* ─── AUTH — seamless blend: art breathes into the form ───
-   No divider. The mural on the left carries a horizontal veil that
-   dissolves into the form's milk canvas. One continuous room. */
+/* ─── AUTH — mural and form meet on a single hairline ───
+   Two full-bleed fields, one crisp edge. See .seam-edge below. */
 .auth-layout {
   position: relative;
   display: grid;
@@ -863,13 +893,18 @@ button, input, textarea, select { font: inherit; color: inherit; }
   padding: 44px 48px;
   overflow: hidden;
   isolation: isolate;
-  /* Layered house-mural: dawn wash, peach sun, sage hill, grain */
+  /* Layered house-mural: dawn wash, peach sun, sage hill, grain.
+     Colours come from tokens so dark mode can actually re-tint the mural.
+     These were hardcoded hex, which left the panel cream while the form beside
+     it went dark — and white headline copy on cream, nearly unreadable. */
   background:
-    radial-gradient(90% 60% at 78% 8%, rgba(255, 255, 255, 0.65) 0%, transparent 60%),
-    radial-gradient(46% 38% at 66% 40%, rgba(228, 87, 46, 0.5) 0%, rgba(228, 87, 46, 0) 70%),
-    radial-gradient(52% 44% at 30% 72%, rgba(91, 126, 63, 0.34) 0%, rgba(91, 126, 63, 0) 70%),
-    radial-gradient(70% 55% at 18% 12%, rgba(217, 164, 65, 0.4) 0%, rgba(217, 164, 65, 0) 65%),
-    linear-gradient(168deg, #fdeeda 0%, #f9dcc0 34%, #f3c6a4 58%, #dfa183 82%, #c98a6d 100%);
+    radial-gradient(90% 60% at 78% 8%, var(--mural-wash) 0%, transparent 60%),
+    radial-gradient(46% 38% at 66% 40%, var(--mural-sun) 0%, transparent 70%),
+    radial-gradient(52% 44% at 30% 72%, var(--mural-sage) 0%, transparent 70%),
+    radial-gradient(70% 55% at 18% 12%, var(--mural-clay) 0%, transparent 65%),
+    linear-gradient(168deg,
+      var(--mural-1) 0%, var(--mural-2) 34%, var(--mural-3) 58%,
+      var(--mural-4) 82%, var(--mural-5) 100%);
 }
 
 /* Film grain so the mural feels printed, not digital */
@@ -904,7 +939,13 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .auth-art > *,
 .auth-left > * { position: relative; z-index: 2; }
 
-/* Mural copy — deep espresso over the dawn wash, always legible */
+/* Was an inline hex (#2b2118), which stayed espresso in dark mode against the
+   now-dark mural and vanished. */
+.auth-mural-logo { color: var(--mural-ink); }
+
+/* Mural copy — tokenised with the rest of the mural so dark mode stays legible.
+   Previously hardcoded espresso hex, and dark mode overrode the title to white
+   while the panel behind it stayed cream: near-invisible headline. */
 .auth-mural-copy { max-width: 36ch; }
 .auth-mural-eyebrow {
   font-family: var(--font-mono);
@@ -912,7 +953,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
   font-weight: 500;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #8a3b1c;
+  color: var(--mural-ink-accent);
   margin-bottom: 12px;
 }
 .auth-mural-title {
@@ -920,16 +961,24 @@ button, input, textarea, select { font: inherit; color: inherit; }
   font-size: clamp(30px, 3.6vw, 44px);
   line-height: 1.1;
   letter-spacing: -0.015em;
-  color: #2b2118;
+  font-optical-sizing: auto;
+  color: var(--mural-ink);
   margin-bottom: 12px;
   text-wrap: balance;
 }
-.auth-mural-blurb { font-size: 15px; line-height: 1.65; color: #5d4a3a; max-width: 34ch; }
-.auth-mural-foot { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(43, 33, 24, 0.62); }
-[data-theme="dark"] .auth-mural-eyebrow { color: #ffb48e; }
-[data-theme="dark"] .auth-mural-title { color: #faf3e9; }
-[data-theme="dark"] .auth-mural-blurb { color: #cdbfae; }
-[data-theme="dark"] .auth-mural-foot { color: rgba(250, 243, 233, 0.6); }
+.auth-mural-blurb {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--mural-ink-soft);
+  max-width: 34ch;
+}
+.auth-mural-foot {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mural-ink-faint);
+}
 
 /* — Woven scene inside the mural: hills, cards, sun — pure CSS art — */
 .auth-scene {
@@ -946,8 +995,9 @@ button, input, textarea, select { font: inherit; color: inherit; }
   height: 78%;
   border-radius: 50% 50% 0 0 / 100% 100% 0 0;
 }
-.auth-scene .hill--back { left: -14%; background: linear-gradient(180deg, rgba(91,126,63,0.5), rgba(91,126,63,0.12)); filter: blur(1px); }
+.auth-scene .hill--back { left: -14%; background: linear-gradient(180deg, var(--mural-sage), transparent); filter: blur(1px); }
 .auth-scene .hill--front { right: -16%; background: linear-gradient(180deg, rgba(43,33,24,0.28), rgba(43,33,24,0.05)); }
+[data-theme="dark"] .auth-scene .hill--front { background: linear-gradient(180deg, rgba(0,0,0,0.34), rgba(0,0,0,0.06)); }
 
 /* REMOVED: the three floating `.idea-orbit` cards ("Luma — gentler care",
    "Brightwork rituals", "Field Notes"). They named invented Spaces as if real,
@@ -955,19 +1005,39 @@ button, input, textarea, select { font: inherit; color: inherit; }
    that never settles — both on a screen people hit every single visit. The mural
    now carries the hills alone. */
 
-/* — The blend: right edge of the mural dissolves into the form — */
-.auth-art .blend-veil {
+/* — The seam between mural and form ——
+   Previously a 190px gradient veil dissolved the mural into the form, which
+   read as a muddy blur: neither side looked intentional and the mural lost its
+   edge. Two full-bleed fields meeting on a crisp hairline is cleaner and makes
+   the join look designed rather than accidental. The line is a warm brown at
+   low alpha so it reads as printed, not as a UI divider. */
+.auth-art .seam-edge,
+.auth-left .seam-edge {
+  content: "";
   position: absolute;
   top: 0;
   bottom: 0;
-  right: -1px;
-  width: clamp(90px, 14vw, 190px);
-  z-index: 1;
+  right: 0;
+  width: 1px;
+  z-index: 3;
   pointer-events: none;
-  background: linear-gradient(90deg, rgba(250, 245, 238, 0) 0%, rgba(250, 245, 238, 0.55) 55%, var(--canvas) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(43, 33, 24, 0) 0%,
+    rgba(43, 33, 24, 0.16) 18%,
+    rgba(43, 33, 24, 0.16) 82%,
+    rgba(43, 33, 24, 0) 100%
+  );
 }
-[data-theme="dark"] .auth-art .blend-veil {
-  background: linear-gradient(90deg, rgba(29, 23, 18, 0) 0%, rgba(29, 23, 18, 0.6) 55%, var(--canvas) 100%);
+[data-theme="dark"] .auth-art .seam-edge,
+[data-theme="dark"] .auth-left .seam-edge {
+  background: linear-gradient(
+    180deg,
+    rgba(250, 243, 233, 0) 0%,
+    rgba(250, 243, 233, 0.14) 18%,
+    rgba(250, 243, 233, 0.14) 82%,
+    rgba(250, 243, 233, 0) 100%
+  );
 }
 
 .auth-right,
@@ -977,7 +1047,10 @@ button, input, textarea, select { font: inherit; color: inherit; }
   flex-direction: column;
   justify-content: center;
   padding: 56px clamp(28px, 5vw, 72px);
-  background: transparent;
+  /* Opaque, not transparent. The transparency only existed so the old gradient
+     veil could dissolve across the boundary; with a crisp seam the form needs to
+     be its own solid field. */
+  background: var(--canvas);
 }
 
 .auth-right { max-width: 560px; width: 100%; margin-inline: auto; }
@@ -991,6 +1064,21 @@ button, input, textarea, select { font: inherit; color: inherit; }
 
 .auth-form { display: flex; flex-direction: column; gap: 16px; }
 .auth-footer { margin-top: 20px; }
+
+/* Right-aligned utility under a field, e.g. "Forgot password?". Sits inside the
+   form rhythm rather than floating below the social note. */
+.auth-field-foot {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -6px;
+}
+.auth-field-link {
+  font-size: 13px;
+  color: var(--dust);
+  text-decoration: none;
+  transition: color 0.15s var(--ease);
+}
+.auth-field-link:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
 .auth-swap { font-size: 14px; color: var(--dust); }
 .auth-terms { font-size: 12px; color: var(--dust-light); margin-top: 12px; line-height: 1.6; }
 

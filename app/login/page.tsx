@@ -122,15 +122,20 @@ export default function LoginPage() {
           </div>
         </div>
         <PasswordField id="password" label="Password" value={password} onChange={setPassword} autoComplete="current-password" />
+        {/* Forgot password sits with the password field, not below the social note —
+            it is the same concern, and a centred orphan between two left-aligned
+            lines read as a mistake. */}
+        <div className="auth-field-foot">
+          <Link href="/forgot-password" className="auth-field-link">
+            Forgot password?
+          </Link>
+        </div>
         <Suspense fallback={null}>
           <ResetFlash />
         </Suspense>
         {error && <div className="form-error">{error}</div>}
         <SubmitButton loading={loading} idle="Sign in" pending="Signing in..." />
         <OAuthRow />
-        <div className="auth-footer center">
-          <Link href="/forgot-password">Forgot password?</Link>
-        </div>
       </form>
     </AuthShell>
     </AuthSplit>

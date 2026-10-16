@@ -20,10 +20,12 @@ export function AveraLogo({ center = false }: { center?: boolean }) {
 }
 
 /**
- * Seamless-blend auth layout: the mural on the left carries a gradient
- * veil (.blend-veil) that dissolves straight into the form's milk canvas.
- * No line, no card, no border between the two — one continuous room.
- * Copy sits over the mural; floating idea cards make it feel alive.
+ * Split auth layout: mural on the left, form on the right.
+ *
+ * The two meet on a single hairline (.seam-edge). This replaced a 190px gradient
+ * veil that dissolved one into the other — it read as a blur rather than a
+ * decision, because a fade hides the join instead of owning it. Two fields with
+ * a crisp edge look deliberate; two fields smeared together just look soft.
  */
 export function AuthSplit({
   children,
@@ -39,7 +41,7 @@ export function AuthSplit({
   return (
     <div className="auth-layout">
       <div className="auth-art">
-        <Link href="/" aria-label="Avera home" style={{ color: "#2b2118" }}>
+        <Link href="/" aria-label="Avera home" className="auth-mural-logo">
           <AveraLogo />
         </Link>
         {headline ? (
@@ -54,7 +56,7 @@ export function AuthSplit({
           <div className="hill hill--front" />
         </div>
         <p className="auth-mural-foot">A home for ideas worth finishing.</p>
-        <div className="blend-veil" aria-hidden="true" />
+        <div className="seam-edge" aria-hidden="true" />
       </div>
       <div className="auth-right">{children}</div>
     </div>
