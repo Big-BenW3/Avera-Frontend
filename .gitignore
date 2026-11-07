@@ -29,3 +29,6 @@ coverage/
 
 # playwright-cli scratch
 .playwright-cli/
+
+# review screenshots (generated locally)
+screenshots/
