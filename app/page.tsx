@@ -1,206 +1,147 @@
-﻿import { ArrowRight, Check } from "lucide-react";
-import Image from "next/image";
+import { ArrowRight, Check, Cpu, GitBranch, Layers } from "lucide-react";
 import { AnimateIn } from "@/components/Animations";
 import Link from "next/link";
-import WorkspacePreview, { HouseMark } from "@/components/WorkspacePreview";
+import WorkspacePreview from "@/components/WorkspacePreview";
+import HeroBackdrop from "@/components/HeroBackdrop";
+import HeroTitle from "@/components/HeroTitle";
 import OpenSpaces from "@/components/OpenSpaces";
 import ThemeToggle from "@/components/ThemeToggle";
+import { AveraLogo } from "@/components/AuthCard";
+import Faq from "@/components/Faq";
 
-const PHOTOS = {
-  hands:
-    "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
-  studio:
-    "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80",
-};
-
-const FOR_WHO = [
+const CAPABILITIES = [
   {
-    key: "a",
-    role: "The one with the idea",
-    name: "Maya keeps a note called “someday”.",
-    copy: "It will not leave her alone. She needs a room for it — not another doc, a home with people in it.",
-    img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80",
+    n: "01",
+    title: "Unified Project Spaces",
+    body: "Purpose, architecture specs, sprint tasks, roadmap, and conversation live in one context instead of six fragmented tools.",
   },
   {
-    key: "b",
-    role: "The one who designs",
-    name: "Tomas cares what it is for.",
-    copy: "He wants to build with intention, not just aesthetics. A roadmap people actually read.",
-    img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=800&q=80",
+    n: "02",
+    title: "Milestones That Actually Ship",
+    body: "Ideas promote into durable Spaces the moment there is a technical plan. Roadmaps roll up into Now, Next, and Later horizons.",
   },
   {
-    key: "c",
-    role: "The one who gathers",
-    name: "Priya holds the room together.",
-    copy: "She organises neighbours, not tickets. Conversation stays beside the work it is about.",
-    img: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=800&q=80",
+    n: "03",
+    title: "In-Context Developer Collaboration",
+    body: "Durable chat, files, and LiveKit video rooms sit directly beside the code and tasks they belong to.",
+  },
+  {
+    n: "04",
+    title: "Git & Toolchain Integrations",
+    body: "Connect GitHub repositories, link Figma design files, and track deployment states within the workspace.",
+  },
+  {
+    n: "05",
+    title: "AI Architecture & Task Breakdown",
+    body: "Queue technical planning interviews, generate schemas, and break down complex specs into actionable sprint items.",
+  },
+  {
+    n: "06",
+    title: "Zero-Compromise Security",
+    body: "Self-managed Argon2id hashing, TOTP multi-factor authentication, secure cookie sessions, and strict workspace RBAC.",
   },
 ];
 
-const CRAFT = [
-  { n: "01", title: "One Space per meaningful thing", body: "Purpose, people, tasks, roadmap, and conversation live together instead of across six tabs." },
-  { n: "02", title: "Ideas that can actually ship", body: "An idea becomes a Space the moment there is someone to build it with. No graveyard of notes." },
-  { n: "03", title: "Conversation in context", body: "Chat, files, and calls sit beside the work they are about — nobody reconstructs the thread." },
-  { n: "04", title: "Invite deliberately", body: "Private or public, with join requests and roles you control. Contribution has room to breathe." },
-  { n: "05", title: "Roadmaps people read", body: "Now, next, and later — tasks roll up to a horizon anyone can read at a glance." },
-  { n: "06", title: "A calm record", body: "Planning notes and activity keep the reasoning close, long after the meeting is forgotten." },
+const PERSONAS = [
+  {
+    role: "Founders & Tech Leads",
+    headline: "System vision meets execution.",
+    copy: "Keep technical architecture, roadmap milestones, and team permissions aligned without status meeting overhead.",
+    icon: <Cpu size={20} />,
+  },
+  {
+    role: "Core Engineers",
+    headline: "High-signal issue tracking.",
+    copy: "Sprint tasks, Git repository linkages, and planning notes with zero fluff and full keyboard ergonomics.",
+    icon: <GitBranch size={20} />,
+  },
+  {
+    role: "Product & Architecture",
+    headline: "Specs that never go stale.",
+    copy: "Connect Figma frames, RFC planning notes, and live discussions directly to the tasks implementing them.",
+    icon: <Layers size={20} />,
+  },
 ];
-
-/* REMOVED: a hardcoded TESTIMONIALS array of three invented people with invented
-   quotes and stock photos, presented as "From early Spaces". Fabricated reviews
-   are not a copy problem you fix with better wording — they are a lie about who
-   has used the product. The section below renders real public Spaces from the
-   API instead. Once you have genuine quotes from actual members, put those back
-   here with their permission. */
 
 export default function LandingPage() {
   return (
     <>
       <nav className="nav">
         <Link href="/" className="nav-logo">
-          <span className="nav-logo-dot" />
-          avera
+          <AveraLogo size={18} />
         </Link>
         <div className="nav-links">
-          <Link href="#for">Who it&apos;s for</Link>
-          <Link href="#features">Features</Link>
-          <Link href="#collab">Collaborate</Link>
+          <Link href="#capabilities">Capabilities</Link>
+          <Link href="#personas">Who it&apos;s for</Link>
+          <Link href="#faq">FAQ</Link>
+          <Link href="/discover">Discover</Link>
+          <Link href="/ideas">Ideas</Link>
         </div>
         <div className="nav-actions">
           <ThemeToggle />
-          <Link href="/login" className="btn btn-ghost">Sign in</Link>
-          <Link href="/signup" className="btn btn-primary">Get started</Link>
+          <Link href="/login" className="btn btn-ghost btn-sm">Sign in</Link>
+          <Link href="/signup" className="btn btn-primary btn-sm">Start Building</Link>
         </div>
       </nav>
 
-      {/* 1 — HERO: offset asymmetric, photo collage right, copy left */}
-      <section className="hero hero--editorial">
-        <div className="container hero-grid">
-          <div className="hero-copy">
-            <AnimateIn delay={0.05}>
-              <div className="hero-kicker"><HouseMark className="hero-kicker-mark" /> A home for ideas worth finishing</div>
-            </AnimateIn>
-            <AnimateIn delay={0.12}>
-              <h1>Make the thing you keep <em>thinking</em> about.</h1>
-            </AnimateIn>
-            <AnimateIn delay={0.2}>
-              <p className="hero-subtitle">
-                Avera gives one idea a real home — the people who care, the work in
-                progress, and the decisions along the way.
-              </p>
-            </AnimateIn>
-            <AnimateIn delay={0.28}>
-              <div className="hero-actions">
-                <Link href="/signup" className="btn btn-primary btn-large">
-                  Start a Space <ArrowRight size={15} />
-                </Link>
-                <Link href="/discover" className="btn btn-secondary btn-large">
-                  Browse ideas
-                </Link>
-              </div>
-            </AnimateIn>
-            <AnimateIn delay={0.36}>
-              <ul className="hero-points">
-                <li>Free while it&apos;s early</li>
-                <li>No credit card</li>
-                <li>Leave whenever</li>
-              </ul>
-            </AnimateIn>
-          </div>
-          <AnimateIn delay={0.2} className="hero-visual">
+      {/* HERO SECTION */}
+      <section className="hero hero--technical hero--stage">
+        <HeroBackdrop />
+        <div className="container hero-stage">
+          <HeroTitle text="Avera" />
+          <AnimateIn delay={0.1}>
+            <h1 className="hero-tagline">Where technical ideas become shipped products.</h1>
+          </AnimateIn>
+          <AnimateIn delay={0.18}>
+            <p className="hero-subtitle">
+              One home for engineering teams and technical founders: live roadmaps, Git-integrated
+              tasks, architecture planning, and real-time collaboration.
+            </p>
+          </AnimateIn>
+          <AnimateIn delay={0.26}>
+            <div className="hero-actions">
+              <Link href="/signup" className="btn btn-primary btn-large">
+                Create a Space <ArrowRight size={15} />
+              </Link>
+              <Link href="/discover" className="btn btn-secondary btn-large">
+                Explore Spaces
+              </Link>
+            </div>
+          </AnimateIn>
+          <AnimateIn delay={0.34}>
+            <ul className="hero-points">
+              <li>Free while in beta</li>
+              <li>No credit card required</li>
+              <li>Self-hostable backend</li>
+            </ul>
+          </AnimateIn>
+          <AnimateIn delay={0.42} className="hero-visual">
             <WorkspacePreview />
           </AnimateIn>
         </div>
       </section>
 
-      {/* QUIET DIVIDER between hero and story */}
-      <div className="tape" aria-hidden="true">
-        <div className="tape-inner">
-          {["Ideas deserve company", "Work alongside people", "Ship it carefully"].map((line) => (
-            <span key={line}>{line} <HouseMark className="tape-mark" /></span>
-          ))}
-        </div>
-      </div>
-
-      {/* 2 — PROBLEM, story strip with photography */}
-      <section className="section story">
-        <div className="container story-grid">
-          <AnimateIn>
-            <div className="story-photo">
-              <Image src={PHOTOS.hands} alt="Hands moving sticky notes across a workshop wall" fill sizes="(max-width: 900px) 100vw, 520px" />
-              <figcaption>Every tool holds a piece. Nobody holds the whole.</figcaption>
-            </div>
-          </AnimateIn>
-          <div className="story-copy">
-          <AnimateIn>
-            <div className="section-kicker mb-12">Made for the work that matters</div>
-          </AnimateIn>
-          <AnimateIn delay={0.1}>
-            <h2 className="section-title mb-16" style={{ maxWidth: "20ch", marginInline: "auto" }}>
-              Not another place to file things away.
-            </h2>
-          </AnimateIn>
-          <AnimateIn delay={0.2}>
-            <p className="section-desc" style={{ marginInline: "auto" }}>
-              A Space only makes sense if the work actually moves inside it. Avera is
-              built around the moment an idea becomes something people are making.
-            </p>
-          </AnimateIn>
-          <AnimateIn delay={0.28}>
-            <ul className="story-list">
-              <li><Check size={14} /> Six tabs become one room</li>
-              <li><Check size={14} /> Threads stay beside the work</li>
-              <li><Check size={14} /> Decisions outlive the meeting</li>
-            </ul>
-          </AnimateIn>
-          </div>
-        </div>
-      </section>
-
-      <section className="section" id="for">
-        <div className="container">
-          <AnimateIn>
-            <div className="section-kicker center mb-12">Who it&apos;s for</div>
-          </AnimateIn>
-          <AnimateIn delay={0.1}>
-            <h2 className="section-title center mb-48">Three kinds of people, one room.</h2>
-          </AnimateIn>
-          <div className="people-grid">
-            {FOR_WHO.map((card, i) => (
-              <AnimateIn key={card.key} delay={0.08 * (i + 1)}>
-                <article className={`person-card person-card--${card.key}`}>
-                  <div className="person-photo">
-                    <Image src={card.img} alt={card.name} fill sizes="(max-width: 900px) 100vw, 340px" />
-                  </div>
-                  <div className="person-body">
-                    <div className="person-role">{card.role}</div>
-                    <h3>{card.name}</h3>
-                    <p>{card.copy}</p>
-                  </div>
-                </article>
-              </AnimateIn>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section craft" id="features">
+      {/* CAPABILITIES SECTION */}
+      <section className="section craft" id="capabilities">
         <div className="container craft-grid">
           <div className="craft-sticky">
             <AnimateIn>
-              <div className="section-kicker mb-12">What you get</div>
+              <div className="section-kicker mb-12">ENGINEERING CAPABILITIES</div>
             </AnimateIn>
             <AnimateIn delay={0.1}>
-              <h2 className="section-title mb-16">Everything a small project needs, and nothing it does not.</h2>
+              <h2 className="section-title mb-16">
+                Purpose-built for speed, clarity, and zero developer bloat.
+              </h2>
             </AnimateIn>
             <AnimateIn delay={0.2}>
-              <div className="craft-photo">
-                <Image src={PHOTOS.studio} alt="A sunlit studio where a small team works around one table" fill sizes="(max-width: 900px) 100vw, 420px" />
-              </div>
+              <p className="section-desc mb-24">
+                Jira is too slow, Slack loses context, and docs rot. Avera organizes technical
+                momentum into high-density Spaces where code, specs, and team execution meet.
+              </p>
             </AnimateIn>
           </div>
           <div className="craft-rows">
-            {CRAFT.map((row, i) => (
+            {CAPABILITIES.map((row, i) => (
               <AnimateIn key={row.n} delay={0.05 * (i + 1)}>
                 <div className="craft-row">
                   <span className="craft-num">{row.n}</span>
@@ -215,74 +156,82 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className="section collab" id="collab">
-        <div className="container collab-grid">
-          <div className="collab-copy">
-            <AnimateIn>
-              <div className="section-kicker mb-12">Collaborate</div>
-            </AnimateIn>
-            <AnimateIn delay={0.1}>
-              <h2 className="section-title mb-16">Build with your people, not around them.</h2>
-            </AnimateIn>
-            <AnimateIn delay={0.2}>
-              <p className="section-desc mb-24">
-                Messages, calls, tasks, and files live inside the same Space as the
-                work. No switching between five apps to find one conversation.
-              </p>
-            </AnimateIn>
-            <AnimateIn delay={0.28}>
-              <Link href="/signup" className="btn btn-primary">
-                Open a Space <ArrowRight size={14} />
-              </Link>
-            </AnimateIn>
+      {/* WHO IT'S FOR (PERSONAS) */}
+      <section className="section" id="personas">
+        <div className="container">
+          <AnimateIn>
+            <div className="section-kicker center mb-12">WHO IT&apos;S FOR</div>
+          </AnimateIn>
+          <AnimateIn delay={0.1}>
+            <h2 className="section-title center mb-48">Built for technical operators.</h2>
+          </AnimateIn>
+          <div className="people-grid">
+            {PERSONAS.map((card, i) => (
+              <AnimateIn key={card.role} delay={0.08 * (i + 1)}>
+                <article className="tech-persona-card">
+                  <div className="tech-persona-icon">{card.icon}</div>
+                  <div className="tech-persona-role">{card.role}</div>
+                  <h3 className="tech-persona-title">{card.headline}</h3>
+                  <p className="tech-persona-copy">{card.copy}</p>
+                </article>
+              </AnimateIn>
+            ))}
           </div>
-          <AnimateIn delay={0.2}>
-            <div className="collab-collage">
-              <div className="collab-photo collab-photo--a">
-                <Image src={PHOTOS.hands} alt="A team planning together around sticky notes" fill sizes="(max-width: 900px) 100vw, 480px" />
-              </div>
-              <div className="collab-note">
-                <HouseMark className="collab-mark" />
-                <p>The thread finally lives where the work lives.</p>
-                <span>Tidepool, week three</span>
+        </div>
+      </section>
+
+      {/* LIVE SPACES FROM API */}
+      <OpenSpaces />
+
+      {/* FAQ */}
+      <section className="section faq-section" id="faq">
+        <div className="container">
+          <AnimateIn>
+            <div className="section-kicker center mb-12">FAQ</div>
+          </AnimateIn>
+          <AnimateIn delay={0.1}>
+            <h2 className="section-title center mb-48">Questions, answered plainly.</h2>
+          </AnimateIn>
+          <Faq />
+        </div>
+      </section>
+
+      {/* CTA SECTION */}
+      <section className="cta-section">
+        <div className="container">
+          <AnimateIn>
+            <div className="cta-tech-card">
+              <div className="cta-tech-kicker">START SHIPPING</div>
+              <h2>Ready to build what actually matters?</h2>
+              <p>Spin up your first engineering Space in seconds. Free during preview.</p>
+              <form className="cta-form" action="/signup" method="get">
+                <input
+                  className="input"
+                  type="email"
+                  name="email"
+                  placeholder="name@company.com"
+                  aria-label="Email address"
+                  required
+                />
+                <button type="submit" className="btn btn-primary">Create a Space</button>
+              </form>
+              <div className="cta-trust">
+                <span><Check size={13} /> Free during beta</span>
+                <span><Check size={13} /> No credit card required</span>
+                <span><Check size={13} /> Complete data ownership</span>
               </div>
             </div>
           </AnimateIn>
         </div>
       </section>
 
-      <OpenSpaces />
-
-      <section className="cta-section">
-        <div className="container">
-          <AnimateIn>
-            <div className="cta-photo-card">
-              <Image src={PHOTOS.studio} alt="A warm studio table ready for the next idea" fill sizes="(max-width: 900px) 100vw, 1100px" />
-              <div className="cta-photo-veil" aria-hidden="true" />
-              <div className="cta-photo-copy">
-                <div className="cta-photo-kicker">Start small</div>
-                <h2>Bring the one idea you have been circling.</h2>
-                <p>A Space can start with just you. Invite people when it has something worth showing them.</p>
-              <form className="cta-form" action="/signup" method="get">
-                <input className="input" type="email" name="email"
-                  placeholder="you@example.com" aria-label="Email address" required />
-                <button type="submit" className="btn btn-primary">Create a Space</button>
-              </form>
-              <div className="cta-trust">
-                <span><Check size={13} /> Free to start</span>
-                <span><Check size={13} /> No credit card</span>
-                <span><Check size={13} /> Invite people when you are ready</span>
-              </div>
-              </div>
-              </div>
-          </AnimateIn>
-        </div>
-      </section>
-
       <footer className="footer">
         <div className="footer-inner">
-          <div className="footer-left">&copy; 2026 Avera. Ideas deserve company.</div>
+          <div className="footer-left">&copy; 2026 Avera. Engineered for builders.</div>
           <div className="footer-links">
+            <Link href="/discover">Discover</Link>
+            <Link href="/ideas">Ideas</Link>
+            <Link href="/privacy">Privacy</Link>
             <Link href="/login">Sign in</Link>
             <Link href="/signup">Sign up</Link>
           </div>
