@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { KeyRound, Mail } from "lucide-react";
 import { api, ApiError } from "@/lib/api";
+import { isEmail } from "@/lib/validate";
 import { AuthShell, AuthSplit, AuthSwap, PasswordField, SubmitButton } from "@/components/AuthCard";
 
 /**
@@ -30,6 +31,10 @@ export default function ForgotPasswordPage() {
 
   async function handleRequest(e: FormEvent) {
     e.preventDefault();
+    if (!isEmail(email.trim())) {
+      setError("Enter a valid email address.");
+      return;
+    }
     setLoading(true);
     setError("");
     setNotice("");

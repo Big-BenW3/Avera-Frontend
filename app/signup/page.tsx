@@ -1,12 +1,16 @@
 "use client";
 import { useState, type FormEvent } from "react";
 import { AtSign, Eye, EyeOff, Mail, User } from "lucide-react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { api, ApiError } from "@/lib/api";
+import { useSession } from "@/lib/auth";
+import { cleanText, isEmail } from "@/lib/validate";
 import { AuthShell, AuthSplit, AuthSwap, OAuthRow, PasswordField, SubmitButton } from "@/components/AuthCard";
 
 export default function SignupPage() {
   const router = useRouter();
+  const { signedIn } = useSession();
   const [name, setName] = useState("");
   const [handle, setHandle] = useState("");
   const [email, setEmail] = useState("");
@@ -22,10 +26,20 @@ export default function SignupPage() {
       setError("Passwords do not match.");
       return;
     }
+    const displayName = cleanText(name, 80).replace(/\s+/g, " ");
+    if (displayName.length < 2) {
+      setError("Enter your name (at least 2 characters).");
+      return;
+    }
+    if (!isEmail(email.trim())) {
+      setError("Enter a valid email address.");
+      return;
+    }
     setLoading(true);
     setError("");
     try {
-      await api.auth.signUp({ email: email.trim(), password, displayName: name.trim(), handle });
+      const res = await api.auth.signUp({ email: email.trim(), password, displayName, handle });
+      signedIn(res.user);
       router.push("/onboarding");
     } catch (err) {
       setError(err instanceof ApiError ? err.message : "Could not create account. Please try again.");
@@ -36,18 +50,18 @@ export default function SignupPage() {
 
   return (
     <AuthSplit
-      eyebrow="Start here"
-      headline="One idea deserves a real home."
-      blurb="A Space can begin with just you. Invite people when it has something worth showing them."
+      eyebrow="GET STARTED"
+      headline="Built for technical builders."
+      blurb="Deploy your project Space with sprint roadmaps, Git integration, and real-time collaboration."
     >
       <AuthShell
         title="Create your account"
-        subtitle="It takes about a minute."
+        subtitle="Initialize your developer workspace."
         footer={
           <>
             <AuthSwap prompt="Already have an account?" link="/login" label="Sign in" />
             <p className="auth-terms">
-              By signing up, you agree to Avera&apos;s Terms of Service and Privacy Policy.
+              By signing up, you acknowledge Avera&apos;s <Link href="/privacy">Privacy Policy</Link>.
             </p>
           </>
         }
@@ -63,6 +77,7 @@ export default function SignupPage() {
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
+              maxLength={80}
               placeholder="Alex Morgan"
               autoComplete="name"
               autoFocus
@@ -81,6 +96,7 @@ export default function SignupPage() {
               onChange={(e) => setHandle(e.target.value.toLowerCase().replace(/[^a-z0-9-]/g, ""))}
               required
               pattern="[a-z0-9][a-z0-9-]{2,39}"
+              maxLength={40}
               placeholder="alex-builds"
               autoComplete="username"
             />
@@ -97,6 +113,7 @@ export default function SignupPage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
+              maxLength={254}
               placeholder="name@company.com"
               autoComplete="email"
             />

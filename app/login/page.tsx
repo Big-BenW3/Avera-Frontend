@@ -4,6 +4,8 @@ import Link from "next/link";
 import { Mail } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { api, ApiError } from "@/lib/api";
+import { useSession } from "@/lib/auth";
+import { isEmail, safeNextPath } from "@/lib/validate";
 import { AuthShell, AuthSplit, AuthSwap, OAuthRow, PasswordField, SubmitButton } from "@/components/AuthCard";
 
 /**
@@ -21,8 +23,14 @@ function ResetFlash() {
   );
 }
 
+/** Where to go after signing in: the page the visitor was sent from, if it is a safe same-site path. */
+function nextPath() {
+  return safeNextPath(new URLSearchParams(window.location.search).get("next"));
+}
+
 export default function LoginPage() {
   const router = useRouter();
+  const { signedIn } = useSession();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -32,6 +40,10 @@ export default function LoginPage() {
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
+    if (!isEmail(email.trim())) {
+      setError("Enter a valid email address.");
+      return;
+    }
     setLoading(true);
     setError("");
     try {
@@ -39,7 +51,8 @@ export default function LoginPage() {
       if (res.requiresMfa && res.mfaTicket) {
         setMfaTicket(res.mfaTicket);
       } else {
-        router.push("/discover");
+        signedIn(res.user);
+        router.push(nextPath());
       }
     } catch (err) {
       setError(err instanceof ApiError ? err.message : "Invalid credentials. Please try again.");
@@ -54,8 +67,9 @@ export default function LoginPage() {
     setLoading(true);
     setError("");
     try {
-      await api.auth.mfaVerify({ ticket: mfaTicket, code: mfaCode.replace(/\s/g, "") });
-      router.push("/discover");
+      const res = await api.auth.mfaVerify({ ticket: mfaTicket, code: mfaCode.replace(/\s/g, "") });
+      signedIn(res.user);
+      router.push(nextPath());
     } catch (err) {
       setError(err instanceof ApiError ? err.message : "That code did not work. Please try again.");
     } finally {
@@ -94,13 +108,13 @@ export default function LoginPage() {
 
   return (
     <AuthSplit
-      eyebrow="Welcome back"
-      headline="Pick up where your purpose left off."
-      blurb="Your Spaces, tasks, and the people in them are right where you left them."
+      eyebrow="AUTHENTICATION"
+      headline="Access your engineering workspace."
+      blurb="Spaces, live roadmaps, Git integrations, and team discussions in one place."
     >
       <AuthShell
-        title="Welcome back"
-        subtitle="Sign in to continue."
+        title="Sign in to Avera"
+        subtitle="Enter your credentials to access your spaces."
         footer={<AuthSwap prompt="New to Avera?" link="/signup" label="Create an account" />}
       >
       <form className="auth-form" onSubmit={handleSubmit}>

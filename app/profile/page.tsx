@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Settings } from "lucide-react";
 import { api, ApiError } from "@/lib/api";
+import { useSession } from "@/lib/auth";
 import type { ApiUser } from "@/lib/models";
 import { AnimateIn } from "@/components/Animations";
 import { ProductNav } from "@/components/ProductNav";
@@ -12,6 +13,7 @@ import { FieldError } from "@/components/Modal";
 
 export default function ProfilePage() {
   const router = useRouter();
+  const { signedOut } = useSession();
   const [user, setUser] = useState<ApiUser | null>(null);
   const [loading, setLoading] = useState(true);
   const [editing, setEditing] = useState(false);
@@ -58,6 +60,7 @@ export default function ProfilePage() {
     try {
       await api.auth.signOut();
     } catch {}
+    signedOut();
     router.push("/login");
   }
 

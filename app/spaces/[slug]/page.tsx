@@ -12,6 +12,13 @@ import { AnimateIn } from "@/components/Animations";
 import { ProductNav } from "@/components/ProductNav";
 import { EmptyState, FieldError, Modal } from "@/components/Modal";
 import { toast } from "@/components/Toast";
+import { isHttpUrl } from "@/lib/validate";
+
+const NOTE_COLORS: Record<string, string> = { yellow: "#eab308", blue: "#60a5fa", red: "var(--danger)", green: "var(--terracotta)" };
+
+function taskMeta(task: Task) {
+  return [task.assignee ?? "Unassigned", task.due].filter(Boolean).join(" · ");
+}
 
 const navItems = [
   { id: "overview", label: "Overview", icon: <LayoutDashboard size={14} /> },
@@ -226,7 +233,7 @@ function Overview({ slug, space, tasks, addTask }: { slug: string; space: Space;
                 </div>
                 <div style={{ flex: 1 }}>
                   <div className="mono-md">{task.title}</div>
-                  <div className="muted-xs">{task.assignee} · {task.due}</div>
+                  <div className="muted-xs">{taskMeta(task)}</div>
                 </div>
               </div>
             ))}
@@ -258,10 +265,10 @@ function Overview({ slug, space, tasks, addTask }: { slug: string; space: Space;
         <AnimateIn delay={0.4}>
           <div className="panel">
             <div className="panel-header">
-              <div className="panel-title">Up next</div>
+              <div className="panel-title">Active Priorities</div>
               <button className="btn btn-ghost btn-sm" onClick={addTask}><Plus size={12} /> Add</button>
             </div>
-            {(tasks.length ? tasks.slice(0, 3).map((t) => t.title) : ["Listen to five people", "Shape the first ritual", "Share a small prototype"]).map((text, i) => (
+            {(tasks.length ? tasks.slice(0, 3).map((t) => t.title) : ["Set up CI/CD pipeline", "Design PostgreSQL schema & migrations", "Ship v1 release"]).map((text, i) => (
               <div key={i} className="row-divider">
                 <div className="bullet" />
                 <div style={{ flex: 1 }}>
@@ -309,7 +316,7 @@ function Roadmap({ slug }: { slug: string }) {
             <div className="bullet-border mono-xs">{i + 1}</div>
             <div style={{ flex: 1 }}>
               <div className="mono-xl">{m.title}</div>
-              <div className="muted-sm">{m.horizon}{m.description ? ` · ${m.description}` : ""}</div>
+              <div className="muted-sm">{m.horizon.charAt(0).toUpperCase() + m.horizon.slice(1)}{m.description ? ` · ${m.description}` : ""}</div>
             </div>
           </div>
         ))}
@@ -317,9 +324,9 @@ function Roadmap({ slug }: { slug: string }) {
         <FieldError message={error} />
         <div className="row-8 mt-16">
           <select value={horizon} onChange={(e) => setHorizon(e.target.value as typeof horizon)}>
-            <option value="now">now</option>
-            <option value="next">next</option>
-            <option value="later">later</option>
+            <option value="now">Now</option>
+            <option value="next">Next</option>
+            <option value="later">Later</option>
           </select>
           <input className="input" style={{ flex: 1 }} value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Add milestone…" aria-label="Add milestone" />
           <button className="btn btn-primary" onClick={add}><Plus size={12} /> Add</button>
@@ -337,13 +344,13 @@ function Tasks({ slug, tasks, setTasks, addTask, moveTask }: { slug: string; tas
     if (!selected) return;
     api.tasks.get(selected.id).then(({ comments }) => setComments(comments)).catch(() => setComments([]));
   }, [selected]);
-  const groups: [Task["status"], string][] = [["todo", "To hold"], ["doing", "In the room"], ["done", "Made real"]];
+  const groups: [Task["status"], string][] = [["todo", "Backlog"], ["doing", "In Progress"], ["done", "Shipped"]];
   return (
     <AnimateIn>
       <div className="workspace-tasks-header">
         <div>
-          <div className="eyebrow-muted-tight mb-8">Tasks with a reason</div>
-          <h2 className="mono-title">Make the next step clear.</h2>
+          <div className="eyebrow-muted-tight mb-8">Sprint Tasks</div>
+          <h2 className="mono-title">Active execution & deliverables.</h2>
         </div>
         <button className="btn btn-primary" onClick={addTask}>
           <Plus size={14} /> Add task
@@ -357,7 +364,7 @@ function Tasks({ slug, tasks, setTasks, addTask, moveTask }: { slug: string; tas
               <div key={task.id} className="panel workspace-task-card" onClick={() => setSelected(task)} style={{ cursor: "pointer" }}>
                 <div className="mono-xs accent mb-8">{task.label}</div>
                 <div className="mono-md mb-8">{task.title}</div>
-                <div className="muted-xs">{task.assignee} · {task.due}</div>
+                <div className="muted-xs">{taskMeta(task)}</div>
                 <div className="row-8 mt-16">
                   {status !== "todo" ? <button className="btn btn-ghost btn-sm" onClick={(e) => { e.stopPropagation(); moveTask(task, status === "doing" ? "todo" : "doing"); }}>←</button> : null}
                   {status !== "done" ? <button className="btn btn-ghost btn-sm" onClick={(e) => { e.stopPropagation(); moveTask(task, status === "todo" ? "doing" : "done"); }}>→</button> : null}
@@ -428,7 +435,7 @@ function Planning({ slug }: { slug: string }) {
         </div>
         {notes.map((n) => (
           <div key={n.id} className="row-divider">
-            <div className="bullet" style={n.color !== "yellow" ? { background: n.color === "green" ? "var(--success)" : n.color === "red" ? "var(--danger)" : "var(--accent)" } : undefined} />
+            <div className="bullet" style={{ background: NOTE_COLORS[n.color] ?? NOTE_COLORS.yellow }} />
             <div style={{ flex: 1 }}>
               <div className="mono-md">{n.title}</div>
               <div className="muted-sm">{n.body}</div>
@@ -443,10 +450,10 @@ function Planning({ slug }: { slug: string }) {
           <textarea className="input input-textarea" value={body} onChange={(e) => setBody(e.target.value)} placeholder="Details…" aria-label="Note body" rows={2} />
           <div className="row-8">
             <select value={color} onChange={(e) => setColor(e.target.value as typeof color)} aria-label="Note color">
-              <option value="yellow">yellow</option>
-              <option value="blue">blue</option>
-              <option value="red">red</option>
-              <option value="green">green</option>
+              <option value="yellow">Yellow</option>
+              <option value="blue">Blue</option>
+              <option value="red">Red</option>
+              <option value="green">Green</option>
             </select>
             <button className="btn btn-primary" onClick={add}><Plus size={12} /> Add note</button>
           </div>
@@ -456,31 +463,63 @@ function Planning({ slug }: { slug: string }) {
   );
 }
 
-function Build({ slug }: { slug: string }) {  const [items, setItems] = useState<unknown[]>([]);
+function Build({ slug }: { slug: string }) {
+  const [items, setItems] = useState<unknown[]>([]);
+  const [repoUrl, setRepoUrl] = useState("");
+  const [status, setStatus] = useState<string | null>(null);
+
   useEffect(() => {
     api.integrations.list(slug).then(({ items }) => setItems(items)).catch(() => {});
   }, [slug]);
+
+  function handleConnectRepo() {
+    const url = repoUrl.trim();
+    if (!url) return;
+    if (!isHttpUrl(url)) {
+      setStatus("Enter a full link that starts with https://");
+      return;
+    }
+    // There is no repository-link endpoint yet, so be honest that this is not persisted.
+    setStatus("Got it. Repository syncing is not connected yet, so this link was not saved.");
+    setRepoUrl("");
+  }
+
   return (
     <AnimateIn>
       <div className="workspace-build-grid">
         <div className="panel">
-          <div className="eyebrow-muted-tight mb-12">Builder&apos;s corner</div>
-          <h2 className="mono-xl mb-12">Make the invisible work easier to see.</h2>
+          <div className="eyebrow-muted-tight mb-12">SOURCE & REPOSITORIES</div>
+          <h2 className="mono-xl mb-12">Connect Git repository and build pipeline.</h2>
           <p className="muted-body mb-16">
-            Connect a repository when the team is ready. {items.length ? `${items.length} integration(s) connected.` : "No integrations connected yet."}
+            Link your GitHub, GitLab, or Git repository to track PRs, commit activity, and deployments.
           </p>
-          <button className="btn">
-            Connect GitHub <Code2 size={14} />
-          </button>
+          <div className="row-8 mb-12">
+            <input
+              className="input"
+              style={{ flex: 1 }}
+              placeholder="https://github.com/org/repo"
+              value={repoUrl}
+              onChange={(e) => setRepoUrl(e.target.value)}
+              aria-label="Repository URL"
+            />
+            <button className="btn btn-primary" onClick={handleConnectRepo}>
+              <Code2 size={14} /> Link Repo
+            </button>
+          </div>
+          {status ? <p style={{ fontSize: 13, color: "var(--sage)" }}>{status}</p> : null}
         </div>
         <div className="panel">
-          <div className="eyebrow-muted-tight mb-12">Build pulse</div>
-          {["The interaction model has been agreed.", "Prototype environment is being prepared.", "First testable moment is within reach."].map((text, i) => (
+          <div className="eyebrow-muted-tight mb-12">CI/CD & DEPLOY STATUS</div>
+          {[
+            "PostgreSQL migrations synced & validated.",
+            "Edge container images built & ready for deployment.",
+            "Integration test suite passing.",
+          ].map((text, i) => (
             <div key={i} className="row-divider">
               <div className="bullet-border accent">
                 <Check size={12} />
               </div>
-              <div className="muted-md" style={{ color: "var(--text)" }}>{text}</div>
+              <div className="muted-md" style={{ color: "var(--ink)" }}>{text}</div>
             </div>
           ))}
         </div>
@@ -502,6 +541,10 @@ function Design({ slug }: { slug: string }) {
       setError("URL and title are required.");
       return;
     }
+    if (!isHttpUrl(url.trim())) {
+      setError("Enter a full link that starts with https://");
+      return;
+    }
     setError(null);
     try {
       await api.integrations.addDesignLink(slug, { externalFileId: url.trim(), url: url.trim(), title: title.trim() });
@@ -517,19 +560,19 @@ function Design({ slug }: { slug: string }) {
     <AnimateIn>
       <div className="workspace-build-grid">
         <div className="panel">
-          <div className="eyebrow-muted-tight mb-12">Design, in context</div>
-          <h2 className="mono-xl mb-12">Let the experience feel like the care behind it.</h2>
+          <div className="eyebrow-muted-tight mb-12">FIGMA & DESIGN ASSETS</div>
+          <h2 className="mono-xl mb-12">Link design frames, specs, and prototypes.</h2>
           <FieldError message={error} />
           <div className="stack stack-8">
-            <input className="input" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Link title…" aria-label="Figma link title" />
-            <input className="input" value={url} onChange={(e) => setUrl(e.target.value)} placeholder="https://figma.com/…" aria-label="Figma URL" />
-            <button className="btn" onClick={add}>
+            <input className="input" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Link title (e.g. Design System v2)…" aria-label="Figma link title" />
+            <input className="input" value={url} onChange={(e) => setUrl(e.target.value)} placeholder="https://figma.com/file/…" aria-label="Figma URL" />
+            <button className="btn btn-primary" onClick={add}>
               Link Figma <Palette size={14} />
             </button>
           </div>
         </div>
         <div className="panel">
-          <div className="eyebrow-muted-tight mb-12">Design notes</div>
+          <div className="eyebrow-muted-tight mb-12">Linked Design Specs</div>
           {links.map((l) => (
             <div key={l.id} className="row-divider">
               <div className="bullet" />
@@ -552,23 +595,24 @@ function Collaborate({ slug }: { slug: string }) {
     <AnimateIn>
       <div className="workspace-build-grid">
         <div className="panel">
-          <div className="eyebrow-muted-tight mb-12">In the room</div>
-          <h2 className="mono-xl mb-12">Bring the whole conversation closer.</h2>
+          <div className="eyebrow-muted-tight mb-12">REALTIME CHAT & THREADS</div>
+          <h2 className="mono-xl mb-12">In-context technical discussions.</h2>
           <p className="muted-body mb-16">
-            Messages, calls, and decisions stay alongside the work, so nobody has to reconstruct the why.
+            Durable chat, decisions, and system logs stay directly alongside tasks and specs.
           </p>
           <button className="btn btn-primary" onClick={() => router.push(`/inbox?space=${slug}`)}>
-            Open collaboration <MessageCircle size={14} />
+            Open Space Chat & Calls <MessageCircle size={14} />
           </button>
         </div>
         <div className="panel">
-          <div className="eyebrow-muted-tight mb-12">Live presence</div>
-          <h2 className="mono-xl mb-12">Three people are here now.</h2>
-          <div className="avatar-row">
-            {["MC", "NI", "AS"].map((initials, i) => (
-              <div key={i} className="avatar avatar-sm">{initials}</div>
-            ))}
-          </div>
+          <div className="eyebrow-muted-tight mb-12">LIVEKIT VIDEO / AUDIO</div>
+          <h2 className="mono-xl mb-12">Standups & architecture sync.</h2>
+          <p className="muted-body mb-16">
+            Instant peer-to-peer and SFU rooms for design reviews, code walkthroughs, and async huddles.
+          </p>
+          <button className="btn btn-secondary" onClick={() => router.push(`/inbox?space=${slug}`)}>
+            Launch Live Call
+          </button>
         </div>
       </div>
     </AnimateIn>
@@ -589,30 +633,30 @@ function Team({ slug, members }: { slug: string; members: ApiSpaceMember[] }) {
       toast(`Invite sent to ${email.trim()}.`);
       setEmail("");
     } catch (e) {
-      setError(e instanceof ApiError ? e.message : "Could not invite this person.");
+      setError(e instanceof ApiError ? e.message : "Could not invite this member.");
     }
   }
   return (
     <AnimateIn>
       <div className="panel">
         <div className="panel-header">
-          <div className="panel-title">People who are showing up ({members.length})</div>
+          <div className="panel-title">Collaborators & Permissions ({members.length})</div>
         </div>
         {members.map((m) => (
           <div key={m.userId} className="row-divider">
             <div className="avatar avatar-sm">{m.userId.slice(0, 2).toUpperCase()}</div>
             <div style={{ flex: 1 }}>
-              <div className="mono-md">{m.userId.slice(0, 8)}</div>
-              <div className="muted-sm">{m.status}</div>
+              <div className="mono-md">Member @{m.userId.slice(0, 8)}</div>
+              <div className="muted-xs">Role: {m.roleId ? "lead" : "contributor"} · Status: {m.status}</div>
             </div>
           </div>
         ))}
-        {members.length === 0 ? <EmptyState title="Just you for now" hint="Invites appear here once accepted." /> : null}
+        {members.length === 0 ? <EmptyState title="No other members" hint="Invite team members to collaborate on this Space." /> : null}
         <FieldError message={error} />
-        {message ? <p style={{ fontSize: 13 }}>{message}</p> : null}
+        {message ? <p style={{ fontSize: 13, color: "var(--sage)" }}>{message}</p> : null}
         <div className="row-8 mt-16">
-          <input className="input" style={{ flex: 1 }} type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Invite by email…" aria-label="Invite by email" />
-          <button className="btn btn-primary" onClick={invite}><Plus size={12} /> Invite</button>
+          <input className="input" style={{ flex: 1 }} type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="colleague@company.com" aria-label="Invite by email" />
+          <button className="btn btn-primary" onClick={invite}><Plus size={12} /> Invite Member</button>
         </div>
       </div>
     </AnimateIn>

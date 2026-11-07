@@ -5,15 +5,17 @@ import { ArrowRight, ArrowLeft } from "lucide-react";
 import { api, ApiError } from "@/lib/api";
 import { AnimateIn } from "@/components/Animations";
 import { ProductNav } from "@/components/ProductNav";
+import { isEmail } from "@/lib/validate";
 
-const TYPES = ["startup", "hackathon", "open_source", "client_project", "personal", "experiment"] as const;
+const TYPES = ["startup", "open_source", "hackathon", "client_project", "experiment", "personal"] as const;
+const CATEGORIES = ["Developer Tools", "AI & Machine Learning", "Infrastructure", "Fintech & Web3", "Open Source", "Security", "SaaS"];
 
 export default function CreateSpacePage() {
   const router = useRouter();
   const [step, setStep] = useState(1);
   const [name, setName] = useState("");
   const [purpose, setPurpose] = useState("");
-  const [category, setCategory] = useState("Care");
+  const [category, setCategory] = useState("Developer Tools");
   const [type, setType] = useState<(typeof TYPES)[number]>("startup");
   const [visibility, setVisibility] = useState<"public" | "private">("private");
   const [inviteEmail, setInviteEmail] = useState("");
@@ -21,9 +23,26 @@ export default function CreateSpacePage() {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
+  function next() {
+    if (step === 1 && name.trim().length < 2) {
+      setError("Give your Space a name of at least 2 characters.");
+      return;
+    }
+    if (step === 2 && purpose.trim().length < 10) {
+      setError("Describe the purpose in at least 10 characters.");
+      return;
+    }
+    setError(null);
+    setStep(step + 1);
+  }
+
   async function finish() {
     if (name.trim().length < 2 || purpose.trim().length < 10) {
       setError("Name needs 2+ characters and purpose needs 10+.");
+      return;
+    }
+    if (inviteEmail.trim() && !isEmail(inviteEmail.trim())) {
+      setError("That invite address doesn't look right. Fix it or leave it blank.");
       return;
     }
     setError(null);
@@ -67,57 +86,55 @@ export default function CreateSpacePage() {
           <div>
             <AnimateIn delay={0.1}>
               <div className="panel">
-                <div className="eyebrow-muted-tight mb-16">Open a Space · Step {step} of 3</div>
+                <div className="eyebrow-muted-tight mb-16">Create Space · Step {step} of 3</div>
                 <h1 className="mono-title mb-12">
                   {step === 1
-                    ? "Give the work a place to belong."
+                    ? "Initialize a new project Space."
                     : step === 2
-                    ? "Name the feeling you want to protect."
-                    : "Invite the first right people."}
+                    ? "Define project scope and roadmap goals."
+                    : "Invite core contributors."}
                 </h1>
                 <p className="muted-body mb-24">
                   {step === 1
-                    ? "A Space is a calm shared home for one meaningful product. It can begin with just you."
+                    ? "A Space unifies architecture specs, sprint tasks, Git repositories, and real-time team collaboration."
                     : step === 2
-                    ? "A clear purpose makes it easier for every contributor to know what matters next."
-                    : "You can invite people now or begin quietly and send the first invitation later."}
+                    ? "A concise mission statement helps contributors understand technical priorities and deliverable targets."
+                    : "Add initial team members now or share an invite link later from the Space dashboard."}
                 </p>
 
                 {step === 1 && (
                   <div className="stack stack-16">
                     <div className="field">
-                      <label htmlFor="space-name">Space name</label>
+                      <label htmlFor="space-name">Project / Space name</label>
                       <input
+                        className="input"
                         id="space-name"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        placeholder="For example, Luma"
+                        placeholder="e.g. hyperdrive-engine"
+                        maxLength={80}
                       />
                     </div>
                     <div className="field">
-                      <label htmlFor="space-category">The thread it belongs to</label>
+                      <label htmlFor="space-category">Engineering Domain</label>
                       <select
                         id="space-category"
                         className="select"
                         value={category}
                         onChange={(e) => setCategory(e.target.value)}
                       >
-                        <option>Care</option>
-                        <option>Community</option>
-                        <option>Climate</option>
-                        <option>Creativity</option>
-                        <option>Learning</option>
+                        {CATEGORIES.map((c) => <option key={c} value={c}>{c}</option>)}
                       </select>
                     </div>
                     <div className="field">
-                      <label htmlFor="space-type">What kind of work is this?</label>
+                      <label htmlFor="space-type">Project Type</label>
                       <select
                         id="space-type"
                         className="select"
                         value={type}
                         onChange={(e) => setType(e.target.value as typeof type)}
                       >
-                        {TYPES.map((t) => <option key={t} value={t}>{t}</option>)}
+                        {TYPES.map((t) => <option key={t} value={t}>{t.replace("_", " ").replace(/^./, (c) => c.toUpperCase())}</option>)}
                       </select>
                     </div>
                   </div>
@@ -133,6 +150,7 @@ export default function CreateSpacePage() {
                         value={purpose}
                         onChange={(e) => setPurpose(e.target.value)}
                         placeholder="We are here to make..."
+                        maxLength={280}
                       />
                     </div>
                     <div className="field">
@@ -155,6 +173,7 @@ export default function CreateSpacePage() {
                     <div className="field">
                       <label htmlFor="space-invite">Invite by email (optional)</label>
                       <input
+                        className="input"
                         id="space-invite"
                         type="email"
                         value={inviteEmail}
@@ -177,12 +196,12 @@ export default function CreateSpacePage() {
 
                 <div className="row-12 mt-24">
                   {step > 1 && (
-                    <button className="btn" onClick={() => setStep(step - 1)}>
+                    <button className="btn" onClick={() => { setError(null); setStep(step - 1); }}>
                       <ArrowLeft size={14} /> Back
                     </button>
                   )}
                   {step < 3 ? (
-                    <button className="btn btn-primary" onClick={() => setStep(step + 1)}>
+                    <button className="btn btn-primary" onClick={next}>
                       Continue <ArrowRight size={14} />
                     </button>
                   ) : (
