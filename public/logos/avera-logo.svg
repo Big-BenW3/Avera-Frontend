@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 44" fill="none">
+  <defs>
+    <linearGradient id="av-g" x1="3" y1="41" x2="41" y2="3" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#10B981"/>
+      <stop offset="0.5" stop-color="#06B6D4"/>
+      <stop offset="1" stop-color="#6366F1"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Mark: A glyph 44×44 grid -->
+  <path d="M22 3L4 41H13.4L22 23L30.6 41H40L22 3Z" fill="url(#av-g)"/>
+  <!-- Inner cutout triangle -->
+  <path d="M22 20.5L18 30.5H26L22 20.5Z" fill="#09090b"/>
+
+  <!-- Wordmark: AVERA — tracking 0.12em, weight 500, geometric sans -->
+  <text x="54" y="30"
+    font-family="'Inter', 'DM Sans', system-ui, sans-serif"
+    font-size="16"
+    font-weight="500"
+    letter-spacing="2"
+    fill="currentColor">AVERA</text>
+</svg>

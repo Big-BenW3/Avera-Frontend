@@ -1,125 +1,127 @@
-﻿/* ============================================================
-   AVERA — warm human studio
-   Canvas cream, terracotta accent, editorial serif headings.
-   No pills. No 3D tilt. Colour and shadow do the work.
+/* ============================================================
+   AVERA — Developer & Engineering Platform Design System
+   High-density, dark-first zinc, precision accents, Inter + DM Mono.
    ============================================================ */
 
 :root {
-  /* ——— Warm human studio, rebuilt ———
-     Milk canvas, white-warm paper, espresso ink,
-     persimmon voice, honey + sage + blush support.
-     Friendly = softer ink, brighter accent, larger radii. */
-  --canvas: #faf5ee;
-  --canvas-warm: #f4ece1;
-  --paper: #fffdf9;
-  --paper-hover: #fdf6ec;
-  --paper-raised: #ffffff;
+  /* ============================================================
+     TERMINAL NOIR — ported from prototype/terminal-noir/styles.css.
+     Near-monochrome, flat, hairline-bordered, single emerald accent.
+     Variable NAMES kept stable from the prior design system on purpose —
+     only values change here — so every existing var(--x) reference across
+     this file and every component keeps resolving correctly.
+     ============================================================ */
+  --canvas: #ffffff;
+  --canvas-warm: #f7f7f8;
+  --paper: #ffffff;
+  --paper-hover: #eeeef0;
+  --paper-raised: #f7f7f8;
 
-  /* Ink — espresso, not near-black */
-  --ink: #2b2118;
-  --dust: #8a7d72;
-  --dust-light: #b8aa9c;
+  /* Ink */
+  --ink: #0a0a0a;
+  --dust: #55555c;
+  --dust-light: #8b8b92;
 
-  /* Voice — persimmon, ripe and welcoming */
-  --terracotta: #e4572e;
-  --terracotta-deep: #b93a1a;
-  --terracotta-light: #fdebd9;
-  --clay: #d9a441;
-  --sage: #5b7e3f;
-  --sage-light: #e9f1dc;
-  --clay-tint: #fbd9b8;
-  --blush: #f6c9b8;
-  --sky-soft: #dcebe4;
+  /* Accent — single emerald, no secondary brand hue */
+  --terracotta: #059669;
+  --terracotta-deep: #047857;
+  --terracotta-light: #ecfdf5;
+  --clay: #2563eb; /* neutral status-blue only (e.g. "validated" pill) — never a second brand accent */
+  --sage: #059669;
+  --sage-light: #ecfdf5;
+  --clay-tint: #eff6ff;
+  --blush: #eeeef0;
+  --sky-soft: #f7f7f8;
+  /* Text color for content sitting ON the accent fill — flips with accent brightness per theme */
+  --accent-ink: #ffffff;
+  /* The one deliberate break from single-accent discipline: destructive actions only */
+  --danger: #ef4444;
+  --danger-light: #fef2f2;
 
-  /* Lines + depth — warm, barely-there */
-  --border: #eadfd2;
-  --border-strong: #dccbb6;
-  --shadow-sm: 0 1px 3px rgba(43, 33, 24, 0.05), 0 1px 2px rgba(43, 33, 24, 0.04);
-  --shadow-md: 0 6px 20px rgba(43, 33, 24, 0.09), 0 2px 6px rgba(228, 87, 46, 0.06);
-  --shadow-lg: 0 16px 48px rgba(43, 33, 24, 0.12), 0 4px 12px rgba(228, 87, 46, 0.08);
+  /* Hairline borders, not solid lines */
+  --border: rgba(0, 0, 0, 0.08);
+  --border-strong: rgba(0, 0, 0, 0.14);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 2px 10px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 28px rgba(0, 0, 0, 0.08);
 
-  /* Type — Newsreader (display) + Inter (body) + DM Mono (labels).
-     The optical-size axis on Newsreader does the heavy lifting: `font-optical-sizing`
-     below lets one family cover both the 72px hero and a 20px card title. */
-  --font-display: var(--font-newsreader), Newsreader, Georgia, serif;
-  --font-body: var(--font-inter), Inter, system-ui, sans-serif;
+  /* Type — monospace-led (headings, labels, nav, numbers); Inter stays for body copy only */
+  --font-display: var(--font-dm), "DM Mono", ui-monospace, monospace;
+  --font-body: var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-mono: var(--font-dm), "DM Mono", ui-monospace, monospace;
 
-  /* Auth mural — a printed dawn wash. Tokenised so dark mode re-tints it. */
-  --mural-1: #fdeeda;
-  --mural-2: #f9dcc0;
-  --mural-3: #f3c6a4;
-  --mural-4: #dfa183;
-  --mural-5: #c98a6d;
-  --mural-wash: rgba(255, 255, 255, 0.65);
-  --mural-sun: rgba(228, 87, 46, 0.5);
-  --mural-sage: rgba(91, 126, 63, 0.34);
-  --mural-clay: rgba(217, 164, 65, 0.4);
-  --mural-ink: #2b2118;
-  --mural-ink-soft: #5d4a3a;
-  --mural-ink-faint: rgba(43, 33, 24, 0.66);
-  --mural-ink-accent: #8a3b1c;
+  /* Auth mural — real photo panel (see AuthCard), these only tint the gradient veil */
+  --mural-1: #000000;
+  --mural-2: #0a0a0a;
+  --mural-3: #111113;
+  --mural-4: #18181a;
+  --mural-5: #2a2a2d;
+  --mural-wash: rgba(0, 0, 0, 0.35);
+  --mural-sun: rgba(5, 150, 105, 0.15);
+  --mural-sage: rgba(5, 150, 105, 0.25);
+  --mural-clay: rgba(37, 99, 235, 0.2);
+  --mural-ink: #f4f4f5;
+  --mural-ink-soft: #c4c4cc;
+  --mural-ink-faint: rgba(244, 244, 245, 0.6);
+  --mural-ink-accent: #34d399;
 
-  /* Motion — one set of curves used everywhere. Ease-out for anything entering
-     or responding, ease-in-out for movement that stays on screen. */
-  --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
-  /* Legacy alias — most existing rules still reference --ease. Same curve as
-     --ease-out so nothing changes visually; fold those rules over later. */
   --ease: var(--ease-out);
-  --dur-fast: 140ms;
-  --dur-base: 220ms;
-  --dur-slow: 400ms;
+  --dur-fast: 90ms;
+  --dur-base: 130ms;
+  --dur-slow: 260ms;
 
-  /* Radii — friendly, still no pills */
-  --r-card: 18px;
-  --r-input: 12px;
-  --r-cta: 14px;
-  --r-sm: 8px;
+  --r-card: 3px;
+  --r-input: 2px;
+  --r-cta: 2px;
+  --r-sm: 2px;
+  --r-pill: 2px;
 
   --wrap: 1200px;
 }
 
 [data-theme="dark"] {
-  /* Warm dark — lamplit umber, never cold slate */
-  --canvas: #1d1712;
-  --canvas-warm: #241b14;
-  --paper: #28201a;
-  --paper-hover: #322820;
-  --paper-raised: #2e251e;
-  --ink: #faf3e9;
-  --dust: #c4b4a5;
-  --dust-light: #8a7a6b;
-  --terracotta: #f0754f;
-  --terracotta-deep: #ff9a72;
-  --terracotta-light: #3d2417;
-  --clay: #e3b45e;
-  --sage: #9db86a;
-  --sage-light: #26331a;
-  --clay-tint: #4a2f18;
-  --blush: #5a3428;
-  --sky-soft: #24403a;
-  --border: #3d3228;
-  --border-strong: #57493b;
-  --shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.35);
-  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.45);
+  /* Terminal Noir dark — near-black elevation steps, emerald-only accent */
+  --canvas: #000000;
+  --canvas-warm: #0a0a0a;
+  --paper: #0a0a0a;
+  --paper-hover: #111113;
+  --paper-raised: #18181a;
+  --ink: #e4e4e7;
+  --dust: #8b8b92;
+  --dust-light: #55555c;
+  --terracotta: #34d399;
+  --terracotta-deep: #6ee7b7;
+  --terracotta-light: #052e23;
+  --clay: #60a5fa; /* neutral status-blue only — never a second brand accent */
+  --sage: #34d399;
+  --sage-light: #052e23;
+  --clay-tint: #0b2a4a;
+  --blush: #18181a;
+  --sky-soft: #052e23;
+  --accent-ink: #000000;
+  --danger: #ef4444;
+  --danger-light: #2a1012;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.14);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 2px 10px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.55);
 
-  /* Auth mural in dark — lamputember rather than daylight cream, and much
-     deeper so the light headline copy reads against it. */
-  --mural-1: #3a2a1e;
-  --mural-2: #4a3020;
-  --mural-3: #5c3a22;
-  --mural-4: #6b4025;
-  --mural-5: #7a4a2a;
-  --mural-wash: rgba(255, 214, 168, 0.14);
-  --mural-sun: rgba(240, 117, 79, 0.34);
-  --mural-sage: rgba(157, 184, 106, 0.26);
-  --mural-clay: rgba(227, 180, 94, 0.26);
-  --mural-ink: #fdf4e8;
-  --mural-ink-soft: #e3d2bf;
-  --mural-ink-faint: rgba(253, 244, 232, 0.72);
-  --mural-ink-accent: #ffb48e;
+  --mural-1: #000000;
+  --mural-2: #0a0a0a;
+  --mural-3: #111113;
+  --mural-4: #18181a;
+  --mural-5: #2a2a2d;
+  --mural-wash: rgba(0, 0, 0, 0.55);
+  --mural-sun: rgba(52, 211, 153, 0.2);
+  --mural-sage: rgba(52, 211, 153, 0.3);
+  --mural-clay: rgba(96, 165, 250, 0.2);
+  --mural-ink: #f4f4f5;
+  --mural-ink-soft: #c4c4cc;
+  --mural-ink-faint: rgba(244, 244, 245, 0.5);
+  --mural-ink-accent: #34d399;
 }
 
 /* ─── RESET ─── */
@@ -143,16 +145,12 @@ body {
 
 h1, h2, h3, h4 {
   font-family: var(--font-display);
-  /* Newsreader ships an optical-size axis. Letting the browser pick the right
-     cut per size means the 68px hero gets fine hairlines and generous counters,
-     while a 20px card title gets sturdier stems — one family, two textures. */
-  font-optical-sizing: auto;
-  font-weight: 400;
-  letter-spacing: -0.018em;   /* display type needs tighter tracking than body */
-  line-height: 1.14;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
   color: var(--ink);
   margin: 0;
-  text-wrap: balance;         /* stops rivers in multi-line headings */
+  text-wrap: balance;
 }
 
 h1 { font-size: 40px; }
@@ -363,7 +361,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
 
 .btn-primary {
   background: var(--terracotta);
-  color: #fff;
+  color: var(--accent-ink);
   border-color: var(--terracotta);
 }
 .btn-primary:hover { background: var(--terracotta-deep); border-color: var(--terracotta-deep); box-shadow: var(--shadow-md); }
@@ -528,7 +526,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
-  transition: background 160ms ease, border-color 160ms ease;
+  transition: background 160ms var(--ease-out), border-color 160ms var(--ease-out);
 }
 .auth-link-button:hover { background: var(--paper-hover); border-color: var(--dust-light); }
 
@@ -806,9 +804,26 @@ button, input, textarea, select { font: inherit; color: inherit; }
   transition: color 0.2s var(--ease);
 }
 
+.product-nav-tab {
+  position: relative;
+  padding: 6px 12px;
+  border-radius: var(--r-pill, var(--r-sm));
+  z-index: 1;
+}
+
 .nav-links a:hover,
 .product-nav-tab:hover { color: var(--ink); }
-.product-nav-tab.active { color: var(--terracotta); font-weight: 600; }
+.product-nav-tab.active { color: var(--ink); font-weight: 600; }
+
+/* Active-tab pill — glides via layoutId, never fades (high-frequency surface). */
+.nav-pill {
+  position: absolute;
+  inset: 0;
+  background: var(--paper-raised);
+  border: 1px solid var(--terracotta);
+  border-radius: var(--r-pill, var(--r-sm));
+  z-index: -1;
+}
 
 .nav-actions,
 .product-nav-actions { display: flex; align-items: center; gap: 8px; }
@@ -833,9 +848,9 @@ button, input, textarea, select { font: inherit; color: inherit; }
   right: 6px;
   min-width: 16px;
   padding: 0 4px;
-  border-radius: 8px;
+  border-radius: var(--r-sm);
   background: var(--terracotta);
-  color: #fff;
+  color: var(--accent-ink);
   font-family: var(--font-mono);
   font-size: 9px;
   line-height: 16px;
@@ -980,24 +995,19 @@ button, input, textarea, select { font: inherit; color: inherit; }
   color: var(--mural-ink-faint);
 }
 
-/* — Woven scene inside the mural: hills, cards, sun — pure CSS art — */
+/* — Developer matrix scene inside the auth panel — */
 .auth-scene {
   position: absolute;
-  inset: auto -6% -9% -6%;
-  height: 62%;
+  inset: 0;
   z-index: 1;
   pointer-events: none;
+  background-image: 
+    linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(ellipse at 50% 50%, black 40%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 40%, transparent 80%);
 }
-.auth-scene .hill {
-  position: absolute;
-  bottom: -18%;
-  width: 76%;
-  height: 78%;
-  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
-}
-.auth-scene .hill--back { left: -14%; background: linear-gradient(180deg, var(--mural-sage), transparent); filter: blur(1px); }
-.auth-scene .hill--front { right: -16%; background: linear-gradient(180deg, rgba(43,33,24,0.28), rgba(43,33,24,0.05)); }
-[data-theme="dark"] .auth-scene .hill--front { background: linear-gradient(180deg, rgba(0,0,0,0.34), rgba(0,0,0,0.06)); }
 
 /* REMOVED: the three floating `.idea-orbit` cards ("Luma — gentler care",
    "Brightwork rituals", "Field Notes"). They named invented Spaces as if real,
@@ -1097,19 +1107,28 @@ button, input, textarea, select { font: inherit; color: inherit; }
 
 .auth-bottom-cta { margin-top: auto; }
 
-.avera-logo { display: inline-flex; align-items: center; gap: 9px; }
+.avera-logo { display: inline-flex; align-items: center; gap: 9px; text-decoration: none; }
 .avera-logo-center { margin-bottom: 26px; }
 
 .avera-mark {
   display: grid;
   place-items: center;
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   border-radius: var(--r-sm);
-  background: var(--terracotta);
+  background: var(--paper-hover);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
 }
 
-.avera-word { font-family: var(--font-display); font-size: 23px; }
+.avera-word {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--ink);
+  text-transform: uppercase;
+}
 .avera-dot { color: var(--terracotta); }
 
 .oauth-divider {
@@ -1561,6 +1580,38 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .cta-photo-copy .cta-trust { justify-content: flex-start; color: rgba(255, 253, 249, 0.8); margin-top: 20px; }
 
 /* ─── CTA ─── */
+/* ─── FAQ — accordion via CSS grid-rows, single-open, no JS height math ─── */
+.faq-section { padding: 0 0 72px; }
+.faq-list { max-width: 760px; margin: 0 auto; }
+.faq-item { border-bottom: 1px solid var(--border); }
+.faq-q {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 2px;
+  background: none;
+  border: none;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+}
+.faq-q:hover { color: var(--terracotta); }
+.faq-chev { color: var(--terracotta); flex-shrink: 0; transition: transform var(--dur-base) var(--ease-out); }
+.faq-item[data-open="true"] .faq-chev { transform: rotate(45deg); }
+.faq-a-wrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--dur-slow) var(--ease-out);
+}
+.faq-item[data-open="true"] .faq-a-wrap { grid-template-rows: 1fr; }
+.faq-a-inner { overflow: hidden; }
+.faq-a { color: var(--dust); font-size: 15px; line-height: 1.7; padding: 0 2px 20px; max-width: 62ch; margin: 0; }
+
 .cta-section { padding: 40px 0 80px; }
 
 .cta-card {
@@ -1807,12 +1858,8 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .status-chip-green { background: var(--sage-light); border-color: var(--sage); color: var(--sage); }
 
 .status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--sage); }
-.status-dot--pulse { animation: pulseDot 2.4s var(--ease) infinite; }
-
-@keyframes pulseDot {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.35; }
-}
+/* Static by design — no pulsing/animated "live" indicators anywhere in this system. */
+.status-dot--pulse { animation: none; }
 
 .pulse-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--terracotta); }
 
@@ -2018,7 +2065,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
   animation: fadeUp 0.3s var(--ease-out) both;
 }
 
-.toast-error { background: var(--terracotta-deep); color: #fff; }
+.toast-error { background: var(--danger); color: #fff; }
 
 /* ─── SKELETONS — warm shimmer ─── */
 .skeleton {
@@ -2047,9 +2094,9 @@ button, input, textarea, select { font: inherit; color: inherit; }
   text-align: center;
 }
 
-.not-found-code { font-family: var(--font-display); font-size: 76px; color: var(--terracotta); line-height: 1; }
-.not-found-title { font-family: var(--font-display); font-size: 30px; margin: 12px 0; }
-.not-found-body { font-size: 15px; color: var(--dust); max-width: 46ch; margin: 0 auto 24px; }
+.not-found-code { font-family: var(--font-mono); font-size: 76px; color: var(--terracotta); line-height: 1; letter-spacing: -0.04em; }
+.not-found-title { font-family: var(--font-body); font-weight: 600; font-size: 22px; margin: 12px 0; letter-spacing: -0.02em; }
+.not-found-body { font-size: 14px; color: var(--dust); max-width: 46ch; margin: 0 auto 24px; font-family: var(--font-mono); }
 
 /* ─── RESPONSIVE ─── */
 @media (max-width: 1024px) {
@@ -2105,4 +2152,572 @@ button, input, textarea, select { font: inherit; color: inherit; }
   .logo-preview-grid, .logo-preview-usage-grid { grid-template-columns: 1fr; }
 }
 
+/* ============================================================
+   DEVELOPER CONSOLE & TECHNICAL SYSTEM COMPONENTS
+   ============================================================ */
 
+.dev-console {
+  background: var(--paper);
+  border: 1px solid var(--border-strong);
+  border-radius: 10px;
+  box-shadow: 0 20px 48px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+  font-family: var(--font-body);
+}
+
+.dev-console-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  background: var(--paper-hover);
+  border-bottom: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
+.dev-console-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.dot-red { background: var(--danger); }
+.dot-amber { background: #f59e0b; }
+.dot-emerald { background: #10b981; }
+
+.dev-console-title {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--dust);
+}
+.dev-console-icon { color: var(--terracotta); }
+
+.dev-console-meta {
+  display: flex;
+  gap: 8px;
+}
+
+.dev-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+}
+.dev-badge-git {
+  background: var(--paper-raised);
+  border: 1px solid var(--border);
+  color: var(--dust);
+}
+.dev-badge-ci {
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #10b981;
+}
+
+.dev-console-body {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  min-height: 290px;
+}
+
+.dev-console-sidebar {
+  border-right: 1px solid var(--border);
+  background: var(--paper);
+  padding: 12px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.dev-sidebar-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 10px;
+  border-radius: 5px;
+  font-size: 11px;
+  color: var(--dust);
+  cursor: pointer;
+}
+.dev-sidebar-item.active {
+  background: var(--paper-raised);
+  color: var(--ink);
+  font-weight: 500;
+  border: 1px solid var(--border);
+}
+.dev-sidebar-item:hover:not(.active) {
+  background: var(--paper-hover);
+  color: var(--ink);
+}
+
+.dev-pill {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  padding: 1px 5px;
+  border-radius: 3px;
+  background: var(--canvas);
+  color: var(--dust);
+}
+
+.dev-dot-live {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 6px #10b981;
+}
+
+.dev-console-main {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background: var(--paper-hover);
+}
+
+.dev-metrics-bar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.dev-metric {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.dev-metric-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  color: var(--dust);
+}
+
+.dev-metric-val {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.dev-metric-delta {
+  font-size: 10px;
+  color: #10b981;
+}
+.dev-metric-sub {
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--dust);
+}
+
+.dev-task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.dev-task-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 12px;
+}
+.dev-task-done .dev-task-status { color: #10b981; }
+.dev-task-active .dev-task-status { color: var(--terracotta); }
+.todo-dot { width: 8px; height: 8px; border-radius: 2px; background: var(--border-strong); }
+
+.dev-task-info { flex: 1; }
+.dev-task-title {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--ink);
+}
+.dev-task-meta {
+  font-size: 10.5px;
+  color: var(--dust);
+  margin-top: 1px;
+}
+
+.dev-task-tag {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 2px 6px;
+  border-radius: 3px;
+  background: var(--terracotta-light);
+  color: var(--terracotta-deep);
+}
+.dev-task-tag.tag-progress {
+  background: var(--clay-tint);
+  color: var(--clay);
+}
+.dev-task-tag.tag-todo {
+  background: var(--paper-hover);
+  color: var(--dust);
+}
+
+.dev-terminal-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: var(--canvas);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+.dev-prompt { color: var(--terracotta); font-weight: 600; }
+.dev-cmd { color: var(--ink); }
+.dev-output { color: var(--dust); margin-left: auto; font-size: 10px; }
+
+/* Tech bar */
+.tech-bar {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--paper);
+  padding: 14px 0;
+}
+.tech-bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.tech-stat {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--dust);
+}
+.tech-stat-icon { color: var(--terracotta); }
+
+/* Personas */
+.tech-persona-card {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+  padding: 28px 24px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+.tech-persona-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-md);
+}
+.tech-persona-icon {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: var(--paper-hover);
+  border: 1px solid var(--border);
+  color: var(--terracotta);
+  margin-bottom: 18px;
+}
+.tech-persona-role {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dust);
+  margin-bottom: 6px;
+}
+.tech-persona-title {
+  font-size: 19px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.tech-persona-copy {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--dust);
+}
+
+/* Technical CTA */
+.cta-tech-card {
+  padding: 64px 32px;
+  background: radial-gradient(ellipse at 50% 0%, var(--paper-hover) 0%, var(--paper) 70%);
+  border: 1px solid var(--border-strong);
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: var(--shadow-md);
+}
+.cta-tech-kicker {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 12px;
+}
+.hero-point-icon { color: var(--terracotta); }
+
+
+
+
+/* ─── HERO STAGE — shader backdrop + interactive wordmark ─── */
+.hero--stage { min-height: auto; display: block; padding: 96px 0 80px; background: var(--canvas); }
+.hero-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 52%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 52%, transparent 100%);
+  animation: fadeIn 1.2s var(--ease-out) both;
+}
+.hero-backdrop::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 62% 56% at 50% 40%, var(--canvas) 0%, transparent 80%);
+  opacity: 0.78;
+}
+.hero-stage {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.hero-title { width: 100%; color: var(--ink); }
+.hero-title-stage { width: 100%; height: clamp(170px, 24vw, 300px); }
+.hero .hero-tagline {
+  font-size: clamp(22px, 2.6vw, 32px);
+  line-height: 1.2;
+  max-width: 26ch;
+  margin: 4px auto 0;
+  letter-spacing: -0.01em;
+  font-weight: 600;
+  text-align: center;
+}
+.hero--stage .hero-subtitle { margin: 18px auto 0; text-align: center; font-size: 16px; }
+.hero--stage .hero-actions { margin-top: 28px; justify-content: center; }
+.hero--stage .hero-points { justify-content: center; margin-top: 22px; }
+.hero--stage .hero-visual { width: 100%; max-width: 980px; margin: 56px auto 0; text-align: left; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-backdrop { animation: none; }
+}
+
+/* ─── LEGAL PAGES ─── */
+.legal { padding: 72px 0 96px; }
+.legal-head h1 { font-size: clamp(32px, 4vw, 44px); line-height: 1.1; margin: 0 0 10px; max-width: none; }
+.legal-meta { font-family: var(--font-mono); font-size: 12px; color: var(--dust); margin: 0 0 18px; }
+.legal-lede { font-size: 16px; line-height: 1.65; color: var(--dust); max-width: 60ch; margin: 0; }
+.legal-layout { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 56px; margin-top: 48px; align-items: start; }
+.legal-toc { position: sticky; top: 88px; display: flex; flex-direction: column; gap: 2px; }
+.legal-toc a {
+  padding: 7px 10px;
+  border-left: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--dust);
+  transition: color var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out);
+}
+.legal-toc a:hover { color: var(--ink); border-color: var(--terracotta); }
+.legal-body { max-width: 68ch; }
+.legal-section { padding: 0 0 36px; scroll-margin-top: 88px; }
+.legal-section h2 { font-size: 20px; margin: 0 0 12px; letter-spacing: -0.01em; }
+.legal-section p, .legal-section li { font-size: 15px; line-height: 1.7; color: var(--dust); }
+.legal-section p { margin: 0 0 12px; }
+.legal-section ul { margin: 0 0 12px; padding-left: 20px; display: grid; gap: 8px; }
+.legal-section strong { color: var(--ink); font-weight: 600; }
+.legal-section a { color: var(--terracotta); text-decoration: underline; text-underline-offset: 3px; }
+.legal-section code { font-family: var(--font-mono); font-size: 13px; padding: 1px 5px; border: 1px solid var(--border); border-radius: var(--r-sm); color: var(--ink); }
+@media (max-width: 860px) {
+  .legal-layout { grid-template-columns: 1fr; gap: 24px; }
+  .legal-toc { position: static; flex-direction: row; flex-wrap: wrap; gap: 6px; }
+  .legal-toc a { border: 1px solid var(--border); border-radius: var(--r-sm); }
+}
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+.auth-terms a, .auth-trust a { color: var(--dust); text-decoration: underline; text-underline-offset: 3px; transition: color var(--dur-base) var(--ease-out); }
+.auth-terms a:hover, .auth-trust a:hover { color: var(--terracotta); }
+
+/* ─── ROUTE GUARD LOADING ─── */
+.route-loading {
+  min-height: 60dvh;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 14px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--dust);
+  animation: fadeIn 0.4s var(--ease-out) 0.15s both;
+}
+.route-loading-bar {
+  width: 120px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, transparent, var(--terracotta), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 1.6s var(--ease-out) infinite;
+}
+@media (prefers-reduced-motion: reduce) { .route-loading, .route-loading-bar { animation: none; } }
+
+/* ─── WORKSPACE LAYOUT FIX — contain the grid and let the content column shrink ─── */
+.workspace-layout {
+  width: min(var(--wrap), calc(100% - 48px));
+  margin-inline: auto;
+  padding: 32px 0 72px;
+  grid-template-columns: 230px minmax(0, 1fr);
+}
+.workspace-content { min-width: 0; }
+@media (max-width: 860px) {
+  .workspace-layout { grid-template-columns: minmax(0, 1fr); width: calc(100% - 32px); }
+  .workspace-sidebar { position: static; }
+  .workspace-nav { flex-direction: row; flex-wrap: wrap; }
+}
+
+/* ─── PAGE CONTAINERS — profile and settings had no width or gutters ─── */
+.profile-layout { width: min(var(--wrap), calc(100% - 48px)); margin-inline: auto; padding: 40px 0 72px; }
+.settings-layout { width: min(720px, calc(100% - 48px)); margin-inline: auto; padding: 40px 0 72px; }
+
+/* ─── BARE FORM CONTROLS — zero-specificity defaults so .input/.select still win ─── */
+:where(input:not([type="checkbox"], [type="radio"], [type="range"], [type="submit"], [type="button"]), textarea, select) {
+  font: inherit;
+  color: var(--ink);
+  background: var(--paper-raised);
+  border: 1px solid var(--border);
+  border-radius: var(--r-input);
+  padding: 9px 12px;
+  min-height: 40px;
+  transition: border-color var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out);
+}
+:where(input, textarea, select):focus-visible { outline: none; border-color: var(--terracotta); box-shadow: 0 0 0 3px var(--terracotta-light); }
+:where(input, textarea)::placeholder { color: var(--dust-light); }
+option { background: var(--paper); color: var(--ink); }
+:root { color-scheme: light; }
+[data-theme="dark"] { color-scheme: dark; }
+
+/* ─── TYPOGRAPHIC RHYTHM ───
+   The display face is monospace now, so the old -0.03em tracking made headings
+   crowd together. Give them room, and give every eyebrow → title → lede stack
+   an explicit gap instead of relying on margins that were never set. */
+h1, h2, h3, h4 { letter-spacing: -0.01em; line-height: 1.25; }
+.dashboard-title, .mono-title, .section-title, .panel-title, .auth-card-title, .profile-name { letter-spacing: -0.01em; line-height: 1.22; }
+.idea-card-title, .open-space-name, .craft-row h3, .tech-persona-title { line-height: 1.32; letter-spacing: -0.005em; }
+
+.eyebrow + :is(h1, h2, h3, .dashboard-title, .mono-title, .profile-name),
+.section-kicker + :is(h1, h2, h3, .section-title),
+.eyebrow-muted + :is(h1, h2, h3, .mono-title),
+.eyebrow-muted-tight + :is(h1, h2, h3, .mono-title) { margin-top: 10px; }
+
+:is(h1, h2, h3, .dashboard-title, .mono-title, .section-title, .auth-card-title) + :is(p, .dashboard-subtitle, .muted-body, .muted-sm, .muted-md, .section-desc) { margin-top: 12px; }
+
+.dashboard-header { margin-bottom: 32px; }
+.dashboard-subtitle { line-height: 1.65; max-width: 62ch; }
+.idea-card-title { margin-bottom: 10px; }
+.idea-card-desc { line-height: 1.6; margin-bottom: 16px; }
+.idea-card-tag { letter-spacing: 0.08em; }
+.setting-label { line-height: 1.4; margin-bottom: 3px; }
+.setting-desc { line-height: 1.55; }
+.settings-section { gap: 18px; padding: 26px; }
+.settings-title { margin-bottom: 2px; }
+.settings-header { margin-bottom: 12px; }
+.profile-header { gap: 20px; }
+.profile-name { margin-bottom: 4px; }
+.metrics-tile-label { line-height: 1.5; }
+.mono-xl, .mono-md { line-height: 1.5; }
+.muted-xs, .muted-sm { line-height: 1.55; }
+.hero .hero-tagline { line-height: 1.3; letter-spacing: -0.005em; }
+.hero--stage .hero-subtitle { line-height: 1.7; }
+.workspace-header h1 { margin-bottom: 10px; }
+.workspace-nav-item { line-height: 1.4; }
+.faq-q { line-height: 1.45; }
+
+/* Secondary buttons sat on panels of the same colour with a transparent border, so they read as plain text. */
+.btn:not(.btn-primary):not(.btn-ghost) { border-color: var(--border-strong); background: var(--paper-raised); }
+.btn:not(.btn-primary):not(.btn-ghost):hover { border-color: var(--terracotta); background: var(--paper-hover); }
+
+/* ─── LIST ROWS + HEADERS THAT WERE COLLAPSING ───
+   .row-divider was only ever a 1px rule, but the Space page uses it as a content
+   row (bullet + text). Keep the rule for <hr>, and give <div> rows real padding. */
+div.row-divider, div.row-divider-lg {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  height: auto;
+  margin: 0;
+  padding: 14px 0;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--border);
+}
+div.row-divider-lg { padding: 20px 0; }
+div.row-divider:last-child, div.row-divider-lg:last-child { border-bottom: none; }
+div.row-divider > .bullet, div.row-divider-lg > .bullet { margin-top: 8px; }
+div.row-divider .mono-md { line-height: 1.5; margin-bottom: 2px; }
+.panel-header { margin-bottom: 8px; }
+
+/* The header stacks chips, title and purpose; as a flex row it pushed the title off to the right. */
+.workspace-header { display: block; }
+.workspace-header .status-chips { margin-bottom: 16px; }
+.workspace-header h1 { margin-bottom: 10px; }
+
+/* Auth footer stack: give the note, swap line and legal text their own space. */
+.oauth-note { margin: 16px 0 0; line-height: 1.6; }
+.auth-swap { margin-top: 14px; line-height: 1.6; }
+.auth-terms { margin-top: 16px; }
+.auth-trust { margin-top: 22px; padding-top: 18px; line-height: 1.6; }
+
+/* Panels inside the Space overview columns are wrapped by motion divs, so give the columns their own rhythm. */
+.workspace-overview-grid > div { display: flex; flex-direction: column; gap: 18px; min-width: 0; }
+.workspace-overview-grid .panel-spaced-sm { margin-bottom: 0; }
+.workspace-build-grid > div { min-width: 0; }
+
+/* ─── CHAT + INBOX RHYTHM ─── */
+.mt-8 { margin-top: 8px; }
+.comment { flex-direction: row; align-items: flex-start; gap: 12px; padding: 14px 16px; }
+.scroll-area > .comment + .comment { margin-top: 10px; }
+.comment-meta { display: flex; align-items: baseline; gap: 10px; margin-bottom: 4px; }
+.comment-meta strong { color: var(--ink); font-weight: 500; }
+.comment-body { line-height: 1.6; }
+.inbox-grid > div, .inbox-layout > div { display: flex; flex-direction: column; gap: 18px; min-width: 0; }
+.inbox-grid .panel-header, .inbox-grid .mono-xs.mt-8 { margin-bottom: 4px; }
+.inbox-grid .panel .scroll-area { margin-top: 16px; }
+
+/* ─── EYEBROW → TEXT AND AUTH PANE SPACING ─── */
+:is(.eyebrow, .eyebrow-muted, .eyebrow-muted-tight, .eyebrow-muted-xs, .section-kicker) + :is(p, .muted-body, .muted-sm, .muted-md) { margin-top: 10px; }
+.profile-header { margin-bottom: 6px; }
+.profile-layout .eyebrow { margin-bottom: 0; }
+.auth-mural-eyebrow { margin-bottom: 16px; }
+.auth-mural-title { line-height: 1.2; margin-bottom: 18px; }
+.auth-mural-blurb { line-height: 1.7; }
+
+/* ─── 404 ─── */
+.not-found-code { letter-spacing: -0.01em; margin-bottom: 10px; }
+.not-found-title { margin: 0 0 16px; letter-spacing: -0.01em; }
+.not-found-body { max-width: 64ch; line-height: 1.9; margin: 0 auto 32px; white-space: normal; }
+
+/* The auth artwork stays dark in both themes, so its wordmark must stay light too. */
+.auth-art .avera-word, .auth-mural-logo .avera-word { color: var(--mural-ink); }

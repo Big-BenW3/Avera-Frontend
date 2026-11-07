@@ -1,9 +1,12 @@
 "use client";
-import { useRef, useEffect, type ReactNode, type CSSProperties } from "react";
+import { motion, useReducedMotion } from "framer-motion";
+import type { ReactNode } from "react";
+import { dur, ease } from "@/lib/motion";
 
 /**
  * Entrance animation. Fade + rise only — no tilt, no rotate, no 3D.
- * Respects prefers-reduced-motion by rendering the content fully visible.
+ * Respects prefers-reduced-motion by rendering the content fully visible,
+ * instantly, with no motion at all (not just a shorter one).
  */
 export function AnimateIn({
   children,
@@ -14,37 +17,21 @@ export function AnimateIn({
   delay?: number;
   className?: string;
 }) {
-  const ref = useRef<HTMLDivElement>(null);
+  const reduced = useReducedMotion();
 
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      el.style.opacity = "1";
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (!entry.isIntersecting) continue;
-          el.style.animationDelay = `${delay}s`;
-          el.classList.add("animate-fade-up");
-          observer.unobserve(el);
-        }
-      },
-      { threshold: 0.1, rootMargin: "0px 0px -10% 0px" },
-    );
-
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, [delay]);
+  if (reduced) {
+    return <div className={className}>{children}</div>;
+  }
 
   return (
-    <div ref={ref} className={className} style={{ opacity: 0 } as CSSProperties}>
+    <motion.div
+      className={className}
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-10% 0px -10% 0px" }}
+      transition={{ duration: dur.slow, ease: ease.out, delay }}
+    >
       {children}
-    </div>
+    </motion.div>
   );
 }
-

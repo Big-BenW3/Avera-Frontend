@@ -1,31 +1,33 @@
-﻿"use client";
+"use client";
 import Link from "next/link";
 import { useState, type ReactNode } from "react";
 import { ArrowRight, Eye, EyeOff } from "lucide-react";
 
-export function AveraLogo({ center = false }: { center?: boolean }) {
+export function AveraLogo({ center = false, size = 18 }: { center?: boolean; size?: number }) {
   return (
     <div className={`avera-logo${center ? " avera-logo-center" : ""}`}>
       <span className="avera-mark" aria-hidden="true">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none">
-          <path d="M12 4L20 19H4L12 4Z" fill="#fff" opacity="0.95" />
-          <circle cx="12" cy="14.5" r="2.4" fill="#FEF3C7" />
+        <svg width={size} height={size} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="av-g" x1="3" y1="29" x2="29" y2="3" gradientUnits="userSpaceOnUse">
+              <stop stopColor="#10B981" />
+              <stop offset="0.5" stopColor="#06B6D4" />
+              <stop offset="1" stopColor="#6366F1" />
+            </linearGradient>
+          </defs>
+          {/* Outer A — filled with gradient */}
+          <path d="M16 3L3 28H9.8L16 16L22.2 28H29L16 3Z" fill="url(#av-g)" />
+          {/* Inner cutout — punches hole for depth */}
+          <path d="M16 15L13 22H19L16 15Z" fill="var(--canvas)" />
         </svg>
       </span>
-      <span className="avera-word">
-        Avera<span className="avera-dot">.</span>
-      </span>
+      <span className="avera-word">AVERA</span>
     </div>
   );
 }
 
 /**
- * Split auth layout: mural on the left, form on the right.
- *
- * The two meet on a single hairline (.seam-edge). This replaced a 190px gradient
- * veil that dissolved one into the other — it read as a blur rather than a
- * decision, because a fade hides the join instead of owning it. Two fields with
- * a crisp edge look deliberate; two fields smeared together just look soft.
+ * Split auth layout: technical product pane on the left, form on the right.
  */
 export function AuthSplit({
   children,
@@ -51,11 +53,8 @@ export function AuthSplit({
             {blurb ? <p className="auth-mural-blurb">{blurb}</p> : null}
           </div>
         ) : null}
-        <div className="auth-scene" aria-hidden="true">
-          <div className="hill hill--back" />
-          <div className="hill hill--front" />
-        </div>
-        <p className="auth-mural-foot">A home for ideas worth finishing.</p>
+        <div className="auth-scene" aria-hidden="true" />
+        <p className="auth-mural-foot">Built for engineering teams and technical founders.</p>
         <div className="seam-edge" aria-hidden="true" />
       </div>
       <div className="auth-right">{children}</div>
@@ -75,7 +74,8 @@ export function AuthShell({ title, subtitle, children, footer }: { title: string
       {children}
       {footer}
       <div className="auth-trust">
-        <span>Sessions are protected with httpOnly cookies.</span>
+        <span>Sessions are protected with httpOnly cookies.</span>{" "}
+        <Link href="/privacy">Privacy Policy</Link>
       </div>
     </>
   );

@@ -1,137 +1,124 @@
-﻿import Image from "next/image";
+import { Terminal, GitBranch, CheckCircle2 } from "lucide-react";
 
-/**
- * Hero scene — a single composed product moment instead of a scattered collage.
- *
- * The previous version stacked three rotated photos plus a floating card plus
- * two strips of tape. Individually each was fine; together they had no focal
- * point, four competing shadows, and a rotation on every edge so nothing read as
- * a single object.
- *
- * What replaced it: one large photo as the anchor, one real UI card that
- * overlaps it, and a small caption. Two shadows, one accent, one focal point.
- */
-
-const PHOTOS = {
-  table:
-    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1600&q=80",
-  people:
-    "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80",
-};
-
-export function HouseMark({ className = "" }: { className?: string }) {
+export function TechMark({ className = "" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 120 96" fill="none" className={className} aria-hidden="true">
-      <path
-        d="M14 52 L60 14 L106 52"
-        stroke="currentColor"
-        strokeWidth="5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M26 46 V84 H94 V46"
-        stroke="currentColor"
-        strokeWidth="5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <circle cx="60" cy="64" r="9" fill="currentColor" opacity="0.85" />
-      <path
-        d="M96 22 q6 -8 14 -6"
-        stroke="currentColor"
-        strokeWidth="4"
-        strokeLinecap="round"
-      />
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true" width={16} height={16}>
+      <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
 
+// Keep HouseMark alias for backward compatibility
+export const HouseMark = TechMark;
+
 export default function WorkspacePreview() {
   return (
-    <div
-      className="hero-scene"
-      role="img"
-      aria-label="An Avera Space called Tidepool, showing progress, collaborators, and the tasks in flight."
-    >
-      {/* Anchor — one photo, no rotation. This is the only large shadow in the scene. */}
-      <div className="hero-photo">
-        <Image
-          src={PHOTOS.table}
-          alt="A warm workshop table with sketches and coffee"
-          fill
-          sizes="(max-width: 900px) 92vw, 560px"
-          priority
-        />
-        <div className="hero-photo-wash" aria-hidden="true" />
-      </div>
-
-      {/* Secondary — smaller, tucks behind the card. Same family of shadow, lighter. */}
-      <div className="hero-photo hero-photo--inset">
-        <Image
-          src={PHOTOS.people}
-          alt="Three collaborators leaning over a table"
-          fill
-          sizes="(max-width: 900px) 40vw, 260px"
-        />
-      </div>
-
-      {/* The product, actually shown. Overlaps the photo so the two read as one composition. */}
-      <div className="hero-card">
-        <div className="hero-card-head">
-          <div>
-            <span className="hero-card-space">Tidepool</span>
-            <h3 className="hero-card-title">
-              Local climate actions that feel possible
-            </h3>
-          </div>
-          <span className="hero-card-status">
-            <span className="hero-card-dot" aria-hidden="true" />
-            Live
+    <div className="dev-console" role="region" aria-label="Avera Engineering Workspace Console">
+      {/* Console Top Chrome */}
+      <div className="dev-console-header">
+        <div className="dev-console-dots">
+          <span className="dot dot-red" />
+          <span className="dot dot-amber" />
+          <span className="dot dot-emerald" />
+        </div>
+        <div className="dev-console-title">
+          <Terminal size={12} className="dev-console-icon" />
+          <span>avera-workspace / hyperdrive-engine</span>
+        </div>
+        <div className="dev-console-meta">
+          <span className="dev-badge dev-badge-git">
+            <GitBranch size={11} /> main: 8f4a19c
+          </span>
+          <span className="dev-badge dev-badge-ci">
+            <CheckCircle2 size={11} /> CI Passing
           </span>
         </div>
-
-        <div className="hero-card-progress">
-          <div
-            className="hero-card-track"
-            role="progressbar"
-            aria-valuenow={64}
-            aria-valuemin={0}
-            aria-valuemax={100}
-            aria-label="Tasks complete"
-          >
-            <span className="hero-card-fill" />
-          </div>
-          <span className="hero-card-count">18 of 28</span>
-        </div>
-
-        <ul className="hero-card-tasks">
-          <li>
-            <span>Neighbourhood map</span>
-            <em>In progress</em>
-          </li>
-          <li>
-            <span>Weekly digest</span>
-            <em>Friday send</em>
-          </li>
-        </ul>
-
-        <div className="hero-card-foot">
-          <div className="hero-card-people">
-            <span>MC</span>
-            <span>NI</span>
-            <span>AS</span>
-            <span className="hero-card-more">+3</span>
-          </div>
-          <span className="hero-card-note">Six people, one roadmap</span>
-        </div>
       </div>
 
-      {/* Quiet caption instead of decorative tape. */}
-      <p className="hero-caption">
-        <HouseMark className="hero-caption-mark" />
-        One idea, from first note to shipped.
-      </p>
+      {/* Main Console Grid */}
+      <div className="dev-console-body">
+        {/* Left Sub-nav */}
+        <aside className="dev-console-sidebar">
+          <div className="dev-sidebar-item active">
+            <span>Sprint Board</span>
+            <span className="dev-pill">12</span>
+          </div>
+          <div className="dev-sidebar-item">
+            <span>Roadmap (v1.4)</span>
+            <span className="dev-pill">88%</span>
+          </div>
+          <div className="dev-sidebar-item">
+            <span>RFCs & Specs</span>
+            <span className="dev-pill">4</span>
+          </div>
+          <div className="dev-sidebar-item">
+            <span>LiveKit Call</span>
+            <span className="dev-dot-live" />
+          </div>
+          <div className="dev-sidebar-item">
+            <span>Git / PRs</span>
+            <span className="dev-pill">3 open</span>
+          </div>
+        </aside>
+
+        {/* Right Active Sprint View */}
+        <main className="dev-console-main">
+          {/* Metrics bar */}
+          <div className="dev-metrics-bar">
+            <div className="dev-metric">
+              <span className="dev-metric-label">SPRINT VELOCITY</span>
+              <span className="dev-metric-val">48 pts <span className="dev-metric-delta">+14%</span></span>
+            </div>
+            <div className="dev-metric">
+              <span className="dev-metric-label">ACTIVE PRs</span>
+              <span className="dev-metric-val">3 <span className="dev-metric-sub">Review ready</span></span>
+            </div>
+            <div className="dev-metric">
+              <span className="dev-metric-label">RELEASE TARGET</span>
+              <span className="dev-metric-val">v1.4.0-rc2</span>
+            </div>
+          </div>
+
+          {/* Kanban / Tasks Column Preview */}
+          <div className="dev-task-list">
+            <div className="dev-task-item dev-task-done">
+              <div className="dev-task-status"><CheckCircle2 size={13} /></div>
+              <div className="dev-task-info">
+                <div className="dev-task-title">AVR-108: Argon2id session layer & TOTP MFA</div>
+                <div className="dev-task-meta">Core Auth · Merged in PR #42</div>
+              </div>
+              <span className="dev-task-tag">MERGED</span>
+            </div>
+
+            <div className="dev-task-item dev-task-active">
+              <div className="dev-task-status"><span className="pulse-dot" /></div>
+              <div className="dev-task-info">
+                <div className="dev-task-title">AVR-114: Raft consensus log compaction & replication</div>
+                <div className="dev-task-meta">Distributed Systems · Assignee: @alex</div>
+              </div>
+              <span className="dev-task-tag tag-progress">IN REVIEW</span>
+            </div>
+
+            <div className="dev-task-item">
+              <div className="dev-task-status"><span className="todo-dot" /></div>
+              <div className="dev-task-info">
+                <div className="dev-task-title">AVR-119: OpenAPI v3 client codegen & typed contract</div>
+                <div className="dev-task-meta">API Gateway · Priority: P1</div>
+              </div>
+              <span className="dev-task-tag tag-todo">BACKLOG</span>
+            </div>
+          </div>
+
+          {/* Mini Terminal Trace Output */}
+          <div className="dev-terminal-line">
+            <span className="dev-prompt">$</span>
+            <span className="dev-cmd">avera run ai:spec --target=consensus-engine</span>
+            <span className="dev-output">✓ Generated 4 schema migrations, 6 tasks assigned</span>
+          </div>
+        </main>
+      </div>
     </div>
   );
 }

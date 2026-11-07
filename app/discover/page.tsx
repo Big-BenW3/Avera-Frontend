@@ -22,7 +22,7 @@ function DiscoverFallback() {
     <>
       <ProductNav />
       <div className="dashboard">
-        <p style={{ padding: 24 }}>Warming up the studio…</p>
+        <p style={{ padding: 24, fontFamily: "var(--font-mono)" }}>Loading discovery index…</p>
       </div>
     </>
   );
@@ -57,10 +57,10 @@ function DiscoverInner() {
         <AnimateIn>
           <div className="dashboard-header dashboard-header-row">
             <div>
-              <div className="eyebrow">Discover</div>
-              <h1 className="dashboard-title">Ideas worth your attention.</h1>
+              <div className="eyebrow">DISCOVER</div>
+              <h1 className="dashboard-title">Engineering Projects & Spaces</h1>
               <p className="dashboard-subtitle">
-                A gentle feed of what people are building — and the Spaces looking for someone like you.
+                Explore active engineering initiatives, architecture proposals, and collaborative Spaces.
               </p>
             </div>
             <Link href="/ideas" className="btn">

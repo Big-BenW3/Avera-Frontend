@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { api, ApiError } from "@/lib/api";
 import { AnimateIn } from "@/components/Animations";
+import { AveraLogo } from "@/components/AuthCard";
 
 export default function OnboardingPage() {
   const router = useRouter();
@@ -54,18 +55,15 @@ export default function OnboardingPage() {
     <div className="auth-layout">
       <div className="auth-art">
         <Link href="/" aria-label="Avera home">
-          <span className="auth-brand">
-            <span className="nav-logo-dot" />
-            avera
-          </span>
+          <AveraLogo />
         </Link>
         <div>
           <div className="eyebrow mb-12">Step {step} of 3</div>
           <h1 className="auth-title">
-            {step === 1 ? "What brings you here?" : step === 2 ? "What do you want to make room for?" : "You belong in the room."}
+            {step === 1 ? "What is your primary engineering role?" : step === 2 ? "What technologies & domains do you build in?" : "Developer workspace ready."}
           </h1>
           <p className="auth-subtitle mt-12" style={{ maxWidth: "34ch" }}>
-            {step === 1 ? "Choose the energy you want to bring into Avera." : step === 2 ? "This helps your Discover feed feel more like an invitation than an algorithm." : "Your profile is ready. The next step can be small."}
+            {step === 1 ? "Select your focus to tailor sprint views, roadmap filters, and team invitations." : step === 2 ? "Add your core stack to highlight relevant Spaces, architecture specs, and open issues." : "Your profile is configured. You can start building immediately."}
           </p>
         </div>
         <div className="steps-bar">
@@ -79,10 +77,10 @@ export default function OnboardingPage() {
           {step === 1 && (
             <div className="onboarding-choices">
               {[
-                { label: "I have an idea", value: "idea" },
-                { label: "I want to help build", value: "build" },
-                { label: "I'm finding people", value: "find" },
-                { label: "I'm exploring", value: "explore" },
+                { label: "Technical Founder / Lead", value: "lead" },
+                { label: "Backend / Distributed Systems", value: "backend" },
+                { label: "Full Stack / Frontend", value: "fullstack" },
+                { label: "AI / ML / Data", value: "ai" },
               ].map((option) => (
                 <button
                   key={option.value}
@@ -96,22 +94,22 @@ export default function OnboardingPage() {
           )}
           {step === 2 && (
             <div className="field">
-              <label htmlFor="interests">A few interests (comma separated — saved to your profile)</label>
+              <label htmlFor="interests">Core stack & interests (comma separated — saved to profile)</label>
               <textarea
                 id="interests"
                 className="input input-textarea"
                 value={interests}
                 onChange={(e) => setInterests(e.target.value)}
-                placeholder="Care, climate, creative tools, local life..."
+                placeholder="Rust, TypeScript, PostgreSQL, Redis, Kubernetes, Next.js, AI/LLMs..."
               />
             </div>
           )}
           {step === 3 && (
             <div className="onboarding-promise">
-              <div className="eyebrow-muted-tight">Your Avera promise</div>
-              <h2 className="mono-title mt-12 mb-12">Bring the work and the warmth.</h2>
+              <div className="eyebrow-muted-tight">WORKSPACE READY</div>
+              <h2 className="mono-title mt-12 mb-12">Built for high-velocity execution.</h2>
               <p className="muted-body">
-                You can change your profile, notification rhythm, and privacy settings any time.
+                Manage Git integrations, sprint milestones, and LiveKit rooms from your Space dashboard.
               </p>
             </div>
           )}

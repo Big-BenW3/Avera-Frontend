@@ -2,22 +2,22 @@ import Link from "next/link";
 
 const LOGOS = [
   {
-    file: "/logos/logo-1-hearth.svg",
-    name: "Hearth",
-    tagline: "The A as a shelter roof — a home for ideas.",
-    meaning: "Warm, grounded, protective. Reads as home first, mark second.",
-  },
-  {
-    file: "/logos/logo-2-knot.svg",
-    name: "Knot",
-    tagline: "Two arcs meeting at a shared node.",
-    meaning: "Connection and collaboration — people joining around an idea.",
+    file: "/logos/avera-logo.svg",
+    name: "Apex Core (Official)",
+    tagline: "Geometric A-mark with an emerald→cyan→indigo gradient core.",
+    meaning: "Precision, momentum, and technical execution. Engineered for builders.",
   },
   {
     file: "/logos/logo-3-ascent.svg",
     name: "Ascent",
     tagline: "A grounded A with an orbiting spark above it.",
     meaning: "Launch and momentum — an idea taking flight.",
+  },
+  {
+    file: "/logos/logo-2-knot.svg",
+    name: "Knot",
+    tagline: "Two arcs meeting at a shared node.",
+    meaning: "Connection and collaboration — people joining around an idea.",
   },
 ];
 
@@ -30,9 +30,9 @@ export default function LogoPreviewPage() {
         </Link>
         <div>
           <div className="eyebrow">Brand</div>
-          <h1 className="logo-preview-title">Three marks for Avera.</h1>
+          <h1 className="logo-preview-title">Avera mark system.</h1>
           <p className="dashboard-subtitle">
-            Pick the one that feels most like the product. Each is built on the warm studio palette.
+            Three mark explorations on the technical dark palette. Apex Core is the official mark.
           </p>
         </div>
       </header>
@@ -62,15 +62,13 @@ export default function LogoPreviewPage() {
         <div className="logo-preview-usage-grid">
           <div className="logo-preview-appbar">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={LOGOS[1].file} alt="Avera" width={28} height={28} />
-            <span className="logo-preview-word">avera</span>
+            <img src={LOGOS[0].file} alt="Avera" width={28} height={28} />
+            <span className="logo-preview-word">AVERA</span>
           </div>
-          <div className="logo-preview-appbar" style={{ background: "var(--canvas-warm)" }}>
+          <div className="logo-preview-appbar" style={{ background: "var(--paper)" }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={LOGOS[0].file} alt="Avera" width={28} height={28} />
-            <span className="logo-preview-word">
-              avera<span style={{ color: "var(--terracotta)" }}>.</span>
-            </span>
+            <span className="logo-preview-word">AVERA</span>
           </div>
         </div>
       </section>

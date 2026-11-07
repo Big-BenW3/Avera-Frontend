@@ -6,12 +6,14 @@ export default function NotFound() {
     <div className="not-found">
       <div>
         <div className="not-found-code">404</div>
-        <h1 className="not-found-title">This page does not exist.</h1>
+        <h1 className="not-found-title">Route not found</h1>
         <p className="not-found-body">
-          The page you are looking for might have been moved, or it never existed in the first place.
+          {`// This path doesn't resolve to a known resource.`}
+          <br />
+          {`// Check the URL or navigate back to your workspace.`}
         </p>
         <Link href="/" className="btn btn-primary btn-large">
-          <ArrowLeft size={14} /> Back to home
+          <ArrowLeft size={14} /> Back to workspace
         </Link>
       </div>
     </div>

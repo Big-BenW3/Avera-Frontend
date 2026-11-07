@@ -9,7 +9,7 @@ import { SkeletonIdeaCard } from "@/components/Skeleton";
 import { Modal, EmptyState, FieldError } from "@/components/Modal";
 import { toast } from "@/components/Toast";
 
-const CATEGORIES = ["All", "Health", "Climate", "Education", "Fintech", "Developer tools", "Social", "Other"];
+const CATEGORIES = ["All", "Developer Tools", "AI & Machine Learning", "Infrastructure", "Fintech & Web3", "Open Source", "Security", "SaaS"];
 
 export default function IdeasPage() {
   return (
@@ -24,7 +24,7 @@ function IdeasFallback() {
     <>
       <ProductNav />
       <div className="dashboard">
-        <p style={{ padding: 24 }}>Loading the board…</p>
+        <p style={{ padding: 24, fontFamily: "var(--font-mono)" }}>Loading architecture ideas…</p>
       </div>
     </>
   );

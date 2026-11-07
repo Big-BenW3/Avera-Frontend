@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { AveraProviders } from "@/lib/query";
@@ -10,25 +10,7 @@ import { Toaster } from "@/components/Toast";
 // loader is flaky under CI/offline and crashes the webpack build. Local fonts are
 // baked in at compile time and preloaded, which is also faster in production.
 
-// Display / headings — Newsreader. A variable serif with a real optical-size
-// axis, so the 72px hero and the 20px card title come from the same family but
-// render differently: large sizes get tighter spacing and finer hairlines, small
-// sizes get sturdier stems. Instrument Serif (previous) shipped weight 400
-// only and had no italic, which is why headings read thin and the hero <em>
-// was faux-italic.
-const newsreader = localFont({
-  src: [
-    { path: "../public/fonts/Newsreader-var.woff2", weight: "300 600", style: "normal" },
-    { path: "../public/fonts/Newsreader-var-italic.woff2", weight: "300 500", style: "italic" },
-  ],
-  display: "swap",
-  variable: "--font-newsreader",
-  preload: true,
-});
-
-// Body / UI — Inter. Variable 400-700. Replaces Plus Jakarta Sans, whose very
-// geometric bowls and wide apertures read soft and slightly clumsy at the 11-13px
-// sizes this UI uses most.
+// Body & Display — Inter Variable 400-700. Clean, technical, high-density sans.
 const inter = localFont({
   src: "../public/fonts/Inter-var.woff2",
   weight: "400 700",
@@ -38,8 +20,7 @@ const inter = localFont({
   preload: true,
 });
 
-// Monospace / labels — used sparingly for eyebrows, metrics and timestamps.
-// DM Mono ships as static instances, so we register both weights we use.
+// Monospace / labels / code — DM Mono latin 400 & 500.
 const dmMono = localFont({
   src: [
     { path: "../public/fonts/DMMono-400-latin.woff2", weight: "400", style: "normal" },
@@ -51,18 +32,18 @@ const dmMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Avera — Find your people. Build what matters.",
-  description: "A purpose-led home for ideas, collaboration, and launches.",
+  title: "Avera — The Engineering & Product Platform for Builders",
+  description: "Spaces, live roadmaps, Git-integrated tasks, and real-time collaboration for technical teams.",
 };
 
-const themeInit = `(function(){try{var t=localStorage.getItem('avera-theme');if(t==='dark'){document.documentElement.dataset.theme='dark';}}catch(e){}})();`;
+const themeInit = `(function(){try{var t=localStorage.getItem('avera-theme');if(t!=='light'){document.documentElement.dataset.theme='dark';}}catch(e){}})();`;
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${newsreader.variable} ${inter.variable} ${dmMono.variable}`}
+      className={`${inter.variable} ${dmMono.variable}`}
     >
       <body>
         <script dangerouslySetInnerHTML={{ __html: themeInit }} />

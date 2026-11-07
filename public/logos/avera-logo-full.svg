@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 40" fill="none">
+  <defs>
+    <!-- Main gradient: emerald → cyan → indigo -->
+    <linearGradient id="mark-grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"   stop-color="#10b981"/>
+      <stop offset="50%"  stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+    <!-- Inner cutout shadow for depth -->
+    <linearGradient id="cut-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#000" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- A-mark: outer triangle -->
+  <path d="M20 4L6 36H12.8L20 19.5L27.2 36H34L20 4Z" fill="url(#mark-grad)"/>
+  <!-- Inner cutout triangle (negative space apex) -->
+  <path d="M20 14L14.4 28H25.6L20 14Z" fill="#09090b"/>
+  <!-- Tiny inner shadow overlay for depth -->
+  <path d="M20 14L14.4 28H25.6L20 14Z" fill="url(#cut-grad)"/>
+
+  <!-- Wordmark: AVERA -->
+  <!-- A -->
+  <path d="M50 30L55.5 12H57.8L63.3 30H61L59.7 25.5H53.6L52.3 30H50ZM54.2 23.5H59.1L56.65 15.2L54.2 23.5Z" fill="currentColor"/>
+  <!-- V -->
+  <path d="M65 12H67.4L71.6 26.8L75.8 12H78.2L73.0 30H70.2L65 12Z" fill="currentColor"/>
+  <!-- E -->
+  <path d="M81 12H91.5V14H83.1V19.5H90.8V21.5H83.1V28H91.8V30H81V12Z" fill="currentColor"/>
+  <!-- R -->
+  <path d="M94 12H100.2C102.1 12 103.6 12.5 104.6 13.5C105.5 14.4 106 15.7 106 17.2C106 18.4 105.7 19.4 105.1 20.2C104.5 21.0 103.7 21.5 102.7 21.8L106.5 30H104.1L100.6 22.2H96.1V30H94V12ZM96.1 20.2H100C101.1 20.2 101.9 19.9 102.5 19.3C103.1 18.7 103.4 17.9 103.4 17C103.4 16.1 103.1 15.3 102.6 14.8C102.0 14.2 101.2 13.9 100.1 13.9H96.1V20.2Z" fill="currentColor"/>
+  <!-- A -->
+  <path d="M109 30L114.5 12H116.8L122.3 30H120L118.7 25.5H112.6L111.3 30H109ZM113.2 23.5H118.1L115.65 15.2L113.2 23.5Z" fill="currentColor"/>
+</svg>

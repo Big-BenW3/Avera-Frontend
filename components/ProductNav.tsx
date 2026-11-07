@@ -2,9 +2,12 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { Plus } from "lucide-react";
+import { motion } from "framer-motion";
 import { api } from "@/lib/api";
-import { useMe } from "@/lib/auth";
+import { useMe, useSession } from "@/lib/auth";
+import { spring } from "@/lib/motion";
 import { NotificationBell } from "./NotificationBell";
+import { AveraLogo } from "./AuthCard";
 
 const tabs = [
   { href: "/discover", label: "Discover" },
@@ -16,19 +19,20 @@ export function ProductNav() {
   const pathname = usePathname();
   const router = useRouter();
   const { user } = useMe();
+  const { signedOut } = useSession();
 
   async function logout() {
     try {
       await api.auth.signOut();
     } catch {}
+    signedOut();
     router.push("/login");
   }
 
   return (
     <nav className="product-nav">
       <Link href="/discover" className="product-nav-logo">
-        <span className="nav-logo-dot" />
-        avera
+        <AveraLogo size={16} />
       </Link>
       <div className="product-nav-tabs">
         {tabs.map((tab) => {
@@ -39,6 +43,9 @@ export function ProductNav() {
               href={tab.href}
               className={`product-nav-tab${active ? " active" : ""}`}
             >
+              {active ? (
+                <motion.span layoutId="nav-pill" className="nav-pill" transition={spring.snappy} />
+              ) : null}
               {tab.label}
             </Link>
           );
