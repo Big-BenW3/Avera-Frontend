@@ -6,9 +6,9 @@
     "node": ">=22"
   },
   "scripts": {
-    "dev": "next dev ",
-    "build": "next build",
-    "start": "next start ",
+    "dev": "node scripts/next-cli.mjs dev",
+    "build": "node scripts/next-cli.mjs build",
+    "start": "node scripts/next-cli.mjs start",
     "check": "tsc --noEmit",
     "test": "vitest run --passWithNoTests"
   },
